@@ -7,9 +7,12 @@
 package citdavidjordan;
 
 import citdavidjordan.model.Actor;
-import citdavidjordan.model.Player;
 import citdavidjordan.model.Game;
+import citdavidjordan.model.Location;
+import citdavidjordan.model.Map;
 import citdavidjordan.model.Path;
+import citdavidjordan.model.Player;
+import citdavidjordan.model.Scene;
 
 /**
  *
@@ -57,6 +60,29 @@ public class CitDavidJordan {
         
         String actorInfo = actorOne.toString();
         System.out.println(actorInfo);
+        
+        Map gameMap = new Map();
+        
+        gameMap.setMapDisplay("playerLocation");
+        gameMap.setBrodyLocation("randomLocation");
+        
+        String mapInfo = gameMap.toString();
+        System.out.println(mapInfo);
+        
+        Scene sceneOne = new Scene();
+        
+        sceneOne.setSceneNo(2);
+        sceneOne.setType("testType");
+        
+        String sceneInfo = sceneOne.toString();
+        System.out.println(sceneInfo);
+        
+        Location locationOne = new Location();
+        
+        locationOne.setLocationNo(3);
+        
+        String locationInfo = locationOne.toString();
+        System.out.println(locationInfo);
         
     } 
     
