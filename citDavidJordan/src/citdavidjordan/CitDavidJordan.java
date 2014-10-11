@@ -30,7 +30,7 @@ public class CitDavidJordan {
         String playerInfo = playerOne.toString();
         System.out.println(playerInfo);
         
-        //***test Game Class***
+        //***test Game Class*** by David
         Game gameOne = new Game();
         
         gameOne.setPlayer(playerOne);
@@ -42,7 +42,7 @@ public class CitDavidJordan {
         String gameInfo = gameOne.toString();
         System.out.println(gameInfo);
         
-        //***test Path Class***
+        //***test Path Class*** by David
         Path pathOne = new Path();
         
         pathOne.setPathNo(4);
@@ -50,7 +50,7 @@ public class CitDavidJordan {
         String pathInfo = pathOne.toString();
         System.out.println(pathInfo);
         
-         //***test Actor class***
+         //***test Actor class*** by David
         Actor actorOne = new Actor();
         
         actorOne.setActorNo(1);
