@@ -7,6 +7,7 @@
 package citdavidjordan.model;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 /**
  *
@@ -60,9 +61,6 @@ public class Player implements Serializable {
         if (!Objects.equals(this.name, other.name)) {
             return false;
         }
-        if (this.marbleTotal != other.marbleTotal) {
-            return false;
-        }
-        return true;
+        return this.marbleTotal == other.marbleTotal;
     }    
 }
