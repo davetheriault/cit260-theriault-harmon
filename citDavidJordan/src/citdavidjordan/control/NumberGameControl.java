@@ -15,6 +15,7 @@ public class NumberGameControl {
     
     public String numberGame(int guess, long currentTimeInSeconds) {
         
+        
         if ( guess < 1 ) {
             return "The number guessed is too low.";
         }
