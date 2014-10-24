@@ -21,11 +21,12 @@ public class HomeworkHelpControl {
             return "That guess is too high.";
         }
 
-        double total = 1.1;
+        double total = 1.10;
         double bat;
-        double ball = (total - 1) / 2;    
+        double ball = (total - 1) / 2; 
+        double ballRounded = Math.round(ball * 100)/100.0;
         
-        if(guess == ball) {
+        if (guess == ballRounded) {
             return "That is the correct answer!";
         }
 
