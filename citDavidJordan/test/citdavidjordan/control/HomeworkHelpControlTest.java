@@ -34,11 +34,15 @@ public class HomeworkHelpControlTest {
         String result = instance.homeworkHelp(guess);
         assertEquals(expResult, result);
         
+        // Test Case 2
+        
         System.out.println("\tTest Case #2");
         guess = 0.01;
         expResult = "Sorry, that is the incorrect answer.";
         result = instance.homeworkHelp(guess);
         assertEquals(expResult, result);
+        
+        // Test Case 3
         
         System.out.println("\tTest Case #3");
         guess = -1;
@@ -46,17 +50,23 @@ public class HomeworkHelpControlTest {
         result = instance.homeworkHelp(guess);
         assertEquals(expResult, result);
         
+        // Test Case 4
+        
         System.out.println("\tTest Case #4");
         guess = 6;
         expResult = "That guess is too high.";
         result = instance.homeworkHelp(guess);
         assertEquals(expResult, result);
         
+        // Test Case 5
+        
         System.out.println("\tTest Case #5");
         guess = 0;
         expResult = "Sorry, that is the incorrect answer.";
         result = instance.homeworkHelp(guess);
         assertEquals(expResult, result);
+        
+        // Test Case 6
         
         System.out.println("\tTest Case #6");
         guess = 5;
