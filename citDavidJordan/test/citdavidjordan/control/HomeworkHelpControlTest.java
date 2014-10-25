@@ -33,6 +33,36 @@ public class HomeworkHelpControlTest {
         String expResult = "That is the correct answer!";
         String result = instance.homeworkHelp(guess);
         assertEquals(expResult, result);
+        
+        System.out.println("\tTest Case #2");
+        guess = 0.01;
+        expResult = "Sorry, that is the incorrect answer.";
+        result = instance.homeworkHelp(guess);
+        assertEquals(expResult, result);
+        
+        System.out.println("\tTest Case #3");
+        guess = -1;
+        expResult = "That guess is too low.";
+        result = instance.homeworkHelp(guess);
+        assertEquals(expResult, result);
+        
+        System.out.println("\tTest Case #4");
+        guess = 6;
+        expResult = "That guess is too high.";
+        result = instance.homeworkHelp(guess);
+        assertEquals(expResult, result);
+        
+        System.out.println("\tTest Case #5");
+        guess = 0;
+        expResult = "Sorry, that is the incorrect answer.";
+        result = instance.homeworkHelp(guess);
+        assertEquals(expResult, result);
+        
+        System.out.println("\tTest Case #6");
+        guess = 5;
+        expResult = "Sorry, that is the incorrect answer.";
+        result = instance.homeworkHelp(guess);
+        assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
     }
     
