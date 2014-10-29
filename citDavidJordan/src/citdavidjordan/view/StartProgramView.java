@@ -5,6 +5,8 @@
  */
 package citdavidjordan.view;
 
+import citdavidjordan.control.ProgramControl;
+import citdavidjordan.model.Player;
 import java.util.Scanner;
 
 /**
@@ -23,14 +25,21 @@ public class StartProgramView {
         String playerName = this.getPlayerName();
                 
         //Create a new player
+        Player player = ProgramControl.createPlayer(playerName);
+        
         //DISPLAY a customized welcome message
+        this.displayWelcomeMessage(player);
+        
         //DISPLAY the main menu
+        MainMenuView mainMenu = new MainMenuView();
+        mainMenu.displayMenu();
+        
         //END/
         
         
     }
 
-    private void displayBanner() {
+    public void displayBanner() {
         
         System.out.println("\n\n\n************************************************************");
         
@@ -48,6 +57,7 @@ public class StartProgramView {
         
         System.out.println(      "*                                                          *"
                              + "\n* PLAYGROUND HUSTLE!©                                      *"
+                             + "\n*                                                          *"
                              + "\n************************************************************");
         
     }
@@ -77,6 +87,17 @@ public class StartProgramView {
         }
         
         return playerName;
+    }
+
+    private void displayWelcomeMessage(Player player) {
+        System.out.println("\n\n======================================");
+        System.out.println("\tWelcome " + player.getName() + "!");
+        System.out.println("\tEverything is awesome in Playground Hustle™!");
+        System.out.println("======================================");
+
+
+        
+
     }
     
 }

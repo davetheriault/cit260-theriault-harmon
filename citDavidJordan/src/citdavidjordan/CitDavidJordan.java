@@ -21,7 +21,25 @@ import static citdavidjordan.view.StartProgramView.startProgramView;
  * @author Deann_2
  */
 public class CitDavidJordan {
+    
+    private static Game currentGame = null;
 
+    public static Game getCurrentGame() {
+        return currentGame;
+    }
+
+    public static void setCurrentGame(Game currentGame) {
+        CitDavidJordan.currentGame = currentGame;
+    }
+
+    public static Player getPlayer() {
+        return player;
+    }
+
+    public static void setPlayer(Player player) {
+        CitDavidJordan.player = player;
+    }
+    private static Player player = null;
     
     public static void main(String[] args) {
         
@@ -31,7 +49,7 @@ public class CitDavidJordan {
         
         
         //***test Player class***
-        Player playerOne = new Player();
+        /*Player playerOne = new Player();
         
         playerOne.setName("Steven Spielberg");
         playerOne.setMarbleTotal(10);
@@ -88,7 +106,7 @@ public class CitDavidJordan {
         locationOne.setLocationNo(3);
         
         String locationInfo = locationOne.toString();
-        System.out.println(locationInfo);
+        System.out.println(locationInfo); */
         
     } 
     
