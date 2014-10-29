@@ -13,6 +13,8 @@ import citdavidjordan.model.Map;
 import citdavidjordan.model.Path;
 import citdavidjordan.model.Player;
 import citdavidjordan.model.Scene;
+import citdavidjordan.view.StartProgramView;
+import static citdavidjordan.view.StartProgramView.startProgramView;
 
 /**
  *
@@ -20,10 +22,14 @@ import citdavidjordan.model.Scene;
  */
 public class CitDavidJordan {
 
-    /**
-     * @param args the command line arguments
-     */
+    
     public static void main(String[] args) {
+        
+        //***** TEST StartProgram() ********
+        StartProgramView.startProgramView = new StartProgramView();
+        startProgramView.startProgram();
+        
+        
         //***test Player class***
         Player playerOne = new Player();
         
