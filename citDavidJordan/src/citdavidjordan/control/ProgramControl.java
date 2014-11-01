@@ -23,12 +23,5 @@ public class ProgramControl {
         
         return player;
     }
-
-    public static Response logResponse(String playerResponse) {
-        System.out.println("**** Log Response called *** ");
-        Response response = new Response();
-        response.setResponse(playerResponse);
-        return response;
-    }
     
 }

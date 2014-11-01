@@ -109,10 +109,28 @@ public class StartTriviaView {
         
             if (answer == 2) {
                 System.out.println("That is the correct answer");
+                
+                System.out.println("\nPress <Enter> to continue:");
+        
+                keyboard = new Scanner(System.in);
+                keyboard.nextLine();
+        
+                MapView mapView = new MapView();
+                mapView.displayMenu();
+                
+                // TO DO - Function to give them marbles.
             }
         
             else {
                 System.out.println("That is the incorrect answer");
+                
+                System.out.println("\nPress <Enter> to continue:");
+        
+                keyboard = new Scanner(System.in);
+                keyboard.nextLine();
+        
+                MapView mapView = new MapView();
+                mapView.displayMenu();
             
             }
         }

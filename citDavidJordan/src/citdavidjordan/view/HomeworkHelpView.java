@@ -84,19 +84,38 @@ public class HomeworkHelpView {
                              + "\n* in total. The bat costs a dollar more than the            *"
                              + "\n* ball. How much does the ball cost?​                        *");
         
-        System.out.println("\n* Enter exact answer below.")
+        System.out.println("\n* Enter exact answer below.");
         
         playerAnswer = keyboard.nextLine();
         playerAnswer = playerAnswer.trim();
-        double answer = ;
-        double answer2 = Math.round(answer * 100)/100.0;
+        //String text = "12.34"; // example String
+        //double value = Double.parseDouble(text);
+        double value = Double.parseDouble(playerAnswer);
+        double correctAnswer = 0.05;
         
-        
-        if (answer == .05) {
+        if (value == correctAnswer) {
             System.out.println("That is the correct answer");
+            
+            System.out.println("\nPress <Enter> to continue:");
+        
+            keyboard = new Scanner(System.in);
+            keyboard.nextLine();
+        
+            MapView mapView = new MapView();
+            mapView.displayMenu();
+            
+            // TO DO - Function to give them marbles
         }
         else {
             System.out.println("That is the incorrect answer");
+            
+            System.out.println("\nPress <Enter> to continue:");
+        
+            keyboard = new Scanner(System.in);
+            keyboard.nextLine();
+        
+            MapView mapView = new MapView();
+            mapView.displayMenu();
         }
         
         //A bat and a ball cost a dollar and ten cents in total. The bat costs a dollar more than the
