@@ -144,11 +144,14 @@ public class RPSGameView {
     }
 
     private void displayRPSRules() {
-        
+        System.out.println("\n                                                 "
+                             + "\nRocky: \"You don't know how to play 'Rock Paper Scissors'?\""
+                             + "\n\t\"And I thought you were supposed to be one of the smart kids.\""
+                             + "\n\t\"And I thought you were supposed to be one of the smart kids.\"");
     }
 
     private void displayRPSGame2() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
     }
     
 }

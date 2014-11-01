@@ -112,7 +112,9 @@ public class MapView {
     }
 
     private void displayPlayground() {
-        System.out.println("*** displayPlayground function called ***");
+        
+        StartTriviaView triviaView = new StartTriviaView();
+        triviaView.startTrivia();
     }
 
     private void displayMonkeyBars() {

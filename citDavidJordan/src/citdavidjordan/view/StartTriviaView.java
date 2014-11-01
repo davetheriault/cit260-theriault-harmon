@@ -24,13 +24,13 @@ public class StartTriviaView {
         this.displayTriviaChallenge();
         
         //Have Them select accept or decline
-        String playerResponse = this.getPlayerResponse();
+        this.getPlayerResponse();
         
         // move on in game or return to main menu
-        Response response = ProgramControl.logResponse(playerResponse);
+        //Response response = ProgramControl.logResponse(playerResponse);
         
         // Iimplement Trivia Display Question
-        this.triviaQuestion(response);
+        //this.triviaQuestion(response);
         
         // If correct answer
         // is selected, display "That is correct!". Save additional marbles and return to main menu
@@ -63,7 +63,7 @@ public class StartTriviaView {
         String playerResponse = null;
         Scanner keyboard = new Scanner(System.in); //keyboard input stream
         
-        while(playerResponse == null) { //while a valid response has not been received, this will display
+        while(!valid) { //while a valid response has not been received, this will display
             
             //prompt for player's response
             System.out.println("Enter below either 'A' to Accept the challenge or 'D' to decline.");
@@ -74,10 +74,13 @@ public class StartTriviaView {
             playerResponse = playerResponse.toUpperCase();
             
             //if response invalid
-            if ((!'A'.equals(playerResponse)) & (!'D'.equals(playerResponse))) {
+            //if (!'A'.equals(playerResponse) & !'D'.equals(playerResponse)) {
+            if (!"A".equals(playerResponse) & !"D".equals(playerResponse)) {
                 System.out.println("Invalid response, you must enter 'A' to Accept or 'D' to Decline.");
                 continue;
-            } 
+            } else {
+                this.triviaQuestion();
+            }
             
             break;
         }
@@ -85,13 +88,11 @@ public class StartTriviaView {
         return playerResponse;
     }
 
-    private void triviaQuestion(Response response) {
+    private void triviaQuestion() {
         String playerAnswer = null;
         boolean valid = false;
         Scanner keyboard = new Scanner(System.in);
-        
-        while (response.getResponse().equals("A")) {
-            
+                   
         System.out.println("\n ************************************************************** *");
         
         System.out.println("\n* Located in the western hemisphere, one of the world's largest *"
@@ -121,4 +122,4 @@ public class StartTriviaView {
         }
     }
     
-}
+

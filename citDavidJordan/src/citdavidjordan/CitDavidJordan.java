@@ -49,8 +49,8 @@ public class CitDavidJordan {
         //***** TEST StartProgram() ********
         
         //remove this comment to run StartProgramView
-        // StartProgramView.startProgramView = new StartProgramView();
-        // startProgramView.startProgram();
+        StartProgramView.startProgramView = new StartProgramView();
+        startProgramView.startProgram();
         
         // *** test Response Class ***
         // Response responseOne = new Response();
@@ -120,8 +120,8 @@ public class CitDavidJordan {
         String locationInfo = locationOne.toString();
         System.out.println(locationInfo); */
         
-       StartTriviaView.startTriviaView = new StartTriviaView();
-       startTriviaView.startTrivia();
+       //StartTriviaView.startTriviaView = new StartTriviaView();
+       //startTriviaView.startTrivia();
         
     } 
     
