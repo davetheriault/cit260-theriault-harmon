@@ -12,9 +12,12 @@ import citdavidjordan.model.Location;
 import citdavidjordan.model.Map;
 import citdavidjordan.model.Path;
 import citdavidjordan.model.Player;
+import citdavidjordan.model.Response;
 import citdavidjordan.model.Scene;
 import citdavidjordan.view.StartProgramView;
 import static citdavidjordan.view.StartProgramView.startProgramView;
+import citdavidjordan.view.StartTriviaView;
+import static citdavidjordan.view.StartTriviaView.startTriviaView;
 
 /**
  *
@@ -44,9 +47,18 @@ public class CitDavidJordan {
     public static void main(String[] args) {
         
         //***** TEST StartProgram() ********
-        StartProgramView.startProgramView = new StartProgramView();
-        startProgramView.startProgram();
         
+        //remove this comment to run StartProgramView
+        // StartProgramView.startProgramView = new StartProgramView();
+        // startProgramView.startProgram();
+        
+        // *** test Response Class ***
+        // Response responseOne = new Response();
+        
+        // responseOne.setResponse("A");
+        
+        // String responseInfo = responseOne.toString();
+        // System.out.println(responseInfo);
         
         //***test Player class***
         /*Player playerOne = new Player();
@@ -107,6 +119,9 @@ public class CitDavidJordan {
         
         String locationInfo = locationOne.toString();
         System.out.println(locationInfo); */
+        
+       StartTriviaView.startTriviaView = new StartTriviaView();
+       startTriviaView.startTrivia();
         
     } 
     

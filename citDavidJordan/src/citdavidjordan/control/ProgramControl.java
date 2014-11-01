@@ -7,6 +7,7 @@ package citdavidjordan.control;
 
 import citdavidjordan.CitDavidJordan;
 import citdavidjordan.model.Player;
+import citdavidjordan.model.Response;
 
 /**
  *
@@ -22,6 +23,11 @@ public class ProgramControl {
         CitDavidJordan.setPlayer(player);
         
         return player;
+    }
+
+    public static Response logResponse(String playerResponse) {
+        System.out.println("**** Here is where we log the player's responses *** ");
+        return null;
     }
     
 }
