@@ -13,56 +13,55 @@ import java.util.Scanner;
  *
  * @author THERIAULT
  */
-public class StartProgramView {
-    public static StartProgramView startProgramView;
+public class RPSGameView {
     
-    public void startProgram(){
-        //BEGIN
-        //Display the banner screen
-        this.displayBanner();
+    public static RPSGameView rpsGameView;
+    
+    public void startRPSGame(){
         
-        //Get the players name
-        String playerName = this.getPlayerName();
+        Class<ProgramControl> player;
+        player = ProgramControl.class;
+        
+        //Display the banner screen
+        this.displayIntro(player);
+        
+        //Get the players answer
+        String YorN = this.RPSgetYorN();
                 
         //Create a new player
-        Player player = ProgramControl.createPlayer(playerName);
+        //Player player = ProgramControl.createPlayer(playerName);
         
         //DISPLAY a customized welcome message
-        this.displayWelcomeMessage(player);
+        //this.displayWelcomeMessage(player);
         
         //DISPLAY the main menu
-        MainMenuView mainMenu = new MainMenuView();
-        mainMenu.displayMenu();
+        //MainMenuView mainMenu = new MainMenuView();
+        //mainMenu.displayMenu();
         
         //END/
         
         
     }
 
-    public void displayBanner() {
+    private void displayIntro(Player player) {
         
         System.out.println("\n\n\n************************************************************");
         
-        System.out.println(      "*                                                          *"
-                             + "\n* Oak Elementary is not your average elementary school.    *"
-                             + "\n* Its grounds have given rise to a unique socioeconomic    *"
-                             + "\n* structure, that revolves around the accumulation of the  *"
-                             + "\n* almighty marble!                                         *"
-                             + "\n* As a simple, unassuming 5th-grader, can you manipulate   *"
-                             + "\n* the social structure to overcome your bully tormentor    *"
-                             + "\n* and become king of the jungle gym?!                      *");
-        
-        System.out.println(      "*                                                          *"
-                             + "\n* Get ready for...                                         *");
-        
-        System.out.println(      "*                                                          *"
-                             + "\n* PLAYGROUND HUSTLE!©                                      *"
-                             + "\n*                                                          *"
-                             + "\n************************************************************");
+        System.out.println(    "\n You approach the monkey bars to find Rocky. Everyone     "
+                             + "\n at Oak Elementary knows about Rocky and his obsession    "
+                             + "\n with the game 'Rock Paper Scissors'. He spends his lunch "
+                             + "\n hours challenging other kids to play against him for     "
+                             + "\n marbles.                                                 "
+                             + "\n                                                          "
+                             + "\n Rocky: \"Hey there " + player.getName() + "."
+                             + "\n\t I heard that you are looking to score some easy marbles."
+                             + "\n\t You wanna try me in a game of 'Rock Paper Scissors'?"
+                             + "\n\t Loser gives the winner 5 marbles."
+                             + "\n (Y/N)? ");
         
     }
 
-    public String getPlayerName() {
+    private String RPSgetYorN() {
         
         boolean valid = false; //indicates if name has been received
         String playerName = null;
@@ -99,6 +98,10 @@ public class StartProgramView {
 
         
 
+    }
+
+    private void displayIntro(Class<ProgramControl> player) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }

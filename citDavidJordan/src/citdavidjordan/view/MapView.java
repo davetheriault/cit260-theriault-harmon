@@ -5,25 +5,26 @@
  */
 package citdavidjordan.view;
 
-import citdavidjordan.CitDavidJordan;
-import citdavidjordan.control.GameControl;
 import java.util.Scanner;
 
 /**
  *
  * @author THERIAULT
  */
-public class MainMenuView {
+public class MapView {
     
     private final String MENU = "\n"
             + "\n-----------------------------------------------"
-            + "\n|                 Main Menu                   |"
+            + "\n|                   Map                       |"
             + "\n-----------------------------------------------"
-            + "\nN - New Game"
-            + "\nL - Load Game"
-            + "\nH - Help / How to play"
-            + "\nS - Save Game"
-            + "\nQ - Guit"
+            + "\n1 - Playground (Trivia Challenge)"
+            + "\n2 - Monkey Bars (Pick a Number)"
+            + "\n3 - Tree Stump (Shell Game)"
+            + "\n4 - Dodgeball Court (Rock Paper Scissors)"
+            + "\n5 - Steps (Homework Help)"
+            + "\n6 - Hopscotch (Bully-watch)"
+            + "\n7 - Soccer Field (Pay Brock)"
+            + "\nQ - Quit"
             + "\n-----------------------------------------------";
 
     void displayMenu() {
@@ -50,7 +51,7 @@ public class MainMenuView {
         while(!valid) { //while a valid name has not been retrieved
             
             //prompt for player's name
-            System.out.println("Enter your selection below:");
+            System.out.println("Where would you like to go?:");
             
             //get name from keyboard and trim off blanks
             userSelection = keyboard.nextLine();
@@ -61,9 +62,10 @@ public class MainMenuView {
             if (userSelection.length() < 1) {
                 System.out.println("Invalid Selection.");
                 continue;
-            } if (!"N".equals(userSelection) & !"L".equals(userSelection) 
-                    & !"H".equals(userSelection) & !"Q".equals(userSelection) 
-                        & !"S".equals(userSelection)){
+            } if (!"1".equals(userSelection) & !"2".equals(userSelection) 
+                    & !"3".equals(userSelection) & !"4".equals(userSelection) 
+                    & !"5".equals(userSelection) & !"6".equals(userSelection)
+                    & !"7".equals(userSelection) & !"Q".equals(userSelection)){
                 System.out.println("Invalid Selection.");
                 continue;
             }
@@ -77,17 +79,26 @@ public class MainMenuView {
     private void doAction(char choice) {
         
         switch (choice) {
-            case 'N': //New Game
-                this.startNewGame();
+            case '1': //display Goal of Game
+                this.displayPlayground();
                 break;
-            case 'L': //Load Game
-                this.loadGame();
+            case '2': //
+                this.displayMonkeyBars();
                 break;
-            case 'H': //help menu
-                this.displayHelpMenu();
+            case '3': //
+                this.displayTreeStump();
                 break;
-            case 'S': //Save current game
-                this.saveGame();
+            case '4': //
+                this.displayDodgeballCourt();
+                break;
+            case '5': //
+                this.displaySteps();
+                break;
+            case '6': //
+                this.displayHopscotch();
+                break;
+            case '7': //
+                this.displaySoccerField();
                 break;
             case 'Q': // Quit Program
                 return;
@@ -100,31 +111,32 @@ public class MainMenuView {
        
     }
 
-    private void startNewGame() {
-        
-        GameControl.createNewGame(CitDavidJordan.getPlayer());
-        
-        //display game menu
-        GameIntroView gameMenu = new GameIntroView();
-        gameMenu.displayMenu();
-        
+    private void displayPlayground() {
+        System.out.println("*** displayPlayground function called ***");
     }
 
-    private void loadGame() {
-        System.out.println("**** loadGame()called ***");
+    private void displayMonkeyBars() {
+        System.out.println("*** displayMonkeyBars function called ***");
     }
 
-    private void displayHelpMenu() {
-        
-        HelpMenuView helpMenu = new HelpMenuView();
-        helpMenu.displayMenu();
-        
+    private void displayTreeStump() {
+        System.out.println("*** displayTreeStump function called ***");
     }
 
-    private void saveGame() {
-        System.out.println("**** saveGame()called ***");
+    private void displayDodgeballCourt() {
+        System.out.println("*** displayDodgeballCourt function called ***");
+    }
+
+    private void displaySteps() {
+        System.out.println("*** displaySteps function called ***");
+    }
+
+    private void displayHopscotch() {
+        System.out.println("*** displayHopscotch function called ***");
+    }
+
+    private void displaySoccerField() {
+        System.out.println("*** displaySoccerField function called ***");
     }
     
 }
-    
-

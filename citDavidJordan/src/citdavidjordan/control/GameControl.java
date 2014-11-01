@@ -5,6 +5,8 @@
  */
 package citdavidjordan.control;
 
+import citdavidjordan.CitDavidJordan;
+import citdavidjordan.model.Game;
 import citdavidjordan.model.Player;
 
 /**
@@ -13,8 +15,17 @@ import citdavidjordan.model.Player;
  */
 public class GameControl {
 
-    public static void createNewGame(Player player) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    public static Game createNewGame(Player player) {
+
+        Game game = new Game();
+        game.setPlayer(player);
+        game.setBullyWatchYorN(false);
+        game.setHomeworkCompleted(null);
+        game.setTriviaCompleted(null);
+        game.setSaveDate(null);
+        
+        CitDavidJordan.setCurrentGame(game);
+        
+        return game;    }
     
 }
