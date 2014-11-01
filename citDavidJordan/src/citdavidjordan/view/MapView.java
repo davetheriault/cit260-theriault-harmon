@@ -124,7 +124,10 @@ public class MapView {
     }
 
     private void displayDodgeballCourt() {
-        System.out.println("*** displayDodgeballCourt function called ***");
+        
+        RPSGameView rpsGame = new RPSGameView();
+        rpsGame.startRPSGame();
+        
     }
 
     private void displaySteps() {
