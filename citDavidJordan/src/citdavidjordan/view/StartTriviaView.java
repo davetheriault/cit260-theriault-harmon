@@ -6,8 +6,6 @@
 
 package citdavidjordan.view;
 
-import citdavidjordan.control.ProgramControl;
-import citdavidjordan.model.Response;
 import java.util.Scanner;
 
 /**
@@ -25,12 +23,6 @@ public class StartTriviaView {
         
         //Have Them select accept or decline
         this.getPlayerResponse();
-        
-        // move on in game or return to main menu
-        //Response response = ProgramControl.logResponse(playerResponse);
-        
-        // Iimplement Trivia Display Question
-        //this.triviaQuestion(response);
         
         // If correct answer
         // is selected, display "That is correct!". Save additional marbles and return to main menu
@@ -78,7 +70,11 @@ public class StartTriviaView {
             if (!"A".equals(playerResponse) & !"D".equals(playerResponse)) {
                 System.out.println("Invalid response, you must enter 'A' to Accept or 'D' to Decline.");
                 continue;
-            } else {
+            }
+            if(playerResponse.equals("D")) {
+                this.quitMessage();
+            }
+            else {
                 this.triviaQuestion();
             }
             
@@ -120,6 +116,20 @@ public class StartTriviaView {
             
             }
         }
+
+    private void quitMessage() {
+        System.out.println(    "\n                                                 "
+                             + "\nJerry: \"You must be one of those guys who is not"
+                             + "\n\t to smart!\""
+                             + "\n\t\"If you ever change your mind, then swing by. ");
+        System.out.println("\nPress <Enter> to continue:");
+        
+        Scanner keyboard = new Scanner(System.in);
+        keyboard.nextLine();
+        
+        MapView mapView = new MapView();
+        mapView.displayMenu();
+    }
     }
     
 

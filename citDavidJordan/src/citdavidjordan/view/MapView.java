@@ -133,7 +133,8 @@ public class MapView {
     }
 
     private void displaySteps() {
-        System.out.println("*** displaySteps function called ***");
+        HomeworkHelpView homeworkHelp = new HomeworkHelpView();
+        homeworkHelp.homeworkHelp();       
     }
 
     private void displayHopscotch() {

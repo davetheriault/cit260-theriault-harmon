@@ -12,8 +12,9 @@ import citdavidjordan.model.Location;
 import citdavidjordan.model.Map;
 import citdavidjordan.model.Path;
 import citdavidjordan.model.Player;
-import citdavidjordan.model.Response;
 import citdavidjordan.model.Scene;
+import citdavidjordan.view.HomeworkHelpView;
+import static citdavidjordan.view.HomeworkHelpView.homeworkHelpView;
 import citdavidjordan.view.StartProgramView;
 import static citdavidjordan.view.StartProgramView.startProgramView;
 import citdavidjordan.view.StartTriviaView;
@@ -122,6 +123,9 @@ public class CitDavidJordan {
         
        //StartTriviaView.startTriviaView = new StartTriviaView();
        //startTriviaView.startTrivia();
+        
+        HomeworkHelpView.homeworkHelpView = new HomeworkHelpView();
+        homeworkHelpView.homeworkHelp();
         
     } 
     
