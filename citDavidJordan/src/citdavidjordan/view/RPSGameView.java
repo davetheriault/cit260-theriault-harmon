@@ -6,6 +6,7 @@
 package citdavidjordan.view;
 
 import citdavidjordan.control.ProgramControl;
+import citdavidjordan.control.RPSGameControl;
 import citdavidjordan.model.Player;
 import java.util.Scanner;
 
@@ -107,8 +108,6 @@ public class RPSGameView {
     }
 
     private void displayRPSGame() {
-        System.out.println("*** displayRPSGame function called***");
-        
         System.out.println(    "\n                                                 "
                              + "\nRocky: \"Alright then. Let's do this.\""
                              + "\n\t\"So, do you know how to play?\"");
@@ -147,11 +146,123 @@ public class RPSGameView {
         System.out.println("\n                                                 "
                              + "\nRocky: \"You don't know how to play 'Rock Paper Scissors'?\""
                              + "\n\t\"And I thought you were supposed to be one of the smart kids.\""
-                             + "\n\t\"And I thought you were supposed to be one of the smart kids.\"");
+                             + "\n"
+                             + "\n\t\"It's simple. We each choose either 'rock', 'paper', or 'scissors'.\""
+                             + "\n\t\"If we both pick the same thing it's a tie. Otherwise,\""
+                             + "\n\t\"Rock Smashes Scissors\""
+                             + "\n\t\"Scissors Cut Paper\""
+                             + "\n\t\"& Paper Covers Rock.\"");   
+        
+        System.out.println("\nPress <Enter> to continue:");
+        
+        Scanner keyboard = new Scanner(System.in);
+        keyboard.nextLine();
+        
+        this.displayRPSGame2();
     }
 
     private void displayRPSGame2() {
+        System.out.println("   \n*****************************************"
+                            + "\n         ROCK - PAPER - SCISSORS!        "
+                            + "\n*****************************************"
+                            + "\n"
+                            + "\n\tSelect One:"
+                            + "\n"
+                            + "\n\tR - Rock"
+                            + "\n\tP - Paper"
+                            + "\n\tS - Scissors");
+        
+        boolean valid = false; //indicates if name has been received
+        String rpsInput = null;
+        Scanner keyboard = new Scanner(System.in); //keyboard input stream
+        int choice = 0;
+        String rpsResult = null;
+        
+        while(!valid) { //while a valid name has not been retrieved
+            
+            //prompt for player's name
+            System.out.println("\n(R/P/S)?");
+            
+            //get name from keyboard and trim off blanks
+            rpsInput = keyboard.nextLine();
+            rpsInput = rpsInput.trim();
+            rpsInput = rpsInput.toUpperCase();
+            
+            //if name invalid
+            if (rpsInput.length() < 1) {
+                System.out.println("Invalid Selection.");
+                continue;
+            } if (!"R".equals(rpsInput) & !"ROCK".equals(rpsInput)
+                    & !"P".equals(rpsInput) & !"PAPER".equals(rpsInput)
+                    & !"S".equals(rpsInput) & !"SCISSORS".equals(rpsInput)) {
+                System.out.println("Invalid Selection - Please enter 'R', 'P' or 'S'.");
+                continue;
+            } if ("R".equals(rpsInput) | "ROCK".equals(rpsInput)) {
+                choice = 1;
+                RPSGameControl rpsGame = new RPSGameControl();
+                rpsResult = rpsGame.rpsGame(choice);
+            } if ("P".equals(rpsInput) | "PAPER".equals(rpsInput)) {
+                choice = 2;
+                RPSGameControl rpsGame = new RPSGameControl();
+                rpsResult = rpsGame.rpsGame(choice);
+            } if ("S".equals(rpsInput) | "SCISSORS".equals(rpsInput)) {
+                choice = 3;
+                RPSGameControl rpsGame = new RPSGameControl();
+                rpsResult = rpsGame.rpsGame(choice);
+            }
+            
+            System.out.println(rpsResult);
+            
+            if (rpsResult.toLowerCase().contains("win")) {
+                System.out.println("\nRocky: \"Dang! Alright, here's your marbles.\"");
+                //todo insert function to add marbles to player
+            }
+            if (rpsResult.toLowerCase().contains("lose")) {
+                System.out.println("\nRocky: \"Ha! Alright *playerName*, pay up.\"");//todo get playerName
+                //todo insert function to subtract marbles to player
+            }
+            if (rpsResult.toLowerCase().contains("tie")) {
+                System.out.println("\nRocky: \"Again!\"");
+                continue;
+            }
+            System.out.println("\n\t\"Wanna play again?\"");
+            this.displayRPSGame3();
+        }
+        
         
     }
+
+    private void displayRPSGame3() {
+        
+        boolean valid = false; //indicates if name has been received
+        String YorN = null;
+        Scanner keyboard = new Scanner(System.in); //keyboard input stream
+        
+        while(!valid) { //while a valid name has not been retrieved
+            
+            //prompt for player's name
+            System.out.println("(Y/N)?");
+            
+            //get name from keyboard and trim off blanks
+            YorN = keyboard.nextLine();
+            YorN = YorN.trim();
+            YorN = YorN.toUpperCase();
+            
+            //if name invalid
+            if (YorN.length() < 1) {
+                System.out.println("Invalid Selection - Please enter 'Y' for yes or 'N' for no.");
+                continue;
+            } if (!"Y".equals(YorN) & !"N".equals(YorN)
+                    & !"YES".equals(YorN) & !"NO".equals(YorN)) {
+                System.out.println("Invalid Selection - Please enter 'Y' for yes or 'N' for no.");
+                continue;
+            } if ("N".equals(YorN)) {
+                this.displayQuitMessage();
+            } else {
+                this.displayRPSGame2();
+            }
+        }
+    }
+
     
 }

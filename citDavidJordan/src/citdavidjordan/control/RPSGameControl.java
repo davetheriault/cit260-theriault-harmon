@@ -28,7 +28,7 @@ public class RPSGameControl {
  	int versus = rand.nextInt(3) + 1;
 
 	if ( choice == versus ) {
-            return "It'\''s a tie! Play again.";
+            return "It's a tie! Play again.";
         }
 	
         if ( (choice == 1) && (versus == 2) ) { 
