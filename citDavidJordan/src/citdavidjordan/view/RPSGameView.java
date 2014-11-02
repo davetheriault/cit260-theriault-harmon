@@ -82,7 +82,7 @@ public class RPSGameView {
                     & !"YES".equals(YorN) & !"NO".equals(YorN)) {
                 System.out.println("Invalid Selection - Please enter 'Y' for yes or 'N' for no.");
                 continue;
-            } if ("N".equals(YorN)) {
+            } if ("N".equals(YorN) | "NO".equals(YorN)) {
                 this.displayQuitMessage();
             } else {
                 this.displayRPSGame();
@@ -134,7 +134,7 @@ public class RPSGameView {
                     & !"YES".equals(YorN2) & !"NO".equals(YorN2)) {
                 System.out.println("Invalid Selection - Please enter 'Y' for yes or 'N' for no.");
                 continue;
-            } if ("N".equals(YorN2)) {
+            } if ("N".equals(YorN2) | "NO".equals(YorN2)) {
                 this.displayRPSRules();
             } else {
                 this.displayRPSGame2();
@@ -256,7 +256,7 @@ public class RPSGameView {
                     & !"YES".equals(YorN) & !"NO".equals(YorN)) {
                 System.out.println("Invalid Selection - Please enter 'Y' for yes or 'N' for no.");
                 continue;
-            } if ("N".equals(YorN)) {
+            } if ("N".equals(YorN) | "NO".equals(YorN)) {
                 this.displayQuitMessage();
             } else {
                 this.displayRPSGame2();
