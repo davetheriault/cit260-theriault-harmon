@@ -1,8 +1,8 @@
 /*
-* To change this license header, choose License Headers in Project Properties.
-* To change this template file, choose Tools | Templates
-* and open the template in the editor.
-*/
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package citdavidjordan.view;
 
 import citdavidjordan.CitDavidJordan;
@@ -10,46 +10,35 @@ import citdavidjordan.control.GameControl;
 import java.util.Scanner;
 
 /**
-*
-* @author THERIAULT
-*/
-public class MainMenuView extends MenuView {
+ *
+ * @author THERIAULT
+ */
+public abstract class MenuView implements ViewInterface {
     
-    public MainMenuView(){
+    private String promptMessage;
     
-    //private final String MENU = 
-            super("\n"
-        + "\n-----------------------------------------------"
-        + "\n| Main Menu |"
-        + "\n-----------------------------------------------"
-        + "\nN - New Game"
-        + "\nL - Load Game"
-        + "\nH - Help / How to play"
-        + "\nS - Save Game"
-        + "\nQ - Guit"
-        + "\n-----------------------------------------------");
+    public MenuView(String promptMessage) {
+        this.promptMessage = promptMessage;
     }
-
-    /*void displayMenu() {
-        
-    char selection = ' ';
     
-    do {
-        System.out.println(MENU); //display Menu
+    @Override
+    public void display() {
+        String selection = null;
         
-        String input = this.getInput(); // get the user selection
-        selection = input.charAt(0); //get first character of a string
+        do {
+        System.out.println(promptMessage); //display Menu
+        
+        selection = this.getInput(); // get the user selection
+        //selection = input.charAt(0); //get first character of a string
 
         this.doAction(selection); //do action based on selection
 
     } while (!"Q".equals(selection)); //not Quit
-
-    
     }
-
-    private String getInput() {
-
-        boolean valid = false; //indicates if name has been received
+    
+    @Override
+    public String getInput() {
+         boolean valid = false; //indicates if name has been received
         String userSelection = null;
 
         Scanner keyboard = new Scanner(System.in); //keyboard input stream
@@ -81,9 +70,9 @@ public class MainMenuView extends MenuView {
         }
 
         return userSelection;
-
     }
 
+    @Override
     public void doAction(String choice) {
 
         switch (choice) {
@@ -112,10 +101,8 @@ public class MainMenuView extends MenuView {
                 break;
 
         }
-
     }
-
-    private void startNewGame() {
+        private void startNewGame() {
 
         GameControl.createNewGame(CitDavidJordan.getPlayer());
 
@@ -133,13 +120,15 @@ public class MainMenuView extends MenuView {
     }
 
     private void displayHelpMenu() {
-HelpMenuView helpMenu = new HelpMenuView();
-helpMenu.displayMenu();
-}
-private void saveGame() {
-System.out.println("**** saveGame()called ***");
-}
-*/
 
-    
+        HelpMenuView helpMenu = new HelpMenuView();
+        helpMenu.displayMenu();
+
+    }
+
+    private void saveGame() {
+
+        System.out.println("**** saveGame()called ***");
+
+    }
 }
