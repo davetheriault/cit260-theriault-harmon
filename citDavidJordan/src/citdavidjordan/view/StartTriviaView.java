@@ -36,7 +36,7 @@ public class StartTriviaView {
         System.out.println("\n\n\n************************************************************");
         
         System.out.println(      "*                                                          *"
-                             + "\n* Jerry is considered the schoolground nerd, and he is.    *"
+                             + "\n* Jerry is considered the school ground nerd, and he is.    *"
                              + "\n* His number one goal is to see how smart the kids are.    *"
                              + "\n* He has a trivia question that 60% of people get wrong,   *"
                              + "\n* and he wants to see what you do today.                   *");
