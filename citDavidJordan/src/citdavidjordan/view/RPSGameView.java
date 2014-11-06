@@ -178,6 +178,14 @@ public class RPSGameView {
         int choice = 0;
         String rpsResult = null;
         
+         /* Instructor: 
+         * What happens when the player wins or loses the gam? Should'nt
+         * you be calling a control function to update the score or keep track
+         * of their progress or something. I believe you need to create and call 
+         * a Conrol Layer function in one of your Control Layer classes that 
+         * will perform the correct action based on their answer.
+         */
+        
         while(!valid) { //while a valid name has not been retrieved
             
             //prompt for player's name

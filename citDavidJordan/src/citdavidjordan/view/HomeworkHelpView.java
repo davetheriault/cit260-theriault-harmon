@@ -77,6 +77,14 @@ public class HomeworkHelpView {
         boolean valid = false;
         Scanner keyboard = new Scanner(System.in);
         
+        /* Instructor: 
+         * What happens when the player answers the question correct? Should'nt
+         * you be calling a control function to update the score or keep track
+         * of their progress or something. I believe you need to create a Conrol
+         * Layer function in one of your Control Layer classes that will perfor
+         * the correct action based on their answer.
+         */
+        
         System.out.println("\n\n\n************************************************************");
         
         System.out.println(    "*                                                             *" 
