@@ -68,6 +68,12 @@ public abstract class MenuView implements ViewInterface {
                 & !"I".equals(userSelection)){
                 System.out.println("Invalid Selection.");
                 continue;
+            } if (promptMessage.contains("Playground") & !"1".equals(userSelection) & !"2".equals(userSelection) 
+                    & !"3".equals(userSelection) & !"4".equals(userSelection) 
+                    & !"5".equals(userSelection) & !"6".equals(userSelection)
+                    & !"7".equals(userSelection) & !"Q".equals(userSelection)){
+                System.out.println("Invalid Selection.");
+                continue;
             }
 
             break;
@@ -108,6 +114,36 @@ public abstract class MenuView implements ViewInterface {
                 
             case "A": //About Playground Hustle
                 this.displayAbout();
+                break;
+                
+                // following are for MapView
+                
+            case "1": //display Goal of Game
+                this.displayPlayground();
+                break;
+                
+            case "2": //
+                this.displayMonkeyBars();
+                break;
+                
+            case "3": //
+                this.displayTreeStump();
+                break;
+                
+            case "4": //
+                this.displayDodgeballCourt();
+                break;
+                
+            case "5": //
+                this.displaySteps();
+                break;
+                
+            case "6": //
+                this.displayHopscotch();
+                break;
+                
+            case "7": //
+                this.displaySoccerField();
                 break;
 
             case "Q": // Quit Program
@@ -158,5 +194,39 @@ public abstract class MenuView implements ViewInterface {
 
     private void displayAbout() {
         System.out.println("**** displayAbout() called ***");
+    }
+    
+    private void displayPlayground() {
+        
+        StartTriviaView triviaView = new StartTriviaView();
+        triviaView.startTrivia();
+    }
+
+    private void displayMonkeyBars() {
+        System.out.println("*** displayMonkeyBars function called ***");
+    }
+
+    private void displayTreeStump() {
+        System.out.println("*** displayTreeStump function called ***");
+    }
+
+    private void displayDodgeballCourt() {
+        
+        RPSGameView rpsGame = new RPSGameView();
+        rpsGame.startRPSGame();
+        
+    }
+
+    private void displaySteps() {
+        HomeworkHelpView homeworkHelp = new HomeworkHelpView();
+        homeworkHelp.homeworkHelp();       
+    }
+
+    private void displayHopscotch() {
+        System.out.println("*** displayHopscotch function called ***");
+    }
+
+    private void displaySoccerField() {
+        System.out.println("*** displaySoccerField function called ***");
     }
 }

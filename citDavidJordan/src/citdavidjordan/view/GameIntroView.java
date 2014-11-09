@@ -47,7 +47,7 @@ public class GameIntroView {
     private void doAction() {
         
         MapView mapView = new MapView();
-        mapView.displayMenu();
+        mapView.display();
 
     }
     

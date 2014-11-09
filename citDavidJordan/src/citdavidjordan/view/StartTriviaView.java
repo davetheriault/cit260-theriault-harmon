@@ -112,10 +112,10 @@ public class StartTriviaView {
         
         playerAnswer = keyboard.nextLine();
         playerAnswer = playerAnswer.trim();
-        int answer = Integer.parseInt(playerAnswer);
+       // int answer = Integer.parseInt(playerAnswer);
         
         
-            if (answer == 2) {
+            if (playerAnswer.equals("2")) {
                 System.out.println("That is the correct answer");
                 
                 System.out.println("\nPress <Enter> to continue:");
@@ -124,7 +124,7 @@ public class StartTriviaView {
                 keyboard.nextLine();
         
                 MapView mapView = new MapView();
-                mapView.displayMenu();
+                mapView.display();
                 
                 // TO DO - Function to give them marbles.
             }
@@ -138,7 +138,7 @@ public class StartTriviaView {
                 keyboard.nextLine();
         
                 MapView mapView = new MapView();
-                mapView.displayMenu();
+                mapView.display();
             
             }
         }
@@ -154,7 +154,7 @@ public class StartTriviaView {
         keyboard.nextLine();
         
         MapView mapView = new MapView();
-        mapView.displayMenu();
+        mapView.display();
     }
     }
     

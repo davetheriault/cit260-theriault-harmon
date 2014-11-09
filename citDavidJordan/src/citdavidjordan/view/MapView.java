@@ -11,9 +11,12 @@ import java.util.Scanner;
  *
  * @author THERIAULT
  */
-public class MapView {
+public class MapView extends MenuView {
     
-    private final String MENU = "\n"
+    // private final String MENU = 
+    public MapView() {
+ 
+        super("\n"
             + "\n-----------------------------------------------"
             + "\n|                   Map                       |"
             + "\n-----------------------------------------------"
@@ -25,9 +28,11 @@ public class MapView {
             + "\n6 - Hopscotch (Bully-watch)"
             + "\n7 - Soccer Field (Pay Brock)"
             + "\nQ - Quit"
-            + "\n-----------------------------------------------";
+            + "\n-----------------------------------------------");
+        
+    }
 
-    void displayMenu() {
+    /*void displayMenu() {
         
         char selection = ' ';
         do {
@@ -143,6 +148,6 @@ public class MapView {
 
     private void displaySoccerField() {
         System.out.println("*** displaySoccerField function called ***");
-    }
+    } */
     
 }

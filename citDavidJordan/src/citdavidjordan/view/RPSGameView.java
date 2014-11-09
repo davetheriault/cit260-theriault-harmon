@@ -103,7 +103,7 @@ public class RPSGameView {
         keyboard.nextLine();
         
         MapView mapView = new MapView();
-        mapView.displayMenu();
+        mapView.display();
 
     }
 
