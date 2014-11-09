@@ -58,10 +58,14 @@ public abstract class MenuView implements ViewInterface {
                 System.out.println("Invalid Selection.");
                 continue;
 
-            } if (!"N".equals(userSelection) & !"L".equals(userSelection)
+            } if (promptMessage.contains("Main") & !"N".equals(userSelection) & !"L".equals(userSelection)
                 & !"H".equals(userSelection) & !"Q".equals(userSelection)
                 & !"S".equals(userSelection)){
-
+                System.out.println("Invalid Selection.");
+                continue;
+            } if (promptMessage.contains("goal") & !"G".equals(userSelection)
+                & !"A".equals(userSelection) & !"Q".equals(userSelection)
+                & !"I".equals(userSelection)){
                 System.out.println("Invalid Selection.");
                 continue;
             }
@@ -92,12 +96,25 @@ public abstract class MenuView implements ViewInterface {
             case "S": //Save current game
                 this.saveGame();
                 break;
+                
+            //help menu options
+            case "G": //What's the goal of the game?
+                this.displayGoal();
+                break;
+                
+            case "I": // How to / Instructions
+                this.displayInstructions();
+                break;
+                
+            case "A": //About Playground Hustle
+                this.displayAbout();
+                break;
 
             case "Q": // Quit Program
                 return;
 
             default:
-                System.out.println("\n*** Invalid Selection ***");
+                System.out.println("\nInvalid Selection.");
                 break;
 
         }
@@ -122,7 +139,7 @@ public abstract class MenuView implements ViewInterface {
     private void displayHelpMenu() {
 
         HelpMenuView helpMenu = new HelpMenuView();
-        helpMenu.displayMenu();
+        helpMenu.display();
 
     }
 
@@ -130,5 +147,16 @@ public abstract class MenuView implements ViewInterface {
 
         System.out.println("**** saveGame()called ***");
 
+    }
+
+    private void displayGoal() {
+        System.out.println("**** displayGoal()called ***");    }
+
+    private void displayInstructions() {
+        System.out.println("**** displayInstructions() called ***");
+    }
+
+    private void displayAbout() {
+        System.out.println("**** displayAbout() called ***");
     }
 }

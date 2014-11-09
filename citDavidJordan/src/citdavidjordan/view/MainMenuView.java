@@ -26,7 +26,7 @@ public class MainMenuView extends MenuView {
         + "\nL - Load Game"
         + "\nH - Help / How to play"
         + "\nS - Save Game"
-        + "\nQ - Guit"
+        + "\nQ - Quit"
         + "\n-----------------------------------------------");
     }
 

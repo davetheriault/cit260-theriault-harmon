@@ -13,19 +13,23 @@ import java.util.Scanner;
  *
  * @author THERIAULT
  */
-public class HelpMenuView {
+public class HelpMenuView extends MenuView {
     
-    private final String MENU = "\n"
+    public HelpMenuView() {
+    
+    //private final String MENU = 
+            super("\n"
             + "\n-----------------------------------------------"
             + "\n|                 Help Menu                   |"
             + "\n-----------------------------------------------"
             + "\nG - What's the goal of the game?"
-            + "\nH - How to Play"
+            + "\nI - Instructions / How to Play"
             + "\nA - About Playground Hustle™"
-            + "\nQ - Guit"
-            + "\n-----------------------------------------------";
+            + "\nQ - Quit"
+            + "\n-----------------------------------------------"); 
+    }
 
-    void displayMenu() {
+    /* void displayMenu() {
         
         char selection = ' ';
         do {
@@ -106,5 +110,5 @@ public class HelpMenuView {
     private void displayAboutGame() {
         System.out.println("*** displayAboutGame function called ***");
     }
-    
+    */
 }
