@@ -15,6 +15,8 @@ import java.util.Objects;
  */
 public class Location implements Serializable{
     private int locationNo;
+    
+    private Map map;
 
     public Location() {
     }

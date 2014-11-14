@@ -14,7 +14,11 @@ import java.util.Objects;
 public class Game implements Serializable {
     
     //***attributes***
+    private double totalTime;
     private Player player;
+    private Map map;
+    private Location[] location;
+    private String[] actors;
     private String triviaCompleted;
     private String homeworkCompleted;
     private boolean bullyWatchYorN;
@@ -25,6 +29,39 @@ public class Game implements Serializable {
     }
     
     //***getters and setters***
+
+    public double getTotalTime() {
+        return totalTime;
+    }
+
+    public void setTotalTime(double totalTime) {
+        this.totalTime = totalTime;
+    }
+
+    public Map getMap() {
+        return map;
+    }
+
+    public void setMap(Map map) {
+        this.map = map;
+    }
+
+    public Location[] getLocation() {
+        return location;
+    }
+
+    public void setLocation(Location[] location) {
+        this.location = location;
+    }
+
+    public String[] getActors() {
+        return actors;
+    }
+
+    public void setActors(String[] actors) {
+        this.actors = actors;
+    }
+    
     public Player getPlayer() {
         return player;
     }

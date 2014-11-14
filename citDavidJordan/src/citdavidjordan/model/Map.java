@@ -16,6 +16,8 @@ import java.util.Objects;
 public class Map implements Serializable{
     private String mapDisplay;
     private String brodyLocation;
+    
+    private Location[] location;
 
     public Map() {
     }
