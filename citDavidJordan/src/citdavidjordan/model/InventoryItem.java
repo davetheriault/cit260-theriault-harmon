@@ -3,21 +3,21 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package citdavidjordan.model;
 
 import java.io.Serializable;
-import java.util.Objects;
 
 /**
  *
- * @author Deann_2
+ * @author THERIAULT
  */
-public class Scene implements Serializable{
+public class InventoryItem implements Serializable{
     
     private String description;
+    private int amount;
+    private int value;
 
-    public Scene() {
+    public InventoryItem() {
     }
 
     public String getDescription() {
@@ -28,6 +28,21 @@ public class Scene implements Serializable{
         this.description = description;
     }
 
+    public int getAmount() {
+        return amount;
+    }
 
-   
+    public void setAmount(int amount) {
+        this.amount = amount;
+    }
+
+    public int getValue() {
+        return value;
+    }
+
+    public void setValue(int value) {
+        this.value = value;
+    }
+    
+    
 }

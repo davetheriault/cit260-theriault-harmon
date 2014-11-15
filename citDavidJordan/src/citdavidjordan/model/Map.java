@@ -14,21 +14,68 @@ import java.util.Objects;
  * @author Deann_2
  */
 public class Map implements Serializable{
-    private String mapDisplay;
+    
+    private int noOfRows;
+    private int noOfColumns;
+    private Location[][] locations;
     private String brodyLocation;
     
-    private Location[] location;
 
     public Map() {
     }
-
-    public String getMapDisplay() {
-        return mapDisplay;
+    
+    public Map(int noOfRows, int noOfColumns){
+        
+        if (noOfRows < 1 || noOfColumns < 1) {
+            System.out.println("No one will ever see this unless the game is broken.");
+            return;
+        }
+        
+        this.noOfRows = noOfRows;
+        this.noOfColumns = noOfColumns;
+        
+        //create 2d array for Location objects
+        this.locations = new Location[noOfRows][noOfColumns];
+        
+        for (int row = 0; row < noOfRows; row++) {
+            for (int column = 0; column < noOfColumns; column++){
+            //create and initialize new location object instance
+            Location location = new Location();
+            location.setColumn(column);
+            location.setRow(row);
+            location.setVisited(false);
+            
+            //assign the location object to the current position in array
+            locations[row][column] = location;
+            }
+        }
+    
     }
 
-    public void setMapDisplay(String mapDisplay) {
-        this.mapDisplay = mapDisplay;
+    public int getNoOfRows() {
+        return noOfRows;
     }
+
+    public void setNoOfRows(int noOfRows) {
+        this.noOfRows = noOfRows;
+    }
+
+    public int getNoOfColumns() {
+        return noOfColumns;
+    }
+
+    public void setNoOfColumns(int noOfColumns) {
+        this.noOfColumns = noOfColumns;
+    }
+
+    public Location[][] getLocations() {
+        return locations;
+    }
+
+    public void setLocations(Location[][] locations) {
+        this.locations = locations;
+    }
+
 
     public String getBrodyLocation() {
         return brodyLocation;
@@ -38,36 +85,8 @@ public class Map implements Serializable{
         this.brodyLocation = brodyLocation;
     }
 
-    @Override
-    public String toString() {
-        return "Map{" + "mapDisplay=" + mapDisplay + ", brodyLocation=" + brodyLocation + '}';
-    }
+   
 
-    @Override
-    public int hashCode() {
-        int hash = 7;
-        hash = 71 * hash + Objects.hashCode(this.mapDisplay);
-        hash = 71 * hash + Objects.hashCode(this.brodyLocation);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Map other = (Map) obj;
-        if (!Objects.equals(this.mapDisplay, other.mapDisplay)) {
-            return false;
-        }
-        if (!Objects.equals(this.brodyLocation, other.brodyLocation)) {
-            return false;
-        }
-        return true;
-    }
     
     
 }

@@ -7,6 +7,7 @@
 package citdavidjordan.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Objects;
 
 /**
@@ -14,45 +15,55 @@ import java.util.Objects;
  * @author Deann_2
  */
 public class Location implements Serializable{
-    private int locationNo;
     
-    private Map map;
+    private int row;
+    private int column;
+    private boolean visited;
+    private Scene scene;
+    private ArrayList<Actor> actors;
 
     public Location() {
     }
 
-    public int getLocationNo() {
-        return locationNo;
+    public int getRow() {
+        return row;
     }
 
-    public void setLocationNo(int locationNo) {
-        this.locationNo = locationNo;
+    public void setRow(int row) {
+        this.row = row;
     }
 
-    @Override
-    public String toString() {
-        return "Location{" + "location=" + locationNo + '}';
+    public int getColumn() {
+        return column;
     }
 
-    @Override
-    public int hashCode() {
-        int hash = 5;
-        hash = 71 * hash + Objects.hashCode(this.locationNo);
-        return hash;
+    public void setColumn(int column) {
+        this.column = column;
     }
 
-    @Override
-    public boolean equals(Object obj) {
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Location other = (Location) obj;
-        if (!Objects.equals(this.locationNo, other.locationNo)) {
-            return false;
-        }
-        return true;
+    public boolean isVisited() {
+        return visited;
     }
+
+    public void setVisited(boolean visited) {
+        this.visited = visited;
+    }
+
+    public Scene getScene() {
+        return scene;
+    }
+
+    public void setScene(Scene scene) {
+        this.scene = scene;
+    }
+
+    public ArrayList<Actor> getActors() {
+        return actors;
+    }
+
+    public void setActors(ArrayList<Actor> actors) {
+        this.actors = actors;
+    }
+    
+    
 }

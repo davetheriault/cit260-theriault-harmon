@@ -18,7 +18,9 @@ public class Game implements Serializable {
     private Player player;
     private Map map;
     private Location[] location;
-    private String[] actors;
+    private Actor[] actors;
+    private InventoryItem[] inventory;
+
     private String triviaCompleted;
     private String homeworkCompleted;
     private boolean bullyWatchYorN;
@@ -54,11 +56,11 @@ public class Game implements Serializable {
         this.location = location;
     }
 
-    public String[] getActors() {
+    public Actor[] getActors() {
         return actors;
     }
 
-    public void setActors(String[] actors) {
+    public void setActors(Actor[] actors) {
         this.actors = actors;
     }
     
@@ -102,6 +104,17 @@ public class Game implements Serializable {
         this.saveDate = saveDate;
     }
 
+    public InventoryItem[] getInventory() {
+        return inventory;
+    }
+
+    public void setInventory(InventoryItem[] inventory) {
+        this.inventory = inventory;
+    }
+
+
+   
+    
     @Override
     public String toString() {
         return "Game{" + "player=" + player + ", triviaCompleted=" + triviaCompleted + ", homeworkCompleted=" + homeworkCompleted + ", bullyWatchYorN=" + bullyWatchYorN + ", saveDate=" + saveDate + '}';
