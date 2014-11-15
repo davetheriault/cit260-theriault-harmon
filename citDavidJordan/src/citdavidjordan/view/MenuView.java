@@ -7,7 +7,11 @@ package citdavidjordan.view;
 
 import citdavidjordan.CitDavidJordan;
 import citdavidjordan.control.GameControl;
+import citdavidjordan.control.MapControl;
+import citdavidjordan.model.Game;
 import citdavidjordan.model.InventoryItem;
+import citdavidjordan.model.Location;
+import citdavidjordan.model.Map;
 import java.util.Scanner;
 
 /**
@@ -77,7 +81,7 @@ public abstract class MenuView implements ViewInterface {
                 continue;
             } if (promptMessage.contains("Game Options Menu") & !"M".equals(userSelection) & !"V".equals(userSelection) 
                     & !"C".equals(userSelection) & !"S".equals(userSelection) 
-                    & !"Q".equals(userSelection) /*& !"6".equals(userSelection)
+                    & !"Q".equals(userSelection) & !"H".equals(userSelection)/*
                     & !"7".equals(userSelection) & !"Q".equals(userSelection)*/){
                 System.out.println("Invalid Selection.");
                 continue;
@@ -276,7 +280,31 @@ public abstract class MenuView implements ViewInterface {
     }
 
     private void displayMap() {
-        MapView mapView = new MapView();
-        mapView.display();
+        
+        Game game = CitDavidJordan.getCurrentGame();
+        Map map = game.getMap();
+        Location[][] locations = map.getLocations();
+        
+        System.out.println("\t MAP!!!!");
+        System.out.println("\t 1" + "\t 2" + "\t 3");
+        
+        for (int row = 0; row < map.getNoOfRows(); row++) {
+            System.out.print("\n--------------------------------" +
+                               "\n" + (row + 1));
+            for (int column = 0; column < map.getNoOfColumns(); column++){
+                System.out.print(" | ");
+                Location location = locations[row][column];
+                if ((location.isVisited()) == true) {
+                    System.out.print("~~~~");
+                } else {
+                    System.out.print("??");
+                } 
+            System.out.print(" | ");
+            }
+        }
+        System.out.print("\n-------------------------------------");
+
+        //MapView mapView = new MapView();
+        //mapView.display();
     }
 }

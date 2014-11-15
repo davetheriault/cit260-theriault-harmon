@@ -117,8 +117,7 @@ public class GameControl {
                 }
             }
         }
-        System.out.println("*** getSortedInventoryList function called ****");
-        return null;
+        return inventoryList;
     }
 
     
