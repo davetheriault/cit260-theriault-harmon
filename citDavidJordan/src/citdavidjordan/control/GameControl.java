@@ -11,8 +11,10 @@ import citdavidjordan.model.Game;
 import citdavidjordan.model.Map;
 import citdavidjordan.model.InventoryItem;
 import citdavidjordan.model.Item;
+import citdavidjordan.model.Location;
 import citdavidjordan.model.Player;
 import citdavidjordan.model.Scene;
+import citdavidjordan.model.SceneType;
 
 /**
  *
@@ -20,7 +22,7 @@ import citdavidjordan.model.Scene;
  */
 public class GameControl {
 
-    public static Game createNewGame(Player player) {
+    public static Game createNewGame(Player player){
 
         Game game = new Game();
         CitDavidJordan.setCurrentGame(game);
@@ -80,7 +82,43 @@ public class GameControl {
     }
 
     static void assignScenesToLocations(Map map, Scene[] scenes) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
+        Location[][] locations = map.getLocations();
+        
+        //start point
+        locations[0][0].setScene(scenes[SceneType.playground.ordinal()]);
+        locations[0][1].setScene(scenes[SceneType.monkeybars.ordinal()]);
+        locations[0][2].setScene(scenes[SceneType.treestump.ordinal()]);
+        locations[1][0].setScene(scenes[SceneType.dodgeballcourt.ordinal()]);
+        locations[1][1].setScene(scenes[SceneType.steps.ordinal()]);
+        locations[1][2].setScene(scenes[SceneType.hopscotch.ordinal()]);
+        locations[2][0].setScene(scenes[SceneType.soccerfield.ordinal()]);
+        locations[2][1].setScene(scenes[SceneType.brodyencounter.ordinal()]);
+        locations[2][2].setScene(null);
+    }
+
+    public static InventoryItem[] getSortedInventoryList() {
+        
+        //get inventory of current game
+        InventoryItem[] originalInventoryList = 
+                CitDavidJordan.getCurrentGame().getInventory();
+        
+        //clone inventory list
+        InventoryItem[] inventoryList = originalInventoryList.clone();
+        
+        //use bubblesort to sort inventory by name
+        
+        for (int i = 0; i < inventoryList.length-1; i++) {
+            for (int j = 0; j < inventoryList.length-1-i; j++) {
+                if (inventoryList[j].getValue() < inventoryList[j + 1].getValue()) {
+                    InventoryItem tempInventoryItem = inventoryList[j];
+                    inventoryList[j] = inventoryList[j+1];
+                    inventoryList[j+1] = tempInventoryItem;
+                }
+            }
+        }
+        System.out.println("*** getSortedInventoryList function called ****");
+        return null;
     }
 
     

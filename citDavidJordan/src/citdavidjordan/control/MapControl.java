@@ -17,7 +17,7 @@ import citdavidjordan.model.SceneType;
  */
 public class MapControl {
 
-    static Map createMap() throws MapControlException {
+    static Map createMap() {
         
         Map map = new Map(3, 3);
         
@@ -34,7 +34,7 @@ public class MapControl {
         
     }
 
-    private static Scene[] createScenes() throws MapControlException {
+    private static Scene[] createScenes() {
         
         Game game = CitDavidJordan.getCurrentGame();
         
@@ -56,8 +56,28 @@ public class MapControl {
         treeStumpScene.setDescription("Insert Text Here");
         scenes[SceneType.treestump.ordinal()] = treeStumpScene;
         
-        System.out.println("*** called a function called createScenes ***");
-        return null;
+        Scene dodgeballCourtScene = new Scene();
+        dodgeballCourtScene.setDescription("Insert Text Here");
+        scenes[SceneType.dodgeballcourt.ordinal()] = dodgeballCourtScene;
+        
+        Scene stepsScene = new Scene();
+        stepsScene.setDescription("Insert Text Here");
+        scenes[SceneType.steps.ordinal()] = stepsScene;
+        
+        Scene hopscotchScene = new Scene();
+        hopscotchScene.setDescription("Insert Text Here");
+        scenes[SceneType.hopscotch.ordinal()] = hopscotchScene;
+        
+        Scene soccerFieldScene = new Scene();
+        soccerFieldScene.setDescription("Insert Text Here");
+        scenes[SceneType.soccerfield.ordinal()] = soccerFieldScene;
+        
+        Scene brodyEncounterScene = new Scene();
+        brodyEncounterScene.setDescription("Insert Text Here");
+        scenes[SceneType.brodyencounter.ordinal()] = brodyEncounterScene;
+        
+        return scenes;
+        
     }
     
 }

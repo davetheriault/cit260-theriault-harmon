@@ -7,6 +7,7 @@ package citdavidjordan.view;
 
 import citdavidjordan.CitDavidJordan;
 import citdavidjordan.control.GameControl;
+import citdavidjordan.model.InventoryItem;
 import java.util.Scanner;
 
 /**
@@ -72,6 +73,12 @@ public abstract class MenuView implements ViewInterface {
                     & !"3".equals(userSelection) & !"4".equals(userSelection) 
                     & !"5".equals(userSelection) & !"6".equals(userSelection)
                     & !"7".equals(userSelection) & !"Q".equals(userSelection)){
+                System.out.println("Invalid Selection.");
+                continue;
+            } if (promptMessage.contains("Game Options Menu") & !"M".equals(userSelection) & !"V".equals(userSelection) 
+                    & !"C".equals(userSelection) & !"S".equals(userSelection) 
+                    & !"Q".equals(userSelection) /*& !"6".equals(userSelection)
+                    & !"7".equals(userSelection) & !"Q".equals(userSelection)*/){
                 System.out.println("Invalid Selection.");
                 continue;
             }
@@ -145,6 +152,20 @@ public abstract class MenuView implements ViewInterface {
             case "7": //
                 this.displaySoccerField();
                 break;
+                
+            //game options
+                
+            case "M": //View Map
+                this.displayMap();
+                break;
+                
+            case "V": // View marbles
+                this.displayInventory();
+                break;
+            
+            case "C": // Characters list
+                this.displayActors();
+                break;
 
             case "Q": // Quit Program
                 return;
@@ -155,7 +176,7 @@ public abstract class MenuView implements ViewInterface {
 
         }
     }
-        private void startNewGame() {
+        private void startNewGame(){
 
         GameControl.createNewGame(CitDavidJordan.getPlayer());
 
@@ -228,5 +249,34 @@ public abstract class MenuView implements ViewInterface {
 
     private void displaySoccerField() {
         System.out.println("*** displaySoccerField function called ***");
+    }
+
+    private void displayInventory() {
+        //get the sorted list of marbles for the current game
+        InventoryItem[] inventory = GameControl.getSortedInventoryList();
+        
+        System.out.println("\nMarble Inventory");
+        System.out.println("Description" + "\t" +
+                           "Value" + "\t" +
+                           "Amount" + "\t" +
+                           "Total Value");
+        
+        //for each inventory item
+        for (InventoryItem inventoryItem : inventory) {
+            //display description amount and value
+            System.out.println(inventoryItem.getDescription() + "\t  " +
+                               inventoryItem.getValue() + "\t   " +
+                               inventoryItem.getAmount() + "\t   " + 
+                               (inventoryItem.getValue()*inventoryItem.getAmount()));
+        }
+    }
+
+    private void displayActors() {
+        System.out.println("*** displayActors() called ***");
+    }
+
+    private void displayMap() {
+        MapView mapView = new MapView();
+        mapView.display();
     }
 }
