@@ -228,7 +228,8 @@ public abstract class MenuView implements ViewInterface {
     }
 
     private void displayMonkeyBars() {
-        System.out.println("*** displayMonkeyBars function called ***");
+        NumberGameView numGame = new NumberGameView();
+        numGame.numberGame();
     }
 
     private void displayTreeStump() {
@@ -304,7 +305,7 @@ public abstract class MenuView implements ViewInterface {
         }
         System.out.print("\n-------------------------------------");
 
-        //MapView mapView = new MapView();
-        //mapView.display();
+        MapView mapView = new MapView();
+        mapView.display();
     }
 }

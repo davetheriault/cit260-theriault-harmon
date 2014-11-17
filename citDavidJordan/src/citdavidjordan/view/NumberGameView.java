@@ -6,6 +6,7 @@
 
 package citdavidjordan.view;
 
+import java.util.Random;
 import java.util.Scanner;
 
 /**
@@ -74,10 +75,6 @@ public class NumberGameView {
 
     @SuppressWarnings("UnusedAssignment")
     private void askQuestion() {
-        String playerAnswer = null;
-        boolean valid = false;
-        Scanner keyboard = new Scanner(System.in);
-        int currentTimeInSeconds = 0;
         
         System.out.println("\n\n\n************************************************************");
         
@@ -86,19 +83,31 @@ public class NumberGameView {
                              + "\n* chances to get it right. May the odds ever be in your     *"
                              + "\n* favor.                                                    *");
         
-        System.out.println("\n* Enter number below.");
+        Random rand = new Random();
+        int correctNo = rand.nextInt(10) + 1;
         
-        playerAnswer = keyboard.nextLine();
-        playerAnswer = playerAnswer.trim();
+        this.anotherChance(correctNo);
         
-        int guess = Integer.parseInt(playerAnswer);
+    }
+        
+        private void anotherChance(int correctNo) {
+            String playerAnswer = null;
+            boolean valid = false;
+            Scanner keyboard = new Scanner(System.in);
+        
+            System.out.println("\n* Enter number below.");
+        
+            playerAnswer = keyboard.nextLine();
+            playerAnswer = playerAnswer.trim();
+        
+            int guess = Integer.parseInt(playerAnswer);
         
         /* Steps for game
         run for loop for three chances
         guess parameters
         if guess != correctNo then display no and enter to try again.*/
         
-        for(int i = 0; i < 3; i++) {
+        for(int i = 2; i > -1; i--) {
             if ( guess < 1 ) {
                 System.out.println("The number guessed is too low.");
             }
@@ -106,14 +115,9 @@ public class NumberGameView {
             if ( guess > 10 ) {
                 System.out.println("The number guessed is too high.");
             }
-		
-            long seedNo = currentTimeInSeconds * 654321 + 12345;
-            long randomNo = (seedNo / 789) % 10;
-
-            int correctNo = (int) (randomNo + 1);
 
             if ( guess == correctNo ) {
-		System.out.println("\n You Win!"); 
+		System.out.println("\n You Win!");
                 System.out.println("\nPress <Enter> to continue:");
         
                 keyboard = new Scanner(System.in);
@@ -124,14 +128,14 @@ public class NumberGameView {
             }
 	
             else {
-                System.out.println("That is the incorrect answer");
+                System.out.println("That is the incorrect answer, you have " + i + " guesses left.");
             
                 System.out.println("\nPress <Enter> to continue:");
         
                 keyboard = new Scanner(System.in);
                 keyboard.nextLine();
                 
-                this.askQuestion();
+                this.anotherChance(correctNo);
             }
             
         }
