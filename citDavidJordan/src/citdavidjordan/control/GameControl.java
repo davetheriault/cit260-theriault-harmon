@@ -95,7 +95,29 @@ public class GameControl {
         locations[2][0].setScene(scenes[SceneType.soccerfield.ordinal()]);
         locations[2][1].setScene(scenes[SceneType.brodyencounter.ordinal()]);
         locations[2][2].setScene(null);
+        
+        //set Names
+        locations[0][0].setLocationName("PlayGround");
+        locations[0][1].setLocationName("Monkey Bars");
+        locations[0][2].setLocationName("Tree Stump");
+        locations[1][0].setLocationName("Dodgeball Court");
+        locations[1][1].setLocationName("Steps");
+        locations[1][2].setLocationName("Hopscotch");
+        locations[2][0].setLocationName("Soccer Field");
+        locations[2][1].setLocationName(null);
+        locations[2][2].setLocationName(null);
+        //set descriptions
+        locations[0][0].setDescription("Jerry's Trivia Challenge");
+        locations[0][1].setLocationName("Sally's Guess-A-Number Challenge");
+        locations[0][2].setLocationName("Sheldon's Shell Game");
+        locations[1][0].setLocationName("Rocky's Rock-Paper-Scissors");
+        locations[1][1].setLocationName("Help Johnny with Homework");
+        locations[1][2].setLocationName("Lucy's Bully-Watch");
+        locations[2][0].setLocationName("Buy Protection from Brock");
+        locations[2][1].setLocationName(null);
+        locations[2][2].setLocationName(null);
     }
+    
 
     public static InventoryItem[] getSortedInventoryList() {
         
@@ -119,6 +141,8 @@ public class GameControl {
         }
         return inventoryList;
     }
+
+    
 
     
     

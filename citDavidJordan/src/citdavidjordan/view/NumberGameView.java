@@ -28,8 +28,8 @@ public class NumberGameView {
 
         System.out.println("\n\n\n************************************************************");
         
-        System.out.println(      "*                                                          *"
-                             + "\n* Sally's favorite game is see if you can pick             *"
+        System.out.println(
+                             "* Sally's favorite game is see if you can pick             *"
                              + "\n* the number she is thinking about. She gives              *"
                              + "\n* you the option to pick between 1-10.                     *"
                              + "\n* Do you want to play?                                     *");
@@ -91,16 +91,7 @@ public class NumberGameView {
     }
         
         private void anotherChance(int correctNo) {
-            String playerAnswer = null;
-            boolean valid = false;
-            Scanner keyboard = new Scanner(System.in);
-        
-            System.out.println("\n* Enter number below.");
-        
-            playerAnswer = keyboard.nextLine();
-            playerAnswer = playerAnswer.trim();
-        
-            int guess = Integer.parseInt(playerAnswer);
+            
         
         /* Steps for game
         run for loop for three chances
@@ -108,16 +99,42 @@ public class NumberGameView {
         if guess != correctNo then display no and enter to try again.*/
         
         for(int i = 2; i > -1; i--) {
-            if ( guess < 1 ) {
-                System.out.println("The number guessed is too low.");
-            }
+            String playerAnswer = null;
+            boolean valid = false;
+            Scanner keyboard = new Scanner(System.in);
+            int guess = 0;
+        
+        
+            while(!valid) {
+                System.out.println("\n* Enter number below.");
+                playerAnswer = keyboard.nextLine();
+                playerAnswer = playerAnswer.trim();
+                
+        
+                if (playerAnswer.length() < 1) {
+                    System.out.println("***You must enter a number between 1 and 10.***");
+                    continue;
+                }
             
-            if ( guess > 10 ) {
-                System.out.println("The number guessed is too high.");
+                guess = Integer.parseInt(playerAnswer);
+            
+                if ( guess < 1 ) {
+                    System.out.println("The number guessed is too low.");
+                    continue;
+                }
+            
+                if ( guess > 10 ) {
+                    System.out.println("The number guessed is too high.");
+                    continue;
+                } 
+                else {
+                    break;
+                }
+            
             }
-
+        
             if ( guess == correctNo ) {
-		System.out.println("\n You Win!");
+                System.out.println("\n You Win!");
                 System.out.println("\nPress <Enter> to continue:");
         
                 keyboard = new Scanner(System.in);
@@ -134,17 +151,16 @@ public class NumberGameView {
         
                 keyboard = new Scanner(System.in);
                 keyboard.nextLine();
-                
-                this.anotherChance(correctNo);
             }
+            
             
         }
         
-        System.out.println("That is the incorrect answer");
+        System.out.println("That is the incorrect answer. \nThe correct number was " + correctNo + ".");
             
         System.out.println("\nPress <Enter> to continue:");
         
-        keyboard = new Scanner(System.in);
+        Scanner keyboard = new Scanner(System.in);
         keyboard.nextLine();
         
         MapView mapView = new MapView();

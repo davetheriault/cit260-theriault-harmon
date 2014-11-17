@@ -25,6 +25,7 @@ public class MapControl {
         
         GameControl.assignScenesToLocations(map, scenes);
         
+        
         return map;
         
        }
