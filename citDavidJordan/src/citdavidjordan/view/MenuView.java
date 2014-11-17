@@ -268,7 +268,7 @@ public abstract class MenuView implements ViewInterface {
         //for each inventory item
         for (InventoryItem inventoryItem : inventory) {
             //display description amount and value
-            System.out.println(inventoryItem.getDescription() + "\t  " +
+            System.out.println(inventoryItem.getDescription() + "\t\t  " +
                                inventoryItem.getValue() + "\t   " +
                                inventoryItem.getAmount() + "\t   " + 
                                (inventoryItem.getValue()*inventoryItem.getAmount()));
@@ -285,24 +285,33 @@ public abstract class MenuView implements ViewInterface {
         Map map = game.getMap();
         Location[][] locations = map.getLocations();
         
-        System.out.println("\t MAP!!!!");
-        System.out.println("\t 1" + "\t 2" + "\t 3");
+        System.out.println("\n\t\t     **** MAP ****");
+        System.out.println("\n\t     1" + "\t\t         2" + "\t\t     3");
         
         for (int row = 0; row < map.getNoOfRows(); row++) {
-            System.out.print("\n--------------------------------" +
-                               "\n" + (row + 1));
+            System.out.print("\n-------------------------------------------------------------" +
+                               "\n" + (row + 1) + "  ");
             for (int column = 0; column < map.getNoOfColumns(); column++){
                 System.out.print(" | ");
                 Location location = locations[row][column];
                 if ((location.isVisited()) == true) {
-                    System.out.print("~~~~");
+                    String name = location.getLocationName();
+                    int frontSpace = (14 - name.length()) / 2;
+                    int backSpace = 14 - name.length() - frontSpace;
+                    for (int i = 0; i < frontSpace; i++) {
+                        System.out.print(" ");
+                    }
+                    System.out.print(name);
+                    for (int i = 0; i < backSpace; i++) {
+                        System.out.print(" ");
+                    }
                 } else {
-                    System.out.print("??");
+                    System.out.print("      ??      ");
                 } 
             System.out.print(" | ");
             }
         }
-        System.out.print("\n-------------------------------------");
+        System.out.print("\n-------------------------------------------------------------");
 
         //MapView mapView = new MapView();
         //mapView.display();
