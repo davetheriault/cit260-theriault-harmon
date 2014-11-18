@@ -13,11 +13,14 @@ import java.util.Objects;
  */
 public enum Actor implements Serializable {
     
-    Brody("Brody is a bully. \nHe was held back from last year and now he's in your class. \nYou are the main target of his bullying."),
-    Brock("Brock is a big dumb brute in the 6th grade. \nHe is undoubtedly the oldest kid in school... by far. \nBrock has noticed your problem with Brody, and he has offered to take care of Brody for you. \nIn return, he requires a payment of X marbles."), //todo specify number of marbles <--
-    Rocky("Rocky is a 4th grader who is obssessed \nwith the game 'Rock Paper Scissors'. \nHe spends his lunch hours challenging other kids to play against him for marbles."),
     Jerry("Jerry is what you might call a \"super nerd\". \nHe likes to spend his time challenging the knowledge of the other kids. \nHe enjoys the feeling of superiority it gives him when he knows something that others don't. \nHe will wager marbles that you can't answer his simple trivia questions correctly."),
     Sally("Sally is kind of different from other kids. Maybe it's from always \nhanging upside down from the monkeybars at school. "),
+    Sheldon("..."),
+    Rocky("Rocky is a 4th grader who is obssessed \nwith the game 'Rock Paper Scissors'. \nHe spends his lunch hours challenging other kids to play against him for marbles."),
+    Johnny("... Steps"),
+    Lucy("... hopscotch"),
+    Brody("Brody is a bully. \nHe was held back from last year and now he's in your class. \nYou are the main target of his bullying."),
+    Brock("Brock is a big dumb brute in the 6th grade. \nHe is undoubtedly the oldest kid in school... by far. \nBrock has noticed your problem with Brody, and he has offered to take care of Brody for you. \nIn return, he requires a payment of X marbles."), //todo specify number of marbles <--
     ;
     
     
@@ -25,6 +28,7 @@ public enum Actor implements Serializable {
     //***attributes***
     private final String description;
     private final String location;
+    private final String name;
     
     //***constructor function***
     Actor(String description) {
@@ -41,6 +45,10 @@ public enum Actor implements Serializable {
 
     public String getLocation() {
         return location;
+    }
+
+    public String getName() {
+        return name;
     }
     
     }

@@ -8,6 +8,7 @@ package citdavidjordan.view;
 import citdavidjordan.CitDavidJordan;
 import citdavidjordan.control.GameControl;
 import citdavidjordan.control.MapControl;
+import citdavidjordan.model.Actor;
 import citdavidjordan.model.Game;
 import citdavidjordan.model.InventoryItem;
 import citdavidjordan.model.Location;
@@ -277,7 +278,26 @@ public abstract class MenuView implements ViewInterface {
     }
 
     private void displayActors() {
-        System.out.println("*** displayActors() called ***");
+        Actor[] characters = CitDavidJordan.getCurrentGame().getActors();
+        
+        // create similar for loop as the InventoryItem 
+        // Name 
+        // description
+        // location or where they are situated
+        // 
+        
+        
+        System.out.println("\nActors");
+        System.out.println("Name" + "\t" + 
+                           "Description" + "\t" + 
+                           "Location");
+        
+        for (Actor actor : characters) {
+            
+            System.out.println(actor.getDescription() + "\t\t " + 
+                               actor.getName() + "\t " + 
+                               actor.getLocation());
+        }
     }
 
     private void displayMap() {

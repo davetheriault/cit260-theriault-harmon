@@ -50,8 +50,10 @@ public class GameControl {
         return game;    }
 
     private static Actor[] createActorList() {
-        System.out.println("**** Called createActorList function ***");
-        return null;
+        // create actor list here
+        Actor[] actorList = Actor.values();
+        return actorList;
+        
     }
 
     private static InventoryItem[] createInventoryList() {
