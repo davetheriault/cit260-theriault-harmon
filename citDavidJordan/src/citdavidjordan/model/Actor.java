@@ -21,19 +21,19 @@ public enum Actor implements Serializable {
     Lucy("... hopscotch"),
     Brody("Brody is a bully. \nHe was held back from last year and now he's in your class. \nYou are the main target of his bullying."),
     Brock("Brock is a big dumb brute in the 6th grade. \nHe is undoubtedly the oldest kid in school... by far. \nBrock has noticed your problem with Brody, and he has offered to take care of Brody for you. \nIn return, he requires a payment of X marbles."), //todo specify number of marbles <--
+    Naoto("Naoto is a Japanese kid...")
     ;
     
     
     
     //***attributes***
     private final String description;
-    private final String location;
-    private final String name;
+    private Location location;
     
     //***constructor function***
     Actor(String description) {
         this.description = description;
-        location = null;
+        
     }
     
     //***getters and setters***
@@ -43,15 +43,18 @@ public enum Actor implements Serializable {
         return description;
     }
 
-    public String getLocation() {
+    public Location getLocation() {
         return location;
     }
 
-    public String getName() {
-        return name;
+    public void setLocation(Location location) {
+        this.location = location;
     }
+
     
-    }
+
+      
+}
     
     
     

@@ -124,8 +124,8 @@ public class CitDavidJordan {
        //StartTriviaView.startTriviaView = new StartTriviaView();
        //startTriviaView.startTrivia();
         
-        HomeworkHelpView.homeworkHelpView = new HomeworkHelpView();
-        homeworkHelpView.homeworkHelp();
+        //HomeworkHelpView.homeworkHelpView = new HomeworkHelpView();
+        //homeworkHelpView.homeworkHelp();
         
     } 
     

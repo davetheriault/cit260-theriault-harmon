@@ -5,16 +5,6 @@
  */
 package citdavidjordan.view;
 
-import citdavidjordan.CitDavidJordan;
-import citdavidjordan.control.GameControl;
-import citdavidjordan.control.MapControl;
-import citdavidjordan.model.Actor;
-import citdavidjordan.model.Game;
-import citdavidjordan.model.InventoryItem;
-import citdavidjordan.model.Location;
-import citdavidjordan.model.Map;
-import java.util.Scanner;
-
 /**
  *
  * @author THERIAULT
@@ -32,16 +22,22 @@ public abstract class MenuView implements ViewInterface {
         String selection = null;
         
         do {
-        System.out.println(promptMessage); //display Menu
+            System.out.println(promptMessage); //display Menu
         
-        selection = this.getInput(); // get the user selection
-        //selection = input.charAt(0); //get first character of a string
+            selection = this.getInput(); // get the user selection
+            //selection = input.charAt(0); //get first character of a string
 
-        this.doAction(selection); //do action based on selection
+            this.doAction(selection); //do action based on selection
 
-    } while (!"Q".equals(selection)); //not Quit
+        } while (!"Q".equals(selection)); //not Quit
     }
     
+    
+}   
+    
+    
+    
+    /*
     @Override
     public String getInput() {
          boolean valid = false; //indicates if name has been received
@@ -73,6 +69,7 @@ public abstract class MenuView implements ViewInterface {
              * for the specific view/s that it applies to.
              * Remove this code from this function.
              */
+/*
             if (promptMessage.contains("Main") & !"N".equals(userSelection) & !"L".equals(userSelection)
                 & !"H".equals(userSelection) & !"Q".equals(userSelection)
                 & !"S".equals(userSelection)){
@@ -91,8 +88,7 @@ public abstract class MenuView implements ViewInterface {
                 continue;
             } if (promptMessage.contains("Game Options Menu") & !"M".equals(userSelection) & !"V".equals(userSelection) 
                     & !"C".equals(userSelection) & !"S".equals(userSelection) 
-                    & !"Q".equals(userSelection) & !"H".equals(userSelection)/*
-                    & !"7".equals(userSelection) & !"Q".equals(userSelection)*/){
+                    & !"Q".equals(userSelection) & !"H".equals(userSelection)){
                 System.out.println("Invalid Selection.");
                 continue;
             }
@@ -109,6 +105,7 @@ public abstract class MenuView implements ViewInterface {
      * The code in the doAction() is unique to each View class. This function
      * must be implemented in each View Layer class uniquely.
      */
+/*
     @Override
     public void doAction(String choice) {
 
@@ -310,7 +307,7 @@ public abstract class MenuView implements ViewInterface {
         for (Actor actor : characters) {
             
             System.out.println(actor.getDescription() + "\t\t " + 
-                               actor.getName() + "\t " + 
+                              // actor.getName() + "\t " + 
                                actor.getLocation());
         }
     }
@@ -353,3 +350,4 @@ public abstract class MenuView implements ViewInterface {
         mapView.display();
     }
 }
+*/

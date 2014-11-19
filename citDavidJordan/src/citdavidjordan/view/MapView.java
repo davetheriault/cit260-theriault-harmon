@@ -5,33 +5,100 @@
  */
 package citdavidjordan.view;
 
+import citdavidjordan.CitDavidJordan;
+import citdavidjordan.model.Location;
+import citdavidjordan.model.Map;
+import citdavidjordan.model.Player;
 import java.util.Scanner;
 
 /**
  *
  * @author THERIAULT
  */
-public class MapView extends MenuView {
+public class MapView {
     
-    // private final String MENU = 
-    public MapView() {
- 
-        super("\n"
-            + "\n-----------------------------------------------"
-            + "\n|                   Map                       |"
-            + "\n-----------------------------------------------"
-            + "\n1 - Playground (Trivia Challenge)"
-            + "\n2 - Monkey Bars (Pick a Number)"
-            + "\n3 - Tree Stump (Shell Game)"
-            + "\n4 - Dodgeball Court (Rock Paper Scissors)"
-            + "\n5 - Steps (Homework Help)"
-            + "\n6 - Hopscotch (Bully-watch)"
-            + "\n7 - Soccer Field (Pay Brock)"
-            + "\nQ - Quit"
-            + "\n-----------------------------------------------");
+    private final String MENU = "\n"
+            + "To move to a location on the map, type the row number \n"
+            + "and then the column number, without any spaces. \n"
+            + "(For example: \'11\' or \'32\')"
+            + "\n(Q - Quit)"
+            + "\n";
+        
+    public void displayMenu() {
+        
+        String selection = "";
+        do {
+            System.out.println(MENU); //display Menu
+            
+            selection = this.getInput(); // get the user selection
+            
+            this.doAction(selection); //do action based on selection
+           
+        } while (!"Q".equals(selection)); //not Quit
+        
         
     }
+    
+    /*@Override*/
+    public String getInput() {
+        boolean valid = false; //indicates if name has been received
+        String userSelection = null;
+        Scanner keyboard = new Scanner(System.in); //keyboard input stream
+        
+        while(!valid) { //while a valid name has not been retrieved
+            
+            //prompt for player's name
+            System.out.println("Where would you like to go?:");
+            
+            //get name from keyboard and trim off blanks
+            userSelection = keyboard.nextLine();
+            userSelection = userSelection.trim();
+            userSelection = userSelection.toUpperCase();
+            
+            if (!"Q".equals(userSelection)) {
+                userSelection = userSelection.replaceAll("[^0-9]", "");
+            }
+            
+            //if name invalid
+            if (userSelection.length() < 1) {
+                System.out.println("Invalid Selection.");
+                continue;
+            } if (!"11".equals(userSelection) & !"12".equals(userSelection) 
+                    & !"13".equals(userSelection) & !"21".equals(userSelection) 
+                    & !"22".equals(userSelection) & !"23".equals(userSelection)
+                    & !"31".equals(userSelection) & !"32".equals(userSelection) 
+                    & !"33".equals(userSelection) & !"Q".equals(userSelection)){
+                System.out.println("Invalid Selection.");
+                continue;
+            }
+            
+            break;
+        }
+        
+        return userSelection;
+    }
 
+    public void doAction(String choice) {
+        
+        if ("Q".equals(choice)) {
+            return;
+        } else {
+            char r = choice.charAt(0);
+            char c = choice.charAt(1);
+            int rowChoice = Character.getNumericValue(r)-1;
+            int colChoice = Character.getNumericValue(c)-1;
+        
+        
+            Map map = CitDavidJordan.getCurrentGame().getMap();
+            Location[][] location = map.getLocations();
+            Player player = CitDavidJordan.getCurrentGame().getPlayer();
+        
+            Location newPlayerLocation = location[rowChoice][colChoice];
+            newPlayerLocation.setVisited(true);
+            player.setLocation(newPlayerLocation);
+        }
+    }
+}
     /*void displayMenu() {
         
         char selection = ' ';
@@ -149,5 +216,5 @@ public class MapView extends MenuView {
     private void displaySoccerField() {
         System.out.println("*** displaySoccerField function called ***");
     } */
+
     
-}

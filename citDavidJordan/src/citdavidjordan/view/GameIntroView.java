@@ -16,7 +16,7 @@ public class GameIntroView {
     
     //Player player = ;
     
-    private final String MENU = "\n"
+    private final String MENU = ""
             + "\n-----------------------------------------------"
             + "\n|              Game Introduction              |"
             + "\n-----------------------------------------------"
@@ -32,7 +32,7 @@ public class GameIntroView {
             + "\n\nAnd thus begins the Playground Hustle."
             + "\n\nPress <Enter> to continue.";
 
-    void displayMenu() {
+    public void displayMenu() {
         
         System.out.println(MENU); //display Menu
             

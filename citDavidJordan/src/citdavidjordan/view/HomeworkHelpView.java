@@ -68,7 +68,7 @@ public class HomeworkHelpView {
         keyboard.nextLine();
         
         MapView mapView = new MapView();
-        mapView.display();
+        mapView.displayMenu();
     }
 
     @SuppressWarnings("UnusedAssignment")
@@ -110,7 +110,7 @@ public class HomeworkHelpView {
             keyboard.nextLine();
         
             MapView mapView = new MapView();
-            mapView.display();
+            mapView.displayMenu();
             
             // TO DO - Function to give them marbles
         }
@@ -123,7 +123,7 @@ public class HomeworkHelpView {
             keyboard.nextLine();
         
             MapView mapView = new MapView();
-            mapView.display();
+            mapView.displayMenu();
         }
         
         //A bat and a ball cost a dollar and ten cents in total. The bat costs a dollar more than the

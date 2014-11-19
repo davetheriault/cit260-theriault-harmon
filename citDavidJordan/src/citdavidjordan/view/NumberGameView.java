@@ -70,7 +70,7 @@ public class NumberGameView {
         keyboard.nextLine();
         
         MapView mapView = new MapView();
-        mapView.display();
+        mapView.displayMenu();
     }
 
     @SuppressWarnings("UnusedAssignment")
@@ -141,7 +141,7 @@ public class NumberGameView {
                 keyboard.nextLine();
                 
                 MapView mapView = new MapView();
-                mapView.display();
+                mapView.displayMenu();
             }
 	
             else {
@@ -164,7 +164,7 @@ public class NumberGameView {
         keyboard.nextLine();
         
         MapView mapView = new MapView();
-        mapView.display();
+        mapView.displayMenu();
     
     }
 }

@@ -39,6 +39,7 @@ public class GameControl {
         game.setInventory(inventoryList);
         
         MapControl.moveToStartingLocation(map);
+        ActorControl.assignActorsToLocations(map, actorList);
         
         game.setBullyWatchYorN(false);
         game.setHomeworkCompleted(null);
@@ -52,8 +53,8 @@ public class GameControl {
     private static Actor[] createActorList() {
         // create actor list here
         Actor[] actorList = Actor.values();
-        return actorList;
         
+        return actorList;
     }
 
     private static InventoryItem[] createInventoryList() {
@@ -95,7 +96,7 @@ public class GameControl {
         locations[1][1].setScene(scenes[SceneType.steps.ordinal()]);
         locations[1][2].setScene(scenes[SceneType.hopscotch.ordinal()]);
         locations[2][0].setScene(scenes[SceneType.soccerfield.ordinal()]);
-        locations[2][1].setScene(scenes[SceneType.brodyencounter.ordinal()]);
+        locations[2][1].setScene(scenes[SceneType.cafeteria.ordinal()]);
         locations[2][2].setScene(null);
         
         //set Names
@@ -106,18 +107,18 @@ public class GameControl {
         locations[1][1].setLocationName("Steps");
         locations[1][2].setLocationName("Hopscotch");
         locations[2][0].setLocationName("Soccer Field");
-        locations[2][1].setLocationName(null);
+        locations[2][1].setLocationName("Cafeteria");
         locations[2][2].setLocationName(null);
         //set descriptions
         locations[0][0].setDescription("Jerry's Trivia Challenge");
-        locations[0][1].setLocationName("Sally's Guess-A-Number Challenge");
-        locations[0][2].setLocationName("Sheldon's Shell Game");
-        locations[1][0].setLocationName("Rocky's Rock-Paper-Scissors");
-        locations[1][1].setLocationName("Help Johnny with Homework");
-        locations[1][2].setLocationName("Lucy's Bully-Watch");
-        locations[2][0].setLocationName("Buy Protection from Brock");
-        locations[2][1].setLocationName(null);
-        locations[2][2].setLocationName(null);
+        locations[0][1].setDescription("Sally's Guess-A-Number Challenge");
+        locations[0][2].setDescription("Sheldon's Shell Game");
+        locations[1][0].setDescription("Rocky's Rock-Paper-Scissors");
+        locations[1][1].setDescription("Help Johnny with Homework");
+        locations[1][2].setDescription("Lucy's Bully-Watch");
+        locations[2][0].setDescription("Buy Protection from Brock");
+        locations[2][1].setDescription("Trade Marbles with Naoto");
+        locations[2][2].setDescription(null);
     }
     
 

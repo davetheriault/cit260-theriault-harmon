@@ -7,6 +7,7 @@ package citdavidjordan.view;
 
 import citdavidjordan.CitDavidJordan;
 import citdavidjordan.control.GameControl;
+import citdavidjordan.control.MenuControl;
 import java.util.Scanner;
 
 /**
@@ -18,7 +19,7 @@ public class MainMenuView extends MenuView {
     public MainMenuView(){
     
     //private final String MENU = 
-            super("\n"
+            super(""
         + "\n-----------------------------------------------"
         + "\n| Main Menu |"
         + "\n-----------------------------------------------"
@@ -29,6 +30,76 @@ public class MainMenuView extends MenuView {
         + "\nQ - Quit"
         + "\n-----------------------------------------------");
     }
+    
+    @Override
+    public String getInput() {
+        boolean valid = false; //indicates if name has been received
+        String userSelection = null;
+
+        Scanner keyboard = new Scanner(System.in); //keyboard input stream
+
+        while(!valid) { //while a valid name has not been retrieved
+
+        //prompt for player's name
+            System.out.println("Enter your selection below:");
+
+        //get name from keyboard and trim off blanks
+            userSelection = keyboard.nextLine();
+            userSelection = userSelection.trim();
+            userSelection = userSelection.toUpperCase();
+
+        //if name invalid
+            if (userSelection.length() < 1) {
+                System.out.println("Invalid Selection.");
+                continue;
+            } 
+            
+        //if not a valid option
+            if (!"N".equals(userSelection) & !"L".equals(userSelection)
+                & !"H".equals(userSelection) & !"Q".equals(userSelection)
+                & !"S".equals(userSelection)){
+                System.out.println("Invalid Selection.");
+                continue;
+            } 
+
+            break;
+        }
+
+        return userSelection;
+    }
+
+    @Override
+    public void doAction(String choice) {
+
+        switch (choice) {
+
+            case "N": //New Game
+                MenuControl.startNewGame();
+                break;
+
+            case "L": //Load Game
+                MenuControl.loadGame();
+                break;
+
+            case "H": //help menu
+                MenuControl.displayHelpMenu();
+                break;
+
+            case "S": //Save current game
+                MenuControl.saveGame();
+                break;
+                
+            case "Q": // Quit Program
+                return;
+
+            default:
+                System.out.println("\nInvalid Selection.");
+                break;
+
+        }
+    }
+    
+    
 
     /*void displayMenu() {
         

@@ -7,6 +7,7 @@ package citdavidjordan.view;
 
 import citdavidjordan.CitDavidJordan;
 import citdavidjordan.control.GameControl;
+import citdavidjordan.control.MenuControl;
 import java.util.Scanner;
 
 /**
@@ -18,7 +19,7 @@ public class HelpMenuView extends MenuView {
     public HelpMenuView() {
     
     //private final String MENU = 
-            super("\n"
+            super(""
             + "\n-----------------------------------------------"
             + "\n|                 Help Menu                   |"
             + "\n-----------------------------------------------"
@@ -27,6 +28,68 @@ public class HelpMenuView extends MenuView {
             + "\nA - About Playground Hustle™"
             + "\nQ - Quit"
             + "\n-----------------------------------------------"); 
+    }
+    
+    @Override
+    public String getInput() {
+         boolean valid = false; //indicates if name has been received
+        String userSelection = null;
+
+        Scanner keyboard = new Scanner(System.in); //keyboard input stream
+
+        while(!valid) { //while a valid name has not been retrieved
+
+        //prompt for player's name
+            System.out.println("Enter your selection below:");
+
+        //get name from keyboard and trim off blanks
+            userSelection = keyboard.nextLine();
+            userSelection = userSelection.trim();
+            userSelection = userSelection.toUpperCase();
+
+        //if invalid
+            if (userSelection.length() < 1) {
+                System.out.println("Invalid Selection.");
+                continue;
+            } if (!"G".equals(userSelection)
+                & !"A".equals(userSelection) & !"Q".equals(userSelection)
+                & !"I".equals(userSelection)){
+                System.out.println("Invalid Selection.");
+                continue;
+            }
+
+            break;
+        }
+
+        return userSelection;
+    }
+
+    @Override
+    public void doAction(String choice) {
+
+        switch (choice) {
+                
+            //help menu options
+            case "G": //What's the goal of the game?
+                MenuControl.displayGoal();
+                break;
+                
+            case "I": // How to / Instructions
+                MenuControl.displayInstructions();
+                break;
+                
+            case "A": //About Playground Hustle
+                MenuControl.displayAbout();
+                break;
+                
+            case "Q": // Quit Program
+                return;
+
+            default:
+                System.out.println("\nInvalid Selection.");
+                break;
+
+        }
     }
 
     /* void displayMenu() {

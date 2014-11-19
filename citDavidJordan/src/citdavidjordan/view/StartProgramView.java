@@ -40,7 +40,7 @@ import java.util.Scanner;
 
         public void displayBanner() {
 
-            System.out.println("\n\n\n************************************************************");
+            System.out.println("\n************************************************************");
             System.out.println( "* *"
                                     + "\n* Oak Elementary is not your average elementary school. *"
                                     + "\n* Its grounds have given rise to a unique socioeconomic *"

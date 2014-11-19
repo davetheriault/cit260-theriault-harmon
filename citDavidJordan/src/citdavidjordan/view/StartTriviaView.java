@@ -124,7 +124,7 @@ public class StartTriviaView {
                 keyboard.nextLine();
         
                 MapView mapView = new MapView();
-                mapView.display();
+                mapView.displayMenu();
                 
                 // TO DO - Function to give them marbles.
             }
@@ -138,7 +138,7 @@ public class StartTriviaView {
                 keyboard.nextLine();
         
                 MapView mapView = new MapView();
-                mapView.display();
+                mapView.displayMenu();
             
             }
         }
@@ -154,7 +154,7 @@ public class StartTriviaView {
         keyboard.nextLine();
         
         MapView mapView = new MapView();
-        mapView.display();
+        mapView.displayMenu();
     }
     }
     
