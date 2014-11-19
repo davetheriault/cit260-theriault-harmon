@@ -139,17 +139,12 @@ public class MenuControl {
         // location or where they are situated
         // 
         
-        
-        System.out.println("\nActors");
-        System.out.println("Name" + "\t" + 
-                           "Description" + "\t" + 
-                           "Location");
-        
         for (Actor actor : characters) {
             
-            System.out.println(actor.getDescription() + "\t\t " + 
-                              // actor.getName() + "\t " + 
-                               actor.getLocation());
+            System.out.println("Name:         " + actor + 
+                             "\nLocation:     " + actor.getLocation().getLocationName() + 
+                             "\nEvent Name:   " + actor.getGameName() + 
+                             "\nDescription:  " + actor.getDescription() + "\n\n"); 
         }
     }
 
