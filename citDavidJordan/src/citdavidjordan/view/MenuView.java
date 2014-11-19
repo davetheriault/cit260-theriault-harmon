@@ -64,7 +64,16 @@ public abstract class MenuView implements ViewInterface {
                 System.out.println("Invalid Selection.");
                 continue;
 
-            } if (promptMessage.contains("Main") & !"N".equals(userSelection) & !"L".equals(userSelection)
+            } 
+            
+            /* Instructor: 
+             * This code should not be in the super class. It gets inherited by
+             * every other View Layer class. This is specific code for a
+             * specific view. This code should be in the doAction() function
+             * for the specific view/s that it applies to.
+             * Remove this code from this function.
+             */
+            if (promptMessage.contains("Main") & !"N".equals(userSelection) & !"L".equals(userSelection)
                 & !"H".equals(userSelection) & !"Q".equals(userSelection)
                 & !"S".equals(userSelection)){
                 System.out.println("Invalid Selection.");
@@ -94,6 +103,12 @@ public abstract class MenuView implements ViewInterface {
         return userSelection;
     }
 
+    /* Instructor: 
+     * You can not implement the doAction() function in the super class. You
+     * only inherit the funciton signature defined in the ViewInterface class.
+     * The code in the doAction() is unique to each View class. This function
+     * must be implemented in each View Layer class uniquely.
+     */
     @Override
     public void doAction(String choice) {
 
