@@ -23,6 +23,7 @@ public class MapControl {
         
         Scene[] scenes = createScenes();
         
+        CitDavidJordan.getCurrentGame().setScenes(scenes);
         GameControl.assignScenesToLocations(map, scenes);
         
         

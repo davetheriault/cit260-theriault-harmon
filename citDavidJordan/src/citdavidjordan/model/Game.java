@@ -20,6 +20,7 @@ public class Game implements Serializable {
     private Location[] location;
     private Actor[] actors;
     private InventoryItem[] inventory;
+    private Scene[] scenes;
 
     private String triviaCompleted;
     private String homeworkCompleted;
@@ -110,6 +111,14 @@ public class Game implements Serializable {
 
     public void setInventory(InventoryItem[] inventory) {
         this.inventory = inventory;
+    }
+
+    public Scene[] getScenes() {
+        return scenes;
+    }
+
+    public void setScenes(Scene[] scenes) {
+        this.scenes = scenes;
     }
 
 

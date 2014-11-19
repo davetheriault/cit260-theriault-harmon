@@ -6,9 +6,11 @@
 package citdavidjordan.view;
 
 import citdavidjordan.CitDavidJordan;
+import citdavidjordan.control.SceneControl;
 import citdavidjordan.model.Location;
 import citdavidjordan.model.Map;
 import citdavidjordan.model.Player;
+import citdavidjordan.model.Scene;
 import java.util.Scanner;
 
 /**
@@ -96,6 +98,10 @@ public class MapView {
             Location newPlayerLocation = location[rowChoice][colChoice];
             newPlayerLocation.setVisited(true);
             player.setLocation(newPlayerLocation);
+            
+            Scene scene = newPlayerLocation.getScene();
+            SceneControl.startSceneView(scene);
+            
         }
     }
 }
