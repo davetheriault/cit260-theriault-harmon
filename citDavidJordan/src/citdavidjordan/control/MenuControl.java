@@ -133,18 +133,13 @@ public class MenuControl {
     public static void displayActors() {
         Actor[] characters = CitDavidJordan.getCurrentGame().getActors();
         
-        // create similar for loop as the InventoryItem 
-        // Name 
-        // description
-        // location or where they are situated
-        // 
         
         for (Actor actor : characters) {
             
             System.out.println("Name:         " + actor + 
-                             "\nLocation:     " + actor.getLocation().getLocationName() + 
+                             "\nLocation:     " + actor.getLocation() + 
                              "\nEvent Name:   " + actor.getGameName() + 
-                             "\nDescription:  " + actor.getDescription() + "\n\n"); 
+                             "\nDescription:  \n" + actor.getDescription() + "\n\n"); 
         }
     }
 
