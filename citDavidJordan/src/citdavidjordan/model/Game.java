@@ -20,6 +20,7 @@ public class Game implements Serializable {
     private Location[] location;
     private Actor[] actors;
     private InventoryItem[] inventory;
+    private InventoryItem[] naotosInventory;
     private Scene[] scenes;
 
     private String triviaCompleted;
@@ -111,6 +112,14 @@ public class Game implements Serializable {
 
     public void setInventory(InventoryItem[] inventory) {
         this.inventory = inventory;
+    }
+
+    public InventoryItem[] getNaotosInventory() {
+        return naotosInventory;
+    }
+
+    public void setNaotosInventory(InventoryItem[] naotosInventory) {
+        this.naotosInventory = naotosInventory;
     }
 
     public Scene[] getScenes() {

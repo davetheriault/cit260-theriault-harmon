@@ -38,6 +38,10 @@ public class GameControl {
         InventoryItem[] inventoryList = GameControl.createInventoryList();
         game.setInventory(inventoryList);
         
+        InventoryItem[] naotosInventory = GameControl.createInventoryList();
+        game.setNaotosInventory(naotosInventory);
+        GameControl.adjustNaotosInventory(naotosInventory);
+        
         MapControl.moveToStartingLocation(map);
         ActorControl.assignActorsToLocations(map, actorList);
         
@@ -143,6 +147,14 @@ public class GameControl {
             }
         }
         return inventoryList;
+    }
+
+    private static void adjustNaotosInventory(InventoryItem[] naotoInventory) {
+        
+        naotoInventory[0].setAmount(10);
+        naotoInventory[1].setAmount(15);
+        naotoInventory[2].setAmount(20);
+        
     }
 
     

@@ -26,10 +26,6 @@ import java.util.Random;
  */
 public class MenuControl {
 
-    public static void displayNaotosInventory() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
     private MenuControl(){
         
     }
@@ -114,7 +110,7 @@ public class MenuControl {
         //get the sorted list of marbles for the current game
         InventoryItem[] inventory = GameControl.getSortedInventoryList();
         
-        System.out.println("\nMarble Inventory");
+        System.out.println("\nMarble Inventory \n");
         System.out.println("Description" + "\t" +
                            "Value" + "\t" +
                            "Amount" + "\t" +
@@ -129,6 +125,36 @@ public class MenuControl {
                                (inventoryItem.getValue()*inventoryItem.getAmount()));
         }
     }
+    
+    public static void displayNaotosInventory() {
+        InventoryItem[] inventory = CitDavidJordan.getCurrentGame().getNaotosInventory();
+        Game game = CitDavidJordan.getCurrentGame();
+        Map map = game.getMap();
+        Location[][] location = map.getLocations();
+        
+        if ((location[2][1].isVisited()) == true){
+        
+            System.out.println("\nNaoto's Awesome Marble Trading Super Fantastic Inventory!!! \n");
+            System.out.println("Description" + "\t" +
+                               "Value" + "\t" +
+                               "Amount" + "\t" +
+                               "Total Value");
+        
+            //for each inventory item
+            for (InventoryItem inventoryItem : inventory) {
+                //display description amount and value
+                int total = (inventoryItem.getValue()) * (inventoryItem.getAmount());
+                
+                System.out.println(inventoryItem.getDescription() + "\t\t  " +
+                               inventoryItem.getValue() + "\t   " +
+                               inventoryItem.getAmount() + "\t   " + 
+                               total);
+            }
+        } else {
+            System.out.println("\n ***** You must first visit Naoto to unlock this feature. ****");
+        }
+        
+    }
 
     public static void displayActors() {
         Actor[] characters = CitDavidJordan.getCurrentGame().getActors();
@@ -141,10 +167,11 @@ public class MenuControl {
         
         for (Actor actor : characters) {
             
+            
             System.out.println("Name:         " + actor + 
-                             "\nLocation:     " + actor.getLocation().getLocationName() + 
+                             "\nLocation:     " + actor.getLocation() + 
                              "\nEvent Name:   " + actor.getGameName() + 
-                             "\nDescription:  " + actor.getDescription() + "\n\n"); 
+                             "\nDescription:  \n" + actor.getDescription() + "\n\n"); 
         }
     }
 

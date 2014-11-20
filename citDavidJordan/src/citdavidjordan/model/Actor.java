@@ -35,6 +35,7 @@ public enum Actor implements Serializable {
     Actor(String description, String gameName) {
         this.description = description;
         this.gameName = gameName;
+        location = null;
     }
     
     //***getters and setters***
