@@ -68,7 +68,7 @@ public class GameControl {
         
         InventoryItem swirly = new InventoryItem();
         swirly.setDescription("Swirly");
-        swirly.setAmount(0);
+        swirly.setAmount(20);
         swirly.setValue(1);
         inventory[Item.swirly.ordinal()] = swirly;
         
@@ -151,9 +151,9 @@ public class GameControl {
 
     private static void adjustNaotosInventory(InventoryItem[] naotoInventory) {
         
-        naotoInventory[0].setAmount(10);
-        naotoInventory[1].setAmount(15);
-        naotoInventory[2].setAmount(20);
+        naotoInventory[Item.swirly.ordinal()].setAmount(10);
+        naotoInventory[Item.steely.ordinal()].setAmount(15);
+        naotoInventory[Item.alley.ordinal()].setAmount(20);
         
     }
 

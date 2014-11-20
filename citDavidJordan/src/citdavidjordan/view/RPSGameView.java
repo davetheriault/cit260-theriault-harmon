@@ -5,8 +5,13 @@
  */
 package citdavidjordan.view;
 
+import citdavidjordan.CitDavidJordan;
+import citdavidjordan.control.MarbleControl;
+import citdavidjordan.control.MenuControl;
 import citdavidjordan.control.ProgramControl;
 import citdavidjordan.control.RPSGameControl;
+import citdavidjordan.model.InventoryItem;
+import citdavidjordan.model.Item;
 import citdavidjordan.model.Player;
 import java.util.Scanner;
 
@@ -17,6 +22,8 @@ import java.util.Scanner;
 public class RPSGameView {
     
     public static RPSGameView rpsGameView;
+    
+    Player player = CitDavidJordan.getCurrentGame().getPlayer();
     
     public void startRPSGame(){
                
@@ -51,7 +58,7 @@ public class RPSGameView {
                              + "\n hours challenging other kids to play against him for     "
                              + "\n marbles.                                                 "
                              + "\n                                                          "
-                             + "\n Rocky: \"Hey there *playerName*."//todo get player name <-
+                             + "\n Rocky: \"Hey there " + player.getName() + "."//todo get player name <-
                              + "\n\t I heard that you are looking to score some easy marbles."
                              + "\n\t You wanna try me in a game of 'Rock Paper Scissors'?"
                              + "\n\t Loser gives the winner 5 marbles.\"");
@@ -74,6 +81,12 @@ public class RPSGameView {
             YorN = YorN.trim();
             YorN = YorN.toUpperCase();
             
+            InventoryItem[] marbles = CitDavidJordan.getCurrentGame().getInventory();
+            if (marbles[Item.swirly.ordinal()].getAmount() < 5) {
+                System.out.println("Rocky: \"Oh, wait. Only " + marbles[Item.swirly.ordinal()].getAmount() + " Swirlys? \n"
+                        + "It looks like you don't have enough marbles little-miss-" + player.getName() + ".\n"
+                        + "Come back when you have enough");
+            }
             //if name invalid
             if (YorN.length() < 1) {
                 System.out.println("Invalid Selection - Please enter 'Y' for yes or 'N' for no.");
@@ -102,8 +115,7 @@ public class RPSGameView {
         Scanner keyboard = new Scanner(System.in);
         keyboard.nextLine();
         
-        MapView mapView = new MapView();
-        mapView.displayMenu();
+        MenuControl.displayMap();
 
     }
 
@@ -223,11 +235,11 @@ public class RPSGameView {
             
             if (rpsResult.toLowerCase().contains("win")) {
                 System.out.println("\nRocky: \"Dang! Alright, here's your marbles.\"");
-                //todo insert function to add marbles to player
+                MarbleControl.adjustMarbles(5, "swirly");//todo insert function to add marbles to player
             }
             if (rpsResult.toLowerCase().contains("lose")) {
                 System.out.println("\nRocky: \"Ha! Alright *playerName*, pay up.\"");//todo get playerName
-                //todo insert function to subtract marbles to player
+                MarbleControl.adjustMarbles(-5, "swirly");//todo insert function to subtract marbles to player
             }
             if (rpsResult.toLowerCase().contains("tie")) {
                 System.out.println("\nRocky: \"Again!\"");
@@ -265,11 +277,23 @@ public class RPSGameView {
                 System.out.println("Invalid Selection - Please enter 'Y' for yes or 'N' for no.");
                 continue;
             } if ("N".equals(YorN) | "NO".equals(YorN)) {
-                this.displayQuitMessage();
+                this.displayQuitMessage2();
             } else {
                 this.displayRPSGame2();
             }
         }
+    }
+    
+    private void displayQuitMessage2() {
+        System.out.println(    "\n                                                 "
+                             + "\nRocky: \"Alright. If you want a rematch, you know where to find me.\"");
+        System.out.println("\nPress <Enter> to continue:");
+        
+        Scanner keyboard = new Scanner(System.in);
+        keyboard.nextLine();
+        
+        MenuControl.displayMap();
+
     }
 
     

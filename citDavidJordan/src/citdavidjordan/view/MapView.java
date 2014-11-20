@@ -83,7 +83,8 @@ public class MapView {
     public void doAction(String choice) {
         
         if ("Q".equals(choice)) {
-            return;
+            GameMenuView gameMenu = new GameMenuView();
+            gameMenu.display();
         } else {
             char r = choice.charAt(0);
             char c = choice.charAt(1);

@@ -5,7 +5,9 @@
  */
 package citdavidjordan.control;
 
+import citdavidjordan.CitDavidJordan;
 import citdavidjordan.model.InventoryItem;
+import citdavidjordan.model.Item;
 
 /**
  *
@@ -13,9 +15,30 @@ import citdavidjordan.model.InventoryItem;
  */
 public class MarbleControl {
 
-    static InventoryItem startingMarbles() {
-        System.out.println("*** What you got startingMarbles function ? ****");
-        return null;
+    static InventoryItem[] inventory = CitDavidJordan.getCurrentGame().getInventory();
+    static InventoryItem[] naotoInventory = CitDavidJordan.getCurrentGame().getNaotosInventory();
+    private static int amount = 0;
+    private static int adjusted = 0;
+    
+    public static void adjustMarbles( int add, String type) {
+        
+        if ("swirly".equals(type)) {
+            amount = inventory[Item.swirly.ordinal()].getAmount();
+            adjusted = amount + add;
+            inventory[Item.swirly.ordinal()].setAmount(adjusted);
+        }
+        if ("steely".equals(type)) {
+            amount = inventory[Item.steely.ordinal()].getAmount();
+            adjusted = amount + add;
+            inventory[Item.steely.ordinal()].setAmount(adjusted);
+        }
+        if ("alley".equals(type)) {
+            amount = inventory[Item.alley.ordinal()].getAmount();
+            adjusted = amount + add;
+            inventory[Item.alley.ordinal()].setAmount(adjusted);
+        }
     }
+    
+    
     
 }
