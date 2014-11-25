@@ -51,7 +51,14 @@ public class CitDavidJordan {
         
         //remove this comment to run StartProgramView
         StartProgramView.startProgramView = new StartProgramView();
+        
+        try {
         startProgramView.startProgram();
+        } catch (Throwable te) {
+            System.out.println(te.getMessage());
+            te.printStackTrace();
+            startProgramView.displayBanner();
+        }
         
         // *** test Response Class ***
         // Response responseOne = new Response();
