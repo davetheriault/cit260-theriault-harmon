@@ -7,6 +7,8 @@
 package citdavidjordan.view;
 
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -15,11 +17,19 @@ import java.util.Scanner;
 public class HomeworkHelpView {
     public static HomeworkHelpView homeworkHelpView;
     public void homeworkHelp() {
-        // display Johnny's petition
-        this.displayPetition();
+        
+        String YorN2 = null;
+        do {
+            try {
+            // display Johnny's petition
+            this.displayPetition();
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }     
+        } while (!"N".equals(YorN2));
     }
 
-    private void displayPetition() {
+    private void displayPetition() throws Exception {
         boolean valid = false; //indicates if name has been received
         String YorN2 = null;
         Scanner keyboard = new Scanner(System.in); //keyboard input stream
@@ -43,11 +53,11 @@ public class HomeworkHelpView {
             //if name invalid
             //if name invalid
             if (YorN2.length() < 1) {
-                System.out.println("Invalid Selection - Please enter 'Y' for yes or 'N' for no.");
-                continue;
+                throw new Exception("Invalid Selection - Please enter 'Y' for yes or 'N' for no.");
+                
             } if (!"Y".equals(YorN2) & !"N".equals(YorN2)
                 & !"YES".equals(YorN2) & !"NO".equals(YorN2)) {
-                System.out.println("Invalid Selection - Please enter 'Y' for yes or 'N' for no.");
+                throw new Exception("Invalid Selection - Please enter 'Y' for yes or 'N' for no.");
             } if ("Y".equals(YorN2)) {
                 this.askQuestion();
             }

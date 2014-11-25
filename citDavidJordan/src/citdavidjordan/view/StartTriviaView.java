@@ -7,6 +7,8 @@
 package citdavidjordan.view;
 
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -21,14 +23,22 @@ public class StartTriviaView {
         //Display the challenge screen
         this.displayTriviaChallenge();
         
-        //Have Them select accept or decline
-        this.getPlayerResponse();
-        
-        // If correct answer
-        // is selected, display "That is correct!". Save additional marbles and return to main menu
-        
-        // If any other answer
-        // is selected, display "That is incorrect, and return to main menu. 
+        String playerResponse = "";
+        do {
+        try {
+            //Have Them select accept or decline
+            this.getPlayerResponse();
+            
+            // If correct answer
+            // is selected, display "That is correct!". Save additional marbles and return to main menu
+            
+            // If any other answer
+            // is selected, display "That is incorrect, and return to main menu. 
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+            continue;
+        }
+        } while (!"D".equals(playerResponse));
         
     }
 
@@ -50,7 +60,7 @@ public class StartTriviaView {
                              + "\n************************************************************");
     }
 
-    private String getPlayerResponse() {
+    private String getPlayerResponse() throws Exception {
         boolean valid = false; //indicates if name has been received
         String playerResponse = null;
         Scanner keyboard = new Scanner(System.in); //keyboard input stream
@@ -68,8 +78,8 @@ public class StartTriviaView {
             //if response invalid
             //if (!'A'.equals(playerResponse) & !'D'.equals(playerResponse)) {
             if (!"A".equals(playerResponse) & !"D".equals(playerResponse)) {
-                System.out.println("Invalid response, you must enter 'A' to Accept or 'D' to Decline.");
-                continue;
+                throw new Exception("Invalid response, you must enter 'A' to Accept or 'D' to Decline.");
+                
             }
             if(playerResponse.equals("D")) {
                 this.quitMessage();

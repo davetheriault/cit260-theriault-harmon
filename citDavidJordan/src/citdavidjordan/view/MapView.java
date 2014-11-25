@@ -7,11 +7,14 @@ package citdavidjordan.view;
 
 import citdavidjordan.CitDavidJordan;
 import citdavidjordan.control.SceneControl;
+import citdavidjordan.exceptions.MapControlException;
 import citdavidjordan.model.Location;
 import citdavidjordan.model.Map;
 import citdavidjordan.model.Player;
 import citdavidjordan.model.Scene;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -31,8 +34,12 @@ public class MapView {
         String selection = "";
         do {
             System.out.println(MENU); //display Menu
-            
-            selection = this.getInput(); // get the user selection
+            try {
+                selection = this.getInput(); // get the user selection
+            } catch (MapControlException ex) {
+                System.out.println(ex.getMessage());
+                continue;
+            }
             
             this.doAction(selection); //do action based on selection
            
@@ -42,7 +49,7 @@ public class MapView {
     }
     
     /*@Override*/
-    public String getInput() {
+    public String getInput() throws MapControlException {
         boolean valid = false; //indicates if name has been received
         String userSelection = null;
         Scanner keyboard = new Scanner(System.in); //keyboard input stream
@@ -63,15 +70,14 @@ public class MapView {
             
             //if name invalid
             if (userSelection.length() < 1) {
-                System.out.println("Invalid Selection.");
-                continue;
+                throw new MapControlException("Invalid Selection.");
+            
             } if (!"11".equals(userSelection) & !"12".equals(userSelection) 
                     & !"13".equals(userSelection) & !"21".equals(userSelection) 
                     & !"22".equals(userSelection) & !"23".equals(userSelection)
                     & !"31".equals(userSelection) & !"32".equals(userSelection) 
                     & !"33".equals(userSelection) & !"Q".equals(userSelection)){
-                System.out.println("Invalid Selection.");
-                continue;
+                throw new MapControlException("Invalid Selection.");
             }
             
             break;
@@ -82,6 +88,10 @@ public class MapView {
 
     public void doAction(String choice) {
         
+        Map map = CitDavidJordan.getCurrentGame().getMap();
+        Location[][] location = map.getLocations();
+        Player player = CitDavidJordan.getCurrentGame().getPlayer();
+        
         if ("Q".equals(choice)) {
             GameMenuView gameMenu = new GameMenuView();
             gameMenu.display();
@@ -91,15 +101,12 @@ public class MapView {
             int rowChoice = Character.getNumericValue(r)-1;
             int colChoice = Character.getNumericValue(c)-1;
         
-        
-            Map map = CitDavidJordan.getCurrentGame().getMap();
-            Location[][] location = map.getLocations();
-            Player player = CitDavidJordan.getCurrentGame().getPlayer();
-        
+            //set location and isVisited
             Location newPlayerLocation = location[rowChoice][colChoice];
             newPlayerLocation.setVisited(true);
             player.setLocation(newPlayerLocation);
             
+            //get scene to start view
             Scene scene = newPlayerLocation.getScene();
             SceneControl.startSceneView(scene);
             
