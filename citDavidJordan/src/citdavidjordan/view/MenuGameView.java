@@ -6,6 +6,7 @@
 package citdavidjordan.view;
 
 import citdavidjordan.control.MenuControl;
+import citdavidjordan.exceptions.MenuControlException;
 import java.util.Scanner;
 
 /**
@@ -34,8 +35,8 @@ public class MenuGameView extends MenuView {
     }
     
     @Override
-    public String getInput() {
-         boolean valid = false; //indicates if name has been received
+    public String getInput() throws MenuControlException {
+        boolean valid = false; //indicates if name has been received
         String userSelection = null;
 
         Scanner keyboard = new Scanner(System.in); //keyboard input stream
@@ -52,15 +53,15 @@ public class MenuGameView extends MenuView {
 
         //if invalid
             if (userSelection.length() < 1) {
-                System.out.println("Invalid Selection.");
-                continue;
+                throw new MenuControlException("Invalid Selection, you must enter an option from the Menu.");
+                // continue;
 
             } if (!"M".equals(userSelection) & !"V".equals(userSelection) 
                     & !"T".equals(userSelection) & !"C".equals(userSelection) 
                     & !"S".equals(userSelection) & !"H".equals(userSelection)
                     & !"Q".equals(userSelection)){
-                System.out.println("Invalid Selection.");
-                continue;
+                throw new MenuControlException("Invalid Selection, you must enter an option from the Menu.");
+                // continue;
             }
 
             break;
@@ -70,7 +71,7 @@ public class MenuGameView extends MenuView {
     }
     
     @Override
-    public void doAction(String choice) {
+    public void doAction(String choice) throws MenuControlException {
 
         switch (choice) {
 
@@ -102,8 +103,7 @@ public class MenuGameView extends MenuView {
                 return;
 
             default:
-                System.out.println("\nInvalid Selection.");
-                break;
+                throw new MenuControlException("\nInvalid Selection.");
 
         }
     }

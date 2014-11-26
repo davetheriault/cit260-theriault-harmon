@@ -5,6 +5,8 @@
  */
 package citdavidjordan.control;
 
+import citdavidjordan.exceptions.Scene2NumberException;
+
 
 
 /**
@@ -13,15 +15,15 @@ package citdavidjordan.control;
  */
 public class Scene2NumberControl {
     
-    public String numberGame(int guess, long currentTimeInSeconds) {
+    public String numberGame(int guess, long currentTimeInSeconds) throws Scene2NumberException {
         
         
         if ( guess < 1 ) {
-            return "The number guessed is too low.";
+            throw new Scene2NumberException("The number guessed is too low.");
         }
             
 	if ( guess > 10 ) {
-            return "The number guessed is too high.";
+            throw new Scene2NumberException("The number guessed is too high.");
         }
 		
 	long seedNo = currentTimeInSeconds * 654321 + 12345;

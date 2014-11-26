@@ -6,6 +6,7 @@
 
 package citdavidjordan.view;
 
+import citdavidjordan.exceptions.Scene2NumberException;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -18,10 +19,18 @@ public class Scene2NumberView {
     public static Scene2NumberView NumberGameView;
     public void start() {
         // display game description
-        this.displayDescription();
+        String YorN2 = null;
+        do {  
+            try {
+                this.displayDescription();
+            } catch (Scene2NumberException ex) {
+                System.out.println(ex.getMessage());
+                continue;
+            }
+        } while(!"N".equals(YorN2));
     }
 
-    private void displayDescription() {
+    private void displayDescription() throws Scene2NumberException {
         boolean valid = false; //indicates if name has been received
         String YorN2 = null;
         Scanner keyboard = new Scanner(System.in); //keyboard input stream
@@ -45,11 +54,10 @@ public class Scene2NumberView {
             //if name invalid
             //if name invalid
             if (YorN2.length() < 1) {
-                System.out.println("Invalid Selection - Please enter 'Y' for yes or 'N' for no.");
-                continue;
+                throw new Scene2NumberException("Invalid Selection - Please enter 'Y' for yes or 'N' for no.");
             } if (!"Y".equals(YorN2) & !"N".equals(YorN2)
                 & !"YES".equals(YorN2) & !"NO".equals(YorN2)) {
-                System.out.println("Invalid Selection - Please enter 'Y' for yes or 'N' for no.");
+                throw new Scene2NumberException("Invalid Selection - Please enter 'Y' for yes or 'N' for no.");
             } if ("Y".equals(YorN2)) {
                 this.askQuestion();
             }

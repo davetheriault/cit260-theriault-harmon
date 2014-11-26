@@ -6,6 +6,7 @@
 package citdavidjordan.control;
 
 import citdavidjordan.CitDavidJordan;
+import citdavidjordan.exceptions.Scene2NumberException;
 import citdavidjordan.model.Actor;
 import citdavidjordan.model.Game;
 import citdavidjordan.model.InventoryItem;
@@ -77,7 +78,7 @@ public class MenuControl {
         triviaView.start();
     }
 
-    public static void displayMonkeyBars() {
+    public static void displayMonkeyBars() throws Scene2NumberException {
         Scene2NumberView numGame = new Scene2NumberView();
         numGame.start();
     }

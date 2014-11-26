@@ -39,7 +39,8 @@ public abstract class MenuView implements ViewInterface {
                 this.doAction(selection); //do action based on selection
             } catch (MenuControlException ex) {
                 System.out.println(ex.getMessage());
-                continue;
+                break;
+                // MenuGameView and MenuHelpView use the continue and the break
             }
 
         } while (!"Q".equals(selection)); //not Quit
