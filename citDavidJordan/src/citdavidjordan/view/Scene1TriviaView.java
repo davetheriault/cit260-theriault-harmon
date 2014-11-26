@@ -6,6 +6,7 @@
 
 package citdavidjordan.view;
 
+import citdavidjordan.exceptions.Scene1TriviaException;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -14,10 +15,10 @@ import java.util.logging.Logger;
  *
  * @author Deann_2
  */
-public class StartTriviaView {
-    public static StartTriviaView startTriviaView;
+public class Scene1TriviaView {
+    public static Scene1TriviaView startTriviaView;
     
-    public void startTrivia() {
+    public void start() {
         
         //BEGIN
         //Display the challenge screen
@@ -60,7 +61,7 @@ public class StartTriviaView {
                              + "\n************************************************************");
     }
 
-    private String getPlayerResponse() throws Exception {
+    private String getPlayerResponse() throws Scene1TriviaException {
         boolean valid = false; //indicates if name has been received
         String playerResponse = null;
         Scanner keyboard = new Scanner(System.in); //keyboard input stream
@@ -78,7 +79,7 @@ public class StartTriviaView {
             //if response invalid
             //if (!'A'.equals(playerResponse) & !'D'.equals(playerResponse)) {
             if (!"A".equals(playerResponse) & !"D".equals(playerResponse)) {
-                throw new Exception("Invalid response, you must enter 'A' to Accept or 'D' to Decline.");
+                throw new Scene1TriviaException("Invalid response, you must enter 'A' to Accept or 'D' to Decline.");
                 
             }
             if(playerResponse.equals("D")) {

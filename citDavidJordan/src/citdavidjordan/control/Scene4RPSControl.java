@@ -11,7 +11,7 @@ import java.util.Random;
  *
  * @author THERIAULT
  */
-public class RPSGameControl {
+public class Scene4RPSControl {
     
     public String rpsGame(int choice) { 
         //choice is 1 = Rock, 2 = Paper, 3 = Scissors 

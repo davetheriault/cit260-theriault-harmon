@@ -9,7 +9,7 @@ import citdavidjordan.CitDavidJordan;
 import citdavidjordan.control.MarbleControl;
 import citdavidjordan.control.MenuControl;
 import citdavidjordan.control.ProgramControl;
-import citdavidjordan.control.RPSGameControl;
+import citdavidjordan.control.Scene4RPSControl;
 import citdavidjordan.model.InventoryItem;
 import citdavidjordan.model.Item;
 import citdavidjordan.model.Player;
@@ -19,13 +19,13 @@ import java.util.Scanner;
  *
  * @author THERIAULT
  */
-public class RPSGameView {
+public class Scene4RPSView {
     
-    public static RPSGameView rpsGameView;
+    public static Scene4RPSView rpsGameView;
     
     Player player = CitDavidJordan.getCurrentGame().getPlayer();
     
-    public void startRPSGame(){
+    public void start(){
                
         //Display the banner screen
         this.displayIntro();
@@ -219,15 +219,15 @@ public class RPSGameView {
                 continue;
             } if ("R".equals(rpsInput) | "ROCK".equals(rpsInput)) {
                 choice = 1;
-                RPSGameControl rpsGame = new RPSGameControl();
+                Scene4RPSControl rpsGame = new Scene4RPSControl();
                 rpsResult = rpsGame.rpsGame(choice);
             } if ("P".equals(rpsInput) | "PAPER".equals(rpsInput)) {
                 choice = 2;
-                RPSGameControl rpsGame = new RPSGameControl();
+                Scene4RPSControl rpsGame = new Scene4RPSControl();
                 rpsResult = rpsGame.rpsGame(choice);
             } if ("S".equals(rpsInput) | "SCISSORS".equals(rpsInput)) {
                 choice = 3;
-                RPSGameControl rpsGame = new RPSGameControl();
+                Scene4RPSControl rpsGame = new Scene4RPSControl();
                 rpsResult = rpsGame.rpsGame(choice);
             }
             

@@ -8,10 +8,14 @@ package citdavidjordan.view;
 import citdavidjordan.CitDavidJordan;
 import citdavidjordan.control.SceneControl;
 import citdavidjordan.exceptions.MapControlException;
+import citdavidjordan.model.Actor;
+import citdavidjordan.model.Game;
 import citdavidjordan.model.Location;
 import citdavidjordan.model.Map;
 import citdavidjordan.model.Player;
 import citdavidjordan.model.Scene;
+import citdavidjordan.model.SceneType;
+import java.util.Random;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -21,6 +25,11 @@ import java.util.logging.Logger;
  * @author THERIAULT
  */
 public class MapView {
+    
+    Game game = CitDavidJordan.getCurrentGame();
+    Map map = CitDavidJordan.getCurrentGame().getMap();
+    Location[][] location = map.getLocations();
+    Player player = CitDavidJordan.getCurrentGame().getPlayer();
     
     private final String MENU = "\n"
             + "To move to a location on the map, type the row number \n"
@@ -44,7 +53,6 @@ public class MapView {
             this.doAction(selection); //do action based on selection
            
         } while (!"Q".equals(selection)); //not Quit
-        
         
     }
     
@@ -88,12 +96,12 @@ public class MapView {
 
     public void doAction(String choice) {
         
-        Map map = CitDavidJordan.getCurrentGame().getMap();
+        /*Map map = CitDavidJordan.getCurrentGame().getMap();
         Location[][] location = map.getLocations();
-        Player player = CitDavidJordan.getCurrentGame().getPlayer();
+        Player player = CitDavidJordan.getCurrentGame().getPlayer();*/
         
         if ("Q".equals(choice)) {
-            GameMenuView gameMenu = new GameMenuView();
+            MenuGameView gameMenu = new MenuGameView();
             gameMenu.display();
         } else {
             char r = choice.charAt(0);
@@ -103,15 +111,26 @@ public class MapView {
         
             //set location and isVisited
             Location newPlayerLocation = location[rowChoice][colChoice];
+            
+            //check for a Brody Encounter
+            Actor brody = Actor.Brody;
+            if (newPlayerLocation == brody.getLocation()){
+                Scene[] scene = null;
+                SceneControl.startSceneView(scene[SceneType.brodyencounter.ordinal()]);
+            }
+            else {
+            
             newPlayerLocation.setVisited(true);
             player.setLocation(newPlayerLocation);
             
             //get scene to start view
             Scene scene = newPlayerLocation.getScene();
             SceneControl.startSceneView(scene);
-            
+            }
         }
     }
+
+    
 }
     /*void displayMenu() {
         

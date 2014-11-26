@@ -13,12 +13,12 @@ import citdavidjordan.model.Map;
 import citdavidjordan.model.Path;
 import citdavidjordan.model.Player;
 import citdavidjordan.model.Scene;
-import citdavidjordan.view.HomeworkHelpView;
-import static citdavidjordan.view.HomeworkHelpView.homeworkHelpView;
+import citdavidjordan.view.Scene5HomeworkView;
+import static citdavidjordan.view.Scene5HomeworkView.homeworkHelpView;
 import citdavidjordan.view.StartProgramView;
 import static citdavidjordan.view.StartProgramView.startProgramView;
-import citdavidjordan.view.StartTriviaView;
-import static citdavidjordan.view.StartTriviaView.startTriviaView;
+import citdavidjordan.view.Scene1TriviaView;
+import static citdavidjordan.view.Scene1TriviaView.startTriviaView;
 
 /**
  *
@@ -128,10 +128,10 @@ public class CitDavidJordan {
         String locationInfo = locationOne.toString();
         System.out.println(locationInfo); */
         
-       //StartTriviaView.startTriviaView = new StartTriviaView();
+       //StartTriviaView.startTriviaView = new Scene1TriviaView();
        //startTriviaView.startTrivia();
         
-        //HomeworkHelpView.homeworkHelpView = new HomeworkHelpView();
+        //HomeworkHelpView.homeworkHelpView = new Scene5HomeworkView();
         //homeworkHelpView.homeworkHelp();
         
     } 

@@ -14,9 +14,9 @@ import java.util.Scanner;
 *
 * @author THERIAULT
 */
-public class MainMenuView extends MenuView {
+public class MenuMainView extends MenuView {
     
-    public MainMenuView(){
+    public MenuMainView(){
     
     //private final String MENU = 
             super(""

@@ -12,9 +12,9 @@ import java.util.Scanner;
  *
  * @author THERIAULT
  */
-public class GameMenuView extends MenuView {
+public class MenuGameView extends MenuView {
      
-    public GameMenuView() {
+    public MenuGameView() {
         
         super(""
             + "\n-----------------------------------------------"

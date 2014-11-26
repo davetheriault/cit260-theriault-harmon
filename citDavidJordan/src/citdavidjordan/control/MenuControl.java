@@ -11,13 +11,13 @@ import citdavidjordan.model.Game;
 import citdavidjordan.model.InventoryItem;
 import citdavidjordan.model.Location;
 import citdavidjordan.model.Map;
-import citdavidjordan.view.GameIntroView;
-import citdavidjordan.view.HelpMenuView;
-import citdavidjordan.view.HomeworkHelpView;
+import citdavidjordan.view.StartGameIntroView;
+import citdavidjordan.view.MenuHelpView;
+import citdavidjordan.view.Scene5HomeworkView;
 import citdavidjordan.view.MapView;
-import citdavidjordan.view.NumberGameView;
-import citdavidjordan.view.RPSGameView;
-import citdavidjordan.view.StartTriviaView;
+import citdavidjordan.view.Scene2NumberView;
+import citdavidjordan.view.Scene4RPSView;
+import citdavidjordan.view.Scene1TriviaView;
 import java.util.Random;
 
 /**
@@ -36,7 +36,7 @@ public class MenuControl {
 
         //display game menu
 
-        GameIntroView gameMenu = new GameIntroView();
+        StartGameIntroView gameMenu = new StartGameIntroView();
         gameMenu.displayMenu();
 
     }
@@ -49,7 +49,7 @@ public class MenuControl {
 
     public static void displayHelpMenu() {
 
-        HelpMenuView helpMenu = new HelpMenuView();
+        MenuHelpView helpMenu = new MenuHelpView();
         helpMenu.display();
 
     }
@@ -73,13 +73,13 @@ public class MenuControl {
     
     public static void displayPlayground() {
         
-        StartTriviaView triviaView = new StartTriviaView();
-        triviaView.startTrivia();
+        Scene1TriviaView triviaView = new Scene1TriviaView();
+        triviaView.start();
     }
 
     public static void displayMonkeyBars() {
-        NumberGameView numGame = new NumberGameView();
-        numGame.numberGame();
+        Scene2NumberView numGame = new Scene2NumberView();
+        numGame.start();
     }
 
     public static void displayTreeStump() {
@@ -88,14 +88,14 @@ public class MenuControl {
 
     public static void displayDodgeballCourt() {
         
-        RPSGameView rpsGame = new RPSGameView();
-        rpsGame.startRPSGame();
+        Scene4RPSView rpsGame = new Scene4RPSView();
+        rpsGame.start();
         
     }
 
     public static void displaySteps() {
-        HomeworkHelpView homeworkHelp = new HomeworkHelpView();
-        homeworkHelp.homeworkHelp();       
+        Scene5HomeworkView homeworkHelp = new Scene5HomeworkView();
+        homeworkHelp.start();
     }
 
     public static void displayHopscotch() {

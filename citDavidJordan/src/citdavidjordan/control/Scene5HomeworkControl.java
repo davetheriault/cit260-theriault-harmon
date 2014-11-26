@@ -6,19 +6,21 @@
 
 package citdavidjordan.control;
 
+import citdavidjordan.exceptions.Scene5HomeworkException;
+
 /**
  *
  * @author Deann_2
  */
-public class HomeworkHelpControl {
+public class Scene5HomeworkControl {
     
-    public String homeworkHelp(double guess) {
+    public String homeworkHelp(double guess) throws Scene5HomeworkException {
         if(guess < 0) {
-            return "That guess is too low.";
+            throw new Scene5HomeworkException("That guess is too low.");
         }
         
         if(guess > 5) {
-            return "That guess is too high.";
+            throw new Scene5HomeworkException("That guess is too high.");
         }
 
         double total = 1.10;

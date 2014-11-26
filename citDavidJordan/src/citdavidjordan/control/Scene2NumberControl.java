@@ -11,7 +11,7 @@ package citdavidjordan.control;
  *
  * @author THERIAULT
  */
-public class NumberGameControl {
+public class Scene2NumberControl {
     
     public String numberGame(int guess, long currentTimeInSeconds) {
         

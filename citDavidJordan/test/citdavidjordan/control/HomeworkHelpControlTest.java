@@ -19,7 +19,7 @@ public class HomeworkHelpControlTest {
     }
 
     /**
-     * Test of homeworkHelp method, of class HomeworkHelpControl.
+     * Test of homeworkHelp method, of class Scene5HomeworkControl.
      */
     @Test
     public void testHomeworkHelp() {
@@ -29,7 +29,7 @@ public class HomeworkHelpControlTest {
         
         System.out.println("\tTest Case #1");
         double guess = 0.05;
-        HomeworkHelpControl instance = new HomeworkHelpControl();
+        Scene5HomeworkControl instance = new Scene5HomeworkControl();
         String expResult = "That is the correct answer!";
         String result = instance.homeworkHelp(guess);
         assertEquals(expResult, result);

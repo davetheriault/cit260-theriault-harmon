@@ -12,7 +12,7 @@ import java.util.Scanner;
  *
  * @author THERIAULT
  */
-public class GameIntroView {
+public class StartGameIntroView {
     
     //Player player = ;
     
@@ -45,8 +45,8 @@ public class GameIntroView {
 
 
     private void doAction() {
-        GameMenuView gameMenu;
-        gameMenu = new GameMenuView();
+        MenuGameView gameMenu;
+        gameMenu = new MenuGameView();
         gameMenu.display();
     }
     

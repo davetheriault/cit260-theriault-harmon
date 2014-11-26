@@ -19,7 +19,7 @@ public class TriviaGameControlTest {
     }
 
     /**
-     * Test of triviaGame method, of class TriviaGameControl.
+     * Test of triviaGame method, of class Scene1TriviaControl.
      */
     @Test
     public void testTriviaGame() {
@@ -29,7 +29,7 @@ public class TriviaGameControlTest {
         
         System.out.println("\tTest Case #1");
         String guess = "Burley, ID";
-        TriviaGameControl instance = new TriviaGameControl();
+        Scene1TriviaControl instance = new Scene1TriviaControl();
         String expResult = "That is not the correct input, make sure you type the answer exactly.";
         String result = instance.triviaGame(guess);
         assertEquals(expResult, result);

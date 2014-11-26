@@ -13,10 +13,10 @@ import java.util.Scanner;
  *
  * @author Deann_2
  */
-public class NumberGameView {
+public class Scene2NumberView {
     
-    public static NumberGameView NumberGameView;
-    public void numberGame() {
+    public static Scene2NumberView NumberGameView;
+    public void start() {
         // display game description
         this.displayDescription();
     }

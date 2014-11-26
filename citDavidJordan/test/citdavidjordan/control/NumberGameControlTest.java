@@ -18,7 +18,7 @@ public class NumberGameControlTest {
     }
 
     /**
-     * Test of numberGame method, of class NumberGameControl.
+     * Test of numberGame method, of class Scene2NumberControl.
      */
     @Test
     public void testNumberGame() {
@@ -32,7 +32,7 @@ public class NumberGameControlTest {
         System.out.println("\tTest case #1");
         int guess = 5;
         long currentTimeInSeconds = 10000;
-        NumberGameControl instance = new NumberGameControl();
+        Scene2NumberControl instance = new Scene2NumberControl();
         String expResult = "Sorry. The number was 8.";
         String result = instance.numberGame(guess, currentTimeInSeconds);
         assertEquals(expResult, result);

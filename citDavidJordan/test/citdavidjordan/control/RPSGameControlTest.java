@@ -18,7 +18,7 @@ public class RPSGameControlTest {
     }
 
     /**
-     * Test of rpsGame method, of class RPSGameControl.
+     * Test of rpsGame method, of class Scene4RPSControl.
      */
     @Test
     public void testRpsGame() {
@@ -28,7 +28,7 @@ public class RPSGameControlTest {
         
         System.out.println("\tTest Case 1");
         int choice = 1;
-        RPSGameControl instance = new RPSGameControl();
+        Scene4RPSControl instance = new Scene4RPSControl();
         String expResult1 = "Paper covers rock. You lose.";
         String expResult2 = "Rock smashes scissors. You win!";
         String expResult3 = "It'\''s a tie! Play again.";

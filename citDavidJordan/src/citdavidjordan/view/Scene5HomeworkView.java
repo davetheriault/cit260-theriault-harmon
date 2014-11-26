@@ -6,6 +6,7 @@
 
 package citdavidjordan.view;
 
+import citdavidjordan.exceptions.Scene5HomeworkException;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -14,9 +15,9 @@ import java.util.logging.Logger;
  *
  * @author Deann_2
  */
-public class HomeworkHelpView {
-    public static HomeworkHelpView homeworkHelpView;
-    public void homeworkHelp() {
+public class Scene5HomeworkView {
+    public static Scene5HomeworkView homeworkHelpView;
+    public void start() {
         
         String YorN2 = null;
         do {
@@ -29,7 +30,7 @@ public class HomeworkHelpView {
         } while (!"N".equals(YorN2));
     }
 
-    private void displayPetition() throws Exception {
+    public void displayPetition() throws Scene5HomeworkException {
         boolean valid = false; //indicates if name has been received
         String YorN2 = null;
         Scanner keyboard = new Scanner(System.in); //keyboard input stream
@@ -53,11 +54,11 @@ public class HomeworkHelpView {
             //if name invalid
             //if name invalid
             if (YorN2.length() < 1) {
-                throw new Exception("Invalid Selection - Please enter 'Y' for yes or 'N' for no.");
+                throw new Scene5HomeworkException("Invalid Selection - Please enter 'Y' for yes or 'N' for no.");
                 
             } if (!"Y".equals(YorN2) & !"N".equals(YorN2)
                 & !"YES".equals(YorN2) & !"NO".equals(YorN2)) {
-                throw new Exception("Invalid Selection - Please enter 'Y' for yes or 'N' for no.");
+                throw new Scene5HomeworkException("Invalid Selection - Please enter 'Y' for yes or 'N' for no.");
             } if ("Y".equals(YorN2)) {
                 this.askQuestion();
             }

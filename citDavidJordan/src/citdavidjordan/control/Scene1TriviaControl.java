@@ -10,7 +10,7 @@ package citdavidjordan.control;
  *
  * @author Deann_2
  */
-public class TriviaGameControl {
+public class Scene1TriviaControl {
     
     public String triviaGame(String guess) {
         
