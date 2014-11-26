@@ -4,8 +4,10 @@
  * and open the template in the editor.
  */
 
-package citdavidjordan.view;
+package citbyui.cit260.playgroundhustle.views;
 
+import citbyui.cit260.playgroundhustle.views.MapView;
+import citdavidjordan.exceptions.Scene2NumberException;
 import citdavidjordan.exceptions.Scene5HomeworkException;
 import java.util.Scanner;
 import java.util.logging.Level;
@@ -30,7 +32,7 @@ public class Scene5HomeworkView {
         } while (!"N".equals(YorN2));
     }
 
-    public void displayPetition() throws Scene5HomeworkException {
+    public void displayPetition() throws Scene5HomeworkException, Scene2NumberException {
         boolean valid = false; //indicates if name has been received
         String YorN2 = null;
         Scanner keyboard = new Scanner(System.in); //keyboard input stream
@@ -69,7 +71,7 @@ public class Scene5HomeworkView {
         }
     }
 
-    private void quitMessage() {
+    private void quitMessage() throws Scene2NumberException {
         System.out.println(    "\n                                                 "
                              + "\nJohnny: \"I don't want your help anyway.         "
                              + "\n\t Go back to where you came from. \"");
@@ -83,7 +85,7 @@ public class Scene5HomeworkView {
     }
 
     @SuppressWarnings("UnusedAssignment")
-    private void askQuestion() {
+    private void askQuestion() throws Scene2NumberException {
         String playerAnswer = null;
         boolean valid = false;
         Scanner keyboard = new Scanner(System.in);

@@ -3,129 +3,106 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package citdavidjordan.view;
+package citbyui.cit260.playgroundhustle.views;
 
 import citdavidjordan.CitDavidJordan;
 import citdavidjordan.control.MarbleControl;
 import citdavidjordan.control.MenuControl;
+import citdavidjordan.control.ProgramControl;
 import citdavidjordan.control.Scene4RPSControl;
-import citdavidjordan.exceptions.SceneBrodyEncounterException;
 import citdavidjordan.model.InventoryItem;
 import citdavidjordan.model.Item;
 import citdavidjordan.model.Player;
 import java.util.Scanner;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
  * @author THERIAULT
  */
-public class SceneBrodyEncounterView {
+public class Scene4RPSView {
     
-    public static SceneBrodyEncounterView bEncounterView;
+    public static Scene4RPSView rpsGameView;
     
     Player player = CitDavidJordan.getCurrentGame().getPlayer();
-    InventoryItem[] inventory = CitDavidJordan.getCurrentGame().getInventory();
-
-    public void start() {
-        
-        //calculate brody's demands
-        String request = this.payUp();
-        
-        //Display the banner screen
-        this.displayIntro(1, request);
-        
-        boolean valid = false;
-        while(!valid){
-            try {//Get the players answer
-                String PorR = this.payOrRun(request);
-            } catch (SceneBrodyEncounterException ex) {
-                System.out.println(ex.getMessage());
-                continue;
-            }
-        }
-    }
     
-    public String payUp() {
-        if (inventory[Item.alley.ordinal()].getAmount() > 0){
-            return "alley"; 
-        } if (inventory[Item.steely.ordinal()].getAmount() > 0){
-            return "steely";
-        } if (inventory[Item.swirly.ordinal()].getAmount() > 0){
-            return "swirly";
-        } else {
-        return null;
-        }
+    public void start(){
+               
+        //Display the banner screen
+        this.displayIntro();
+        
+        //Get the players answer
+        String YorN = this.RPSgetYorN();
+                
+        //Create a new player
+        //Player player = ProgramControl.createPlayer(playerName);
+        
+        //DISPLAY a customized welcome message
+        //this.displayWelcomeMessage(player);
+        
+        //DISPLAY the main menu
+        //MainMenuView mainMenu = new MainMenuView();
+        //mainMenu.displayMenu();
+        
+        //END/
+        
+        
     }
 
-    private void displayIntro(int number, String request) {
+    private void displayIntro() {
         
         System.out.println("\n\n\n************************************************************");
         
-        
-        System.out.println(    "\n As you walk over to ...  "
-                             + "\n todo insert story text here... "
-                            
-                             + "\n Brody: \"Hey Little-Miss-" + player.getName() + "-Pants."//todo get player name <-
-                             + "\n\t Where do you think you're going?"
-                             + "\n\t I never said you could go past me."
-                             + "\n\t Tell you what... I'll let you pass for " + number + " " + request + " marble.\"");
+        System.out.println(    "\n You approach the dodgeball court to find Rocky. Everyone "
+                             + "\n at Oak Elementary knows about Rocky and his obsession    "
+                             + "\n with the game 'Rock Paper Scissors'. He spends his lunch "
+                             + "\n hours challenging other kids to play against him for     "
+                             + "\n marbles.                                                 "
+                             + "\n                                                          "
+                             + "\n Rocky: \"Hey there " + player.getName() + "."//todo get player name <-
+                             + "\n\t I heard that you are looking to score some easy marbles."
+                             + "\n\t You wanna try me in a game of 'Rock Paper Scissors'?"
+                             + "\n\t Loser gives the winner 5 marbles.\"");
         
     }
 
-    private String payOrRun(String r) throws SceneBrodyEncounterException {
+    private String RPSgetYorN() {
         
         boolean valid = false; //indicates if name has been received
-        String PorR = null;
+        String YorN = null;
         Scanner keyboard = new Scanner(System.in); //keyboard input stream
         
         while(!valid) { //while a valid name has not been retrieved
             
             //prompt for player's name
-            System.out.println("You may choose to pay Brody and continue to your destination,\n"
-                    + "or to make a run for it. What would you like to do? \n"
-                    + "P - Pay Up \n"
-                    + "R - Run \n");
+            System.out.println("(Y/N)?");
             
             //get name from keyboard and trim off blanks
-            PorR = keyboard.nextLine();
-            PorR = PorR.trim();
-            PorR = PorR.toUpperCase();
+            YorN = keyboard.nextLine();
+            YorN = YorN.trim();
+            YorN = YorN.toUpperCase();
             
             InventoryItem[] marbles = CitDavidJordan.getCurrentGame().getInventory();
-            if (r == null) {
+            if (marbles[Item.swirly.ordinal()].getAmount() < 5) {
                 System.out.println("Rocky: \"Oh, wait. Only " + marbles[Item.swirly.ordinal()].getAmount() + " Swirlys? \n"
                         + "It looks like you don't have enough marbles little-miss-" + player.getName() + ".\n"
                         + "Come back when you have enough");
             }
             //if name invalid
-            if (PorR.length() < 1) {
-                throw new SceneBrodyEncounterException("Invalid Selection - Please enter 'P' or 'R'.");    
-            } 
-            if (!"P".equals(PorR) & !"R".equals(PorR)) {
-                throw new SceneBrodyEncounterException("Invalid Selection - Please enter 'P' or 'R'.");
-            }
-            if ("P".equals(PorR) && r == null) {
-                throw new SceneBrodyEncounterException("You currently have no marbles. You can't choose this option.");
-            } 
-            if ("P".equals(PorR)) {
-                MarbleControl.adjustMarbles(-1, r);
-                System.out.println("You give Brody 1 " + r + " marble. \n\n"
-                        + "Brody: \"Thanks chump.\" \n\n"
-                        + "Press <Enter> to continue.");
-                Scanner keyEnter = new Scanner(System.in);
-                keyEnter.nextLine();
-                //*****************************************************************************************************
-                //TODO ENTER CODE TO RETURN TO MAPVIEW DOACTION TO MOVE PLAYER TO THERE PREVIOUSLY SELECTED DESTINATION
-                //*****************************************************************************************************
-            }
-            else {
-                //TODO Insert Run Away Function
+            if (YorN.length() < 1) {
+                System.out.println("Invalid Selection - Please enter 'Y' for yes or 'N' for no.");
+                continue;
+            } if (!"Y".equals(YorN) & !"N".equals(YorN)
+                    & !"YES".equals(YorN) & !"NO".equals(YorN)) {
+                System.out.println("Invalid Selection - Please enter 'Y' for yes or 'N' for no.");
+                continue;
+            } if ("N".equals(YorN) | "NO".equals(YorN)) {
+                this.displayQuitMessage();
+            } else {
+                this.displayRPSGame();
             }
         }
         
-        return PorR;
+        return YorN;
     }
 
     private void displayQuitMessage() {
@@ -320,9 +297,4 @@ public class SceneBrodyEncounterView {
     }
 
     
-
-    
 }
-    
-    
-

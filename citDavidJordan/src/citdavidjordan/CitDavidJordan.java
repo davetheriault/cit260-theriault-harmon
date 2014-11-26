@@ -13,12 +13,12 @@ import citdavidjordan.model.Map;
 import citdavidjordan.model.Path;
 import citdavidjordan.model.Player;
 import citdavidjordan.model.Scene;
-import citdavidjordan.view.Scene5HomeworkView;
-import static citdavidjordan.view.Scene5HomeworkView.homeworkHelpView;
-import citdavidjordan.view.StartProgramView;
-import static citdavidjordan.view.StartProgramView.startProgramView;
-import citdavidjordan.view.Scene1TriviaView;
-import static citdavidjordan.view.Scene1TriviaView.startTriviaView;
+import citbyui.cit260.playgroundhustle.views.Scene5HomeworkView;
+import static citbyui.cit260.playgroundhustle.views.Scene5HomeworkView.homeworkHelpView;
+import citbyui.cit260.playgroundhustle.views.StartProgramView;
+import static citbyui.cit260.playgroundhustle.views.StartProgramView.startProgramView;
+import citbyui.cit260.playgroundhustle.views.Scene1TriviaView;
+import static citbyui.cit260.playgroundhustle.views.Scene1TriviaView.startTriviaView;
 
 /**
  *

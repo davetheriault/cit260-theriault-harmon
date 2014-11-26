@@ -12,13 +12,13 @@ import citdavidjordan.model.Game;
 import citdavidjordan.model.InventoryItem;
 import citdavidjordan.model.Location;
 import citdavidjordan.model.Map;
-import citdavidjordan.view.StartGameIntroView;
-import citdavidjordan.view.MenuHelpView;
-import citdavidjordan.view.Scene5HomeworkView;
-import citdavidjordan.view.MapView;
-import citdavidjordan.view.Scene2NumberView;
-import citdavidjordan.view.Scene4RPSView;
-import citdavidjordan.view.Scene1TriviaView;
+import citbyui.cit260.playgroundhustle.views.StartGameIntroView;
+import citbyui.cit260.playgroundhustle.views.MenuHelpView;
+import citbyui.cit260.playgroundhustle.views.Scene5HomeworkView;
+import citbyui.cit260.playgroundhustle.views.MapView;
+import citbyui.cit260.playgroundhustle.views.Scene2NumberView;
+import citbyui.cit260.playgroundhustle.views.Scene4RPSView;
+import citbyui.cit260.playgroundhustle.views.Scene1TriviaView;
 import java.util.Random;
 
 /**
@@ -171,7 +171,7 @@ public class MenuControl {
         }
     }
 
-    public static void displayMap() {
+    public static void displayMap() throws Scene2NumberException {
         
         Game game = CitDavidJordan.getCurrentGame();
         Map map = game.getMap();

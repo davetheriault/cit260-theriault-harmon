@@ -4,8 +4,9 @@
  * and open the template in the editor.
  */
 
-package citdavidjordan.view;
+package citbyui.cit260.playgroundhustle.views;
 
+import citbyui.cit260.playgroundhustle.views.MapView;
 import citdavidjordan.exceptions.Scene2NumberException;
 import java.util.Random;
 import java.util.Scanner;
@@ -68,7 +69,7 @@ public class Scene2NumberView {
         }
     }
 
-    private void quitMessage() {
+    private void quitMessage() throws Scene2NumberException {
         System.out.println(    "\n                                                 "
                              + "\nSally: \"I did not think you could handle it.    "
                              + "\n Go back to where you came from.                 ");
@@ -82,7 +83,7 @@ public class Scene2NumberView {
     }
 
     @SuppressWarnings("UnusedAssignment")
-    private void askQuestion() {
+    private void askQuestion() throws Scene2NumberException {
         
         System.out.println("\n\n\n************************************************************");
         
@@ -98,7 +99,7 @@ public class Scene2NumberView {
         
     }
         
-        private void anotherChance(int correctNo) {
+        private void anotherChance(int correctNo) throws Scene2NumberException {
             
         
         /* Steps for game

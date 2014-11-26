@@ -4,9 +4,11 @@
  * and open the template in the editor.
  */
 
-package citdavidjordan.view;
+package citbyui.cit260.playgroundhustle.views;
 
+import citbyui.cit260.playgroundhustle.views.MapView;
 import citdavidjordan.exceptions.Scene1TriviaException;
+import citdavidjordan.exceptions.Scene2NumberException;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -61,7 +63,7 @@ public class Scene1TriviaView {
                              + "\n************************************************************");
     }
 
-    private String getPlayerResponse() throws Scene1TriviaException {
+    private String getPlayerResponse() throws Scene1TriviaException, Scene2NumberException {
         boolean valid = false; //indicates if name has been received
         String playerResponse = null;
         Scanner keyboard = new Scanner(System.in); //keyboard input stream
@@ -95,7 +97,7 @@ public class Scene1TriviaView {
         return playerResponse;
     }
 
-    private void triviaQuestion() {
+    private void triviaQuestion() throws Scene2NumberException {
         String playerAnswer = null;
         boolean valid = false;
         Scanner keyboard = new Scanner(System.in);
@@ -154,7 +156,7 @@ public class Scene1TriviaView {
             }
         }
 
-    private void quitMessage() {
+    private void quitMessage() throws Scene2NumberException {
         System.out.println(    "\n                                                 "
                              + "\nJerry: \"You must be one of those guys who is not"
                              + "\n\t to smart!\""

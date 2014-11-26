@@ -9,14 +9,14 @@ import citdavidjordan.CitDavidJordan;
 import citdavidjordan.exceptions.Scene2NumberException;
 import citdavidjordan.model.Scene;
 import citdavidjordan.model.SceneType;
-import citdavidjordan.view.Scene2NumberView;
-import citdavidjordan.view.Scene4RPSView;
-import citdavidjordan.view.Scene1TriviaView;
-import citdavidjordan.view.Scene3ShellView;
-import citdavidjordan.view.Scene5HomeworkView;
-import citdavidjordan.view.Scene6BullyWatchView;
-import citdavidjordan.view.Scene7PayBrockView;
-import citdavidjordan.view.SceneBrodyEncounterView;
+import citbyui.cit260.playgroundhustle.views.Scene2NumberView;
+import citbyui.cit260.playgroundhustle.views.Scene4RPSView;
+import citbyui.cit260.playgroundhustle.views.Scene1TriviaView;
+import citbyui.cit260.playgroundhustle.views.Scene3ShellView;
+import citbyui.cit260.playgroundhustle.views.Scene5HomeworkView;
+import citbyui.cit260.playgroundhustle.views.Scene6BullyWatchView;
+import citbyui.cit260.playgroundhustle.views.Scene7PayBrockView;
+import citbyui.cit260.playgroundhustle.views.SceneBrodyEncounterView;
 
 /**
  *

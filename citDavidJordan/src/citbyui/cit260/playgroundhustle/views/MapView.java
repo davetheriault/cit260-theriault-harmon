@@ -3,11 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package citdavidjordan.view;
+package citbyui.cit260.playgroundhustle.views;
 
 import citdavidjordan.CitDavidJordan;
 import citdavidjordan.control.SceneControl;
 import citdavidjordan.exceptions.MapControlException;
+import citdavidjordan.exceptions.Scene2NumberException;
 import citdavidjordan.model.Actor;
 import citdavidjordan.model.Game;
 import citdavidjordan.model.Location;
@@ -38,7 +39,7 @@ public class MapView {
             + "\n(Q - Quit)"
             + "\n";
         
-    public void displayMenu() {
+    public void displayMenu() throws Scene2NumberException {
         
         String selection = "";
         do {
@@ -94,7 +95,7 @@ public class MapView {
         return userSelection;
     }
 
-    public void doAction(String choice) {
+    public void doAction(String choice) throws Scene2NumberException {
         
         /*Map map = CitDavidJordan.getCurrentGame().getMap();
         Location[][] location = map.getLocations();
