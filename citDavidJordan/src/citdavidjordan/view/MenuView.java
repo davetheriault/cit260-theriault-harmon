@@ -5,6 +5,10 @@
  */
 package citdavidjordan.view;
 
+import citdavidjordan.exceptions.MenuControlException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author THERIAULT
@@ -23,11 +27,20 @@ public abstract class MenuView implements ViewInterface {
         
         do {
             System.out.println(promptMessage); //display Menu
-        
-            selection = this.getInput(); // get the user selection
-            //selection = input.charAt(0); //get first character of a string
+            try {
+                selection = this.getInput(); // get the user selection
+                //selection = input.charAt(0); //get first character of a string
+            } catch (MenuControlException ex) {
+                System.out.println(ex.getMessage());
+                continue;
+            }
 
-            this.doAction(selection); //do action based on selection
+            try {
+                this.doAction(selection); //do action based on selection
+            } catch (MenuControlException ex) {
+                System.out.println(ex.getMessage());
+                continue;
+            }
 
         } while (!"Q".equals(selection)); //not Quit
     }

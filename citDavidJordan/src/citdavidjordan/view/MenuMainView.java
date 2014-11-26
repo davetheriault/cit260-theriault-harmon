@@ -8,6 +8,7 @@ package citdavidjordan.view;
 import citdavidjordan.CitDavidJordan;
 import citdavidjordan.control.GameControl;
 import citdavidjordan.control.MenuControl;
+import citdavidjordan.exceptions.MenuControlException;
 import java.util.Scanner;
 
 /**
@@ -32,7 +33,7 @@ public class MenuMainView extends MenuView {
     }
     
     @Override
-    public String getInput() {
+    public String getInput() throws MenuControlException {
         boolean valid = false; //indicates if name has been received
         String userSelection = null;
 
@@ -50,16 +51,16 @@ public class MenuMainView extends MenuView {
 
         //if name invalid
             if (userSelection.length() < 1) {
-                System.out.println("Invalid Selection.");
-                continue;
+                throw new MenuControlException("Invalid Selection.");
+                
             } 
             
         //if not a valid option
             if (!"N".equals(userSelection) & !"L".equals(userSelection)
                 & !"H".equals(userSelection) & !"Q".equals(userSelection)
                 & !"S".equals(userSelection)){
-                System.out.println("Invalid Selection.");
-                continue;
+                throw new MenuControlException("Invalid Selection.");
+                
             } 
 
             break;

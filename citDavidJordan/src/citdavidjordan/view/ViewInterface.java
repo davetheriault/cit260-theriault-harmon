@@ -5,6 +5,8 @@
  */
 package citdavidjordan.view;
 
+import citdavidjordan.exceptions.MenuControlException;
+
 /**
  *
  * @author THERIAULT
@@ -12,7 +14,7 @@ package citdavidjordan.view;
 public interface ViewInterface {
     
     public void display();
-    public String getInput();
-    public void doAction(String value);
+    public String getInput() throws MenuControlException;
+    public void doAction(String value) throws MenuControlException;
     
 }

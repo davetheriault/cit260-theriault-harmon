@@ -6,21 +6,19 @@
 
 package citdavidjordan.control;
 
-import org.junit.Test;
-import static org.junit.Assert.*;
-
 /**
  *
  * @author Deann_2
  */
+
 public class HomeworkHelpControlTest {
-    
+    /*
     public HomeworkHelpControlTest() {
     }
 
-    /**
-     * Test of homeworkHelp method, of class Scene5HomeworkControl.
-     */
+    
+   //  * Test of homeworkHelp method, of class Scene5HomeworkControl.
+     
     @Test
     public void testHomeworkHelp() {
         System.out.println("homeworkHelp");
@@ -75,5 +73,5 @@ public class HomeworkHelpControlTest {
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
     }
-    
+    */
 }
