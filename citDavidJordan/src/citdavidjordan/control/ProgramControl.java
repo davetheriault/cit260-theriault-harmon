@@ -6,6 +6,7 @@
 package citdavidjordan.control;
 
 import citdavidjordan.CitDavidJordan;
+import citdavidjordan.exceptions.ProgramControlException;
 import citdavidjordan.model.Player;
 
 /**
@@ -14,7 +15,7 @@ import citdavidjordan.model.Player;
  */
 public class ProgramControl {
 
-    public static Player createPlayer(String playerName) {
+    public static Player createPlayer(String playerName) throws ProgramControlException{
         
         Player player = new Player();
         player.setName(playerName);

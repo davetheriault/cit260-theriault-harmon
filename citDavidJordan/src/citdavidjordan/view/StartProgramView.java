@@ -3,9 +3,9 @@
 * To change this template file, choose Tools | Templates
 * and open the template in the editor.
 */
-package citbyui.cit260.playgroundhustle.views;
-import citbyui.cit260.playgroundhustle.views.MenuMainView;
+package citdavidjordan.view;
 import citdavidjordan.control.ProgramControl;
+import citdavidjordan.exceptions.ProgramControlException;
 import citdavidjordan.model.Player;
 import java.util.Scanner;
 /**
@@ -16,27 +16,31 @@ import java.util.Scanner;
         
         public static StartProgramView startProgramView;
 
-        public void startProgram(){
-//BEGIN
-//Display the banner screen
+        public void startProgram() throws ProgramControlException{
 
-            this.displayBanner();
-//Get the players name
-
-            String playerName = this.getPlayerName();
-//Create a new player
-
-            Player player = ProgramControl.createPlayer(playerName);
-//DISPLAY a customized welcome message
-
-            this.displayWelcomeMessage(player);
-//DISPLAY the main menu
-
-            MenuMainView mainMenu = new MenuMainView();
-
-            mainMenu.display();
-//END/
-
+            while(true){
+                //Display the banner screen
+                this.displayBanner();
+            
+            //Get the players name
+                String playerName;
+            
+                try {
+                    playerName = this.getPlayerName();
+                } catch (ProgramControlException ex) {
+                    System.out.println(ex.getMessage());
+                    continue;
+                }
+            
+                Player player = ProgramControl.createPlayer(playerName);
+            
+            //DISPLAY a customized welcome message
+                this.displayWelcomeMessage(player);
+            
+            //DISPLAY the main menu
+                MenuMainView mainMenu = new MenuMainView();
+                mainMenu.display();
+            }
         }
 
         public void displayBanner() {
@@ -59,7 +63,7 @@ import java.util.Scanner;
 
         }
 
-        public String getPlayerName() {
+        public String getPlayerName() throws ProgramControlException {
 
             boolean valid = false; //indicates if name has been received
 
@@ -80,9 +84,9 @@ import java.util.Scanner;
 
                 if (playerName.length() < 1) {
 
-                    System.out.println("Invalid name - the name must not be blank.");
+                    throw new ProgramControlException("Invalid name - the name must not be blank.");
 
-                    continue;
+                    
 
                 }
 

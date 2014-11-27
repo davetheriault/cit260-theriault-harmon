@@ -6,6 +6,8 @@
 package citdavidjordan.control;
 
 import citdavidjordan.CitDavidJordan;
+import citdavidjordan.exceptions.MarbleControlException;
+import citdavidjordan.exceptions.ProgramControlException;
 import citdavidjordan.model.InventoryItem;
 import citdavidjordan.model.Item;
 
@@ -19,8 +21,9 @@ public class MarbleControl {
     static InventoryItem[] naotoInventory = CitDavidJordan.getCurrentGame().getNaotosInventory();
     private static int amount = 0;
     private static int adjusted = 0;
+        
     
-    public static void adjustMarbles( int add, String type) {
+    public static void adjustMarbles( int add, String type) throws MarbleControlException{
         
         if ("swirly".equals(type)) {
             amount = inventory[Item.swirly.ordinal()].getAmount();

@@ -3,7 +3,7 @@
 * To change this template file, choose Tools | Templates
 * and open the template in the editor.
 */
-package citbyui.cit260.playgroundhustle.views;
+package citdavidjordan.view;
 
 import citdavidjordan.CitDavidJordan;
 import citdavidjordan.control.GameControl;

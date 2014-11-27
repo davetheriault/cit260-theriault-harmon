@@ -4,9 +4,9 @@
  * and open the template in the editor.
  */
 
-package citbyui.cit260.playgroundhustle.views;
+package citdavidjordan.view;
 
-import citbyui.cit260.playgroundhustle.views.MapView;
+import citdavidjordan.view.MapView;
 import citdavidjordan.exceptions.Scene2NumberException;
 import citdavidjordan.exceptions.Scene5HomeworkException;
 import java.util.Scanner;

@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package citbyui.cit260.playgroundhustle.views;
+package citdavidjordan.view;
 
-import citbyui.cit260.playgroundhustle.views.MenuGameView;
+import citdavidjordan.view.MenuGameView;
 import citdavidjordan.model.Player;
 import java.util.Scanner;
 

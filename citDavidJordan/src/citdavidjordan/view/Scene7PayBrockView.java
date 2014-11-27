@@ -3,13 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package citbyui.cit260.playgroundhustle.views;
+package citdavidjordan.view;
 
 /**
  *
  * @author THERIAULT
  */
-public class Scene3ShellView {
+public class Scene7PayBrockView {
 
     public void start() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.

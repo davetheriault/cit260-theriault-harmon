@@ -3,11 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package citbyui.cit260.playgroundhustle.views;
+package citdavidjordan.view;
 
 import citdavidjordan.control.MenuControl;
 import citdavidjordan.exceptions.MenuControlException;
+import citdavidjordan.exceptions.Scene2NumberException;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -83,8 +86,14 @@ public class MenuGameView extends MenuView {
                 MenuControl.saveGame();
                 break;
                 
-            case "M": //View Map
+            case "M": 
+            try {
+                //View Map
                 MenuControl.displayMap();
+            } catch (Scene2NumberException ex) {
+                System.out.println(ex.getMessage());
+            }
+        
                 break;
                 
             case "V": // View marbles

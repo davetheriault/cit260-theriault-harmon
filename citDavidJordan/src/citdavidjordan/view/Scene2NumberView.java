@@ -4,9 +4,9 @@
  * and open the template in the editor.
  */
 
-package citbyui.cit260.playgroundhustle.views;
+package citdavidjordan.view;
 
-import citbyui.cit260.playgroundhustle.views.MapView;
+import citdavidjordan.control.MenuControl;
 import citdavidjordan.exceptions.Scene2NumberException;
 import java.util.Random;
 import java.util.Scanner;
@@ -78,8 +78,7 @@ public class Scene2NumberView {
         Scanner keyboard = new Scanner(System.in);
         keyboard.nextLine();
         
-        MapView mapView = new MapView();
-        mapView.displayMenu();
+        MenuControl.displayMap();
     }
 
     @SuppressWarnings("UnusedAssignment")
@@ -149,8 +148,7 @@ public class Scene2NumberView {
                 keyboard = new Scanner(System.in);
                 keyboard.nextLine();
                 
-                MapView mapView = new MapView();
-                mapView.displayMenu();
+                MenuControl.displayMap();
             }
 	
             else {
@@ -172,8 +170,7 @@ public class Scene2NumberView {
         Scanner keyboard = new Scanner(System.in);
         keyboard.nextLine();
         
-        MapView mapView = new MapView();
-        mapView.displayMenu();
+        MenuControl.displayMap();
     
     }
 }

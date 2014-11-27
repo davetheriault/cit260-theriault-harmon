@@ -4,9 +4,10 @@
  * and open the template in the editor.
  */
 
-package citbyui.cit260.playgroundhustle.views;
+package citdavidjordan.view;
 
-import citbyui.cit260.playgroundhustle.views.MapView;
+import citdavidjordan.control.MenuControl;
+import citdavidjordan.view.MapView;
 import citdavidjordan.exceptions.Scene1TriviaException;
 import citdavidjordan.exceptions.Scene2NumberException;
 import java.util.Scanner;
@@ -30,13 +31,7 @@ public class Scene1TriviaView {
         do {
         try {
             //Have Them select accept or decline
-            this.getPlayerResponse();
-            
-            // If correct answer
-            // is selected, display "That is correct!". Save additional marbles and return to main menu
-            
-            // If any other answer
-            // is selected, display "That is incorrect, and return to main menu. 
+            this.getPlayerResponse(); 
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
             continue;
@@ -136,8 +131,7 @@ public class Scene1TriviaView {
                 keyboard = new Scanner(System.in);
                 keyboard.nextLine();
         
-                MapView mapView = new MapView();
-                mapView.displayMenu();
+                MenuControl.displayMap();
                 
                 // TO DO - Function to give them marbles.
             }
@@ -150,8 +144,8 @@ public class Scene1TriviaView {
                 keyboard = new Scanner(System.in);
                 keyboard.nextLine();
         
-                MapView mapView = new MapView();
-                mapView.displayMenu();
+                MenuControl.displayMap();
+
             
             }
         }
@@ -166,9 +160,9 @@ public class Scene1TriviaView {
         Scanner keyboard = new Scanner(System.in);
         keyboard.nextLine();
         
-        MapView mapView = new MapView();
-        mapView.displayMenu();
+        MenuControl.displayMap();
     }
-    }
+
+}
     
 
