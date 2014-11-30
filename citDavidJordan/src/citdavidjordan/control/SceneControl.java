@@ -6,6 +6,7 @@
 package citdavidjordan.control;
 
 import citdavidjordan.CitDavidJordan;
+import citdavidjordan.exceptions.MarbleControlException;
 import citdavidjordan.exceptions.Scene2NumberException;
 import citdavidjordan.model.Scene;
 import citdavidjordan.model.SceneType;
@@ -25,7 +26,7 @@ import citdavidjordan.view.SceneBrodyEncounterView;
 public class SceneControl {
     
     static Scene[] scenes = CitDavidJordan.getCurrentGame().getScenes();
-    public static void startSceneView(Scene scene) throws Scene2NumberException {
+    public static void startSceneView(Scene scene) throws Scene2NumberException, MarbleControlException {
         
         if (scene == scenes[SceneType.playground.ordinal()]) {
             Scene1TriviaView triviaView = new Scene1TriviaView();

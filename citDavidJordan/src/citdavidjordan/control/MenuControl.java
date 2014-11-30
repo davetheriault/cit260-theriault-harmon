@@ -6,6 +6,7 @@
 package citdavidjordan.control;
 
 import citdavidjordan.CitDavidJordan;
+import citdavidjordan.exceptions.MarbleControlException;
 import citdavidjordan.exceptions.Scene2NumberException;
 import citdavidjordan.model.Actor;
 import citdavidjordan.model.Game;
@@ -87,7 +88,7 @@ public class MenuControl {
         System.out.println("*** displayTreeStump function called ***");
     }
 
-    public static void displayDodgeballCourt() {
+    public static void displayDodgeballCourt() throws MarbleControlException {
         
         Scene4RPSView rpsGame = new Scene4RPSView();
         rpsGame.start();
