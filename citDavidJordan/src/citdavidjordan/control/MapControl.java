@@ -10,12 +10,16 @@ import citdavidjordan.model.Game;
 import citdavidjordan.model.Map;
 import citdavidjordan.model.Scene;
 import citdavidjordan.model.SceneType;
+import java.io.BufferedReader;
+import java.io.PrintWriter;
 
 /**
  *
  * @author THERIAULT
  */
 public class MapControl {
+    protected final BufferedReader keyboard = CitDavidJordan.getInFile();
+    protected final PrintWriter console = CitDavidJordan.getOutFile();
 
     static Map createMap() {
         

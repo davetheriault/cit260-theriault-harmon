@@ -5,8 +5,12 @@
  */
 package citdavidjordan.view;
 
+import citdavidjordan.CitDavidJordan;
 import citdavidjordan.view.MenuGameView;
 import citdavidjordan.model.Player;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Scanner;
 
 /**
@@ -14,6 +18,8 @@ import java.util.Scanner;
  * @author THERIAULT
  */
 public class StartGameIntroView {
+    protected final BufferedReader keyboard = CitDavidJordan.getInFile();
+    protected final PrintWriter console = CitDavidJordan.getOutFile();
     
     //Player player = ;
     
@@ -33,12 +39,11 @@ public class StartGameIntroView {
             + "\n\nAnd thus begins the Playground Hustle."
             + "\n\nPress <Enter> to continue.";
 
-    public void displayMenu() {
+    public void displayMenu() throws IOException {
         
         System.out.println(MENU); //display Menu
             
-        Scanner keyboard = new Scanner(System.in);
-        keyboard.nextLine();
+        this.keyboard.readLine();
             
         this.doAction(); //do action based on selection
        

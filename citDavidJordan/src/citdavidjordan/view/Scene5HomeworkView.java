@@ -33,7 +33,7 @@ public class Scene5HomeworkView {
             // display Johnny's petition
             this.displayPetition();
         } catch (Exception ex) {
-            System.out.println(ex.getMessage());
+            ErrorView.display(this.getClass().getName(), ex.getMessage());
         }     
         } while (!"N".equals(YorN2));
     }
@@ -42,9 +42,9 @@ public class Scene5HomeworkView {
         boolean valid = false; //indicates if name has been received
         String YorN2 = null;
 
-        System.out.println("\n\n\n************************************************************");
+        this.console.println("\n\n\n************************************************************");
         
-        System.out.println(      "*                                                          *"
+        this.console.println(      "*                                                          *"
                              + "\n* Johnny is not the brightest kid on the block,            *"
                              + "\n* and he always needs help with his homeowrk.              *"
                              + "\n* He is willing to give you 5 marbles, if you help him.    *"
@@ -52,7 +52,7 @@ public class Scene5HomeworkView {
         
         while(!valid) { //while a valid name has not been received
             
-            System.out.println("(Y/N)?");
+            this.console.println("(Y/N)?");
         
             YorN2 = this.keyboard.readLine();
             YorN2 = YorN2.trim();
@@ -77,13 +77,12 @@ public class Scene5HomeworkView {
     }
 
     private void quitMessage() throws Scene2NumberException, MarbleControlException, IOException {
-        System.out.println(    "\n                                                 "
+        this.console.println(    "\n                                                 "
                              + "\nJohnny: \"I don't want your help anyway.         "
                              + "\n\t Go back to where you came from. \"");
-        System.out.println("\nPress <Enter> to continue:");
+        this.console.println("\nPress <Enter> to continue:");
         
-        Scanner keyboard = new Scanner(System.in);
-        keyboard.nextLine();
+        this.keyboard.readLine();
         
         MapView mapView = new MapView();
         mapView.displayMenu();
@@ -93,7 +92,6 @@ public class Scene5HomeworkView {
     private void askQuestion() throws Scene2NumberException, MarbleControlException, IOException {
         String playerAnswer = null;
         boolean valid = false;
-        Scanner keyboard = new Scanner(System.in);
         
         /* Instructor: 
          * What happens when the player answers the question correct? Should'nt
@@ -103,16 +101,16 @@ public class Scene5HomeworkView {
          * the correct action based on their answer.
          */
         
-        System.out.println("\n\n\n************************************************************");
+        this.console.println("\n\n\n************************************************************");
         
-        System.out.println(    "*                                                             *" 
+        this.console.println(    "*                                                             *" 
                              + "\n* A bat and a ball cost a dollar and ten cents              *"
                              + "\n* in total. The bat costs a dollar more than the            *"
                              + "\n* ball. How much does the ball cost?​                        *");
         
-        System.out.println("\n* Enter exact answer below.");
+        this.console.println("\n* Enter exact answer below.");
         
-        playerAnswer = keyboard.nextLine();
+        playerAnswer = this.keyboard.readLine();
         playerAnswer = playerAnswer.trim();
         //String text = "12.34"; // example String
         //double value = Double.parseDouble(text);
@@ -120,12 +118,11 @@ public class Scene5HomeworkView {
         double correctAnswer = 0.05;
         
         if (value == correctAnswer) {
-            System.out.println("That is the correct answer");
+            this.console.println("That is the correct answer");
             
-            System.out.println("\nPress <Enter> to continue:");
+            this.console.println("\nPress <Enter> to continue:");
         
-            keyboard = new Scanner(System.in);
-            keyboard.nextLine();
+            this.keyboard.readLine();
         
             MapView mapView = new MapView();
             mapView.displayMenu();
@@ -133,12 +130,11 @@ public class Scene5HomeworkView {
             // TO DO - Function to give them marbles
         }
         else {
-            System.out.println("That is the incorrect answer");
+            this.console.println("That is the incorrect answer");
             
-            System.out.println("\nPress <Enter> to continue:");
+            this.console.println("\nPress <Enter> to continue:");
         
-            keyboard = new Scanner(System.in);
-            keyboard.nextLine();
+            this.keyboard.readLine(); 
         
             MapView mapView = new MapView();
             mapView.displayMenu();
