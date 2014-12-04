@@ -6,12 +6,14 @@
 
 package citdavidjordan.view;
 
-import citdavidjordan.view.MapView;
+import citdavidjordan.CitDavidJordan;
+import citdavidjordan.exceptions.MarbleControlException;
 import citdavidjordan.exceptions.Scene2NumberException;
 import citdavidjordan.exceptions.Scene5HomeworkException;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Scanner;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -19,6 +21,10 @@ import java.util.logging.Logger;
  */
 public class Scene5HomeworkView {
     public static Scene5HomeworkView homeworkHelpView;
+    
+    protected final BufferedReader keyboard = CitDavidJordan.getInFile();
+    protected final PrintWriter console = CitDavidJordan.getOutFile();
+    
     public void start() {
         
         String YorN2 = null;
@@ -32,10 +38,9 @@ public class Scene5HomeworkView {
         } while (!"N".equals(YorN2));
     }
 
-    public void displayPetition() throws Scene5HomeworkException, Scene2NumberException {
+    public void displayPetition() throws Scene5HomeworkException, Scene2NumberException, MarbleControlException, IOException {
         boolean valid = false; //indicates if name has been received
         String YorN2 = null;
-        Scanner keyboard = new Scanner(System.in); //keyboard input stream
 
         System.out.println("\n\n\n************************************************************");
         
@@ -49,7 +54,7 @@ public class Scene5HomeworkView {
             
             System.out.println("(Y/N)?");
         
-            YorN2 = keyboard.nextLine();
+            YorN2 = this.keyboard.readLine();
             YorN2 = YorN2.trim();
             YorN2 = YorN2.toUpperCase();
             
@@ -71,7 +76,7 @@ public class Scene5HomeworkView {
         }
     }
 
-    private void quitMessage() throws Scene2NumberException {
+    private void quitMessage() throws Scene2NumberException, MarbleControlException, IOException {
         System.out.println(    "\n                                                 "
                              + "\nJohnny: \"I don't want your help anyway.         "
                              + "\n\t Go back to where you came from. \"");
@@ -85,7 +90,7 @@ public class Scene5HomeworkView {
     }
 
     @SuppressWarnings("UnusedAssignment")
-    private void askQuestion() throws Scene2NumberException {
+    private void askQuestion() throws Scene2NumberException, MarbleControlException, IOException {
         String playerAnswer = null;
         boolean valid = false;
         Scanner keyboard = new Scanner(System.in);

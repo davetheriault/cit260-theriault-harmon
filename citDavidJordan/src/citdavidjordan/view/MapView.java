@@ -8,6 +8,7 @@ package citdavidjordan.view;
 import citdavidjordan.CitDavidJordan;
 import citdavidjordan.control.SceneControl;
 import citdavidjordan.exceptions.MapControlException;
+import citdavidjordan.exceptions.MarbleControlException;
 import citdavidjordan.exceptions.Scene2NumberException;
 import citdavidjordan.model.Actor;
 import citdavidjordan.model.Game;
@@ -16,10 +17,9 @@ import citdavidjordan.model.Map;
 import citdavidjordan.model.Player;
 import citdavidjordan.model.Scene;
 import citdavidjordan.model.SceneType;
-import java.util.Random;
-import java.util.Scanner;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.PrintWriter;
 
 /**
  *
@@ -32,6 +32,9 @@ public class MapView {
     Location[][] location = map.getLocations();
     Player player = CitDavidJordan.getCurrentGame().getPlayer();
     
+    protected final BufferedReader keyboard = CitDavidJordan.getInFile();
+    protected final PrintWriter console = CitDavidJordan.getOutFile();
+    
     private final String MENU = "\n"
             + "To move to a location on the map, type the row number \n"
             + "and then the column number, without any spaces. \n"
@@ -39,15 +42,15 @@ public class MapView {
             + "\n(Q - Quit)"
             + "\n";
         
-    public void displayMenu() throws Scene2NumberException {
+    public void displayMenu() throws Scene2NumberException, MarbleControlException, IOException {
         
         String selection = "";
         do {
-            System.out.println(MENU); //display Menu
+            this.console.println(MENU); //display Menu
             try {
                 selection = this.getInput(); // get the user selection
             } catch (MapControlException ex) {
-                System.out.println(ex.getMessage());
+                ErrorView.display(this.getClass().getName(), ex.getMessage());
                 continue;
             }
             
@@ -58,18 +61,17 @@ public class MapView {
     }
     
     /*@Override*/
-    public String getInput() throws MapControlException {
+    public String getInput() throws MapControlException, IOException {
         boolean valid = false; //indicates if name has been received
         String userSelection = null;
-        Scanner keyboard = new Scanner(System.in); //keyboard input stream
         
         while(!valid) { //while a valid name has not been retrieved
             
             //prompt for player's name
-            System.out.println("Where would you like to go?:");
+            this.console.println("Where would you like to go?:");
             
             //get name from keyboard and trim off blanks
-            userSelection = keyboard.nextLine();
+            userSelection = this.keyboard.readLine();
             userSelection = userSelection.trim();
             userSelection = userSelection.toUpperCase();
             
@@ -95,7 +97,7 @@ public class MapView {
         return userSelection;
     }
 
-    public void doAction(String choice) throws Scene2NumberException {
+    public void doAction(String choice) throws Scene2NumberException, MarbleControlException {
         
         /*Map map = CitDavidJordan.getCurrentGame().getMap();
         Location[][] location = map.getLocations();
@@ -133,122 +135,6 @@ public class MapView {
 
     
 }
-    /*void displayMenu() {
-        
-        char selection = ' ';
-        do {
-            System.out.println(MENU); //display Menu
-            
-            String input = this.getInput(); // get the user selection
-            selection = input.charAt(0); //get first character of a string
-            
-            this.doAction(selection); //do action based on selection
-           
-        } while (!"Q".equals(selection)); //not Quit
-        
-        
-    }
-
-    private String getInput() {
-        boolean valid = false; //indicates if name has been received
-        String userSelection = null;
-        Scanner keyboard = new Scanner(System.in); //keyboard input stream
-        
-        while(!valid) { //while a valid name has not been retrieved
-            
-            //prompt for player's name
-            System.out.println("Where would you like to go?:");
-            
-            //get name from keyboard and trim off blanks
-            userSelection = keyboard.nextLine();
-            userSelection = userSelection.trim();
-            userSelection = userSelection.toUpperCase();
-            
-            //if name invalid
-            if (userSelection.length() < 1) {
-                System.out.println("Invalid Selection.");
-                continue;
-            } if (!"1".equals(userSelection) & !"2".equals(userSelection) 
-                    & !"3".equals(userSelection) & !"4".equals(userSelection) 
-                    & !"5".equals(userSelection) & !"6".equals(userSelection)
-                    & !"7".equals(userSelection) & !"Q".equals(userSelection)){
-                System.out.println("Invalid Selection.");
-                continue;
-            }
-            
-            break;
-        }
-        
-        return userSelection;
-    }
-
-    private void doAction(char choice) {
-        
-        switch (choice) {
-            case '1': //display Goal of Game
-                this.displayPlayground();
-                break;
-            case '2': //
-                this.displayMonkeyBars();
-                break;
-            case '3': //
-                this.displayTreeStump();
-                break;
-            case '4': //
-                this.displayDodgeballCourt();
-                break;
-            case '5': //
-                this.displaySteps();
-                break;
-            case '6': //
-                this.displayHopscotch();
-                break;
-            case '7': //
-                this.displaySoccerField();
-                break;
-            case 'Q': // Quit Program
-                return;
-            default:
-                System.out.println("\n*** Invalid Selection ***");
-                break;
-                
-        }
-        
-       
-    }
-
-    private void displayPlayground() {
-        
-        StartTriviaView triviaView = new StartTriviaView();
-        triviaView.startTrivia();
-    }
-
-    private void displayMonkeyBars() {
-        System.out.println("*** displayMonkeyBars function called ***");
-    }
-
-    private void displayTreeStump() {
-        System.out.println("*** displayTreeStump function called ***");
-    }
-
-    private void displayDodgeballCourt() {
-        
-        RPSGameView rpsGame = new RPSGameView();
-        rpsGame.startRPSGame();
-        
-    }
-
-    private void displaySteps() {
-        HomeworkHelpView homeworkHelp = new HomeworkHelpView();
-        homeworkHelp.homeworkHelp();       
-    }
-
-    private void displayHopscotch() {
-        System.out.println("*** displayHopscotch function called ***");
-    }
-
-    private void displaySoccerField() {
-        System.out.println("*** displaySoccerField function called ***");
-    } */
+    
 
     

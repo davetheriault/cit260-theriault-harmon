@@ -138,10 +138,7 @@ public class SceneBrodyEncounterView {
         Scanner keyboard = new Scanner(System.in);
         keyboard.nextLine();
         
-        try {
-            MenuControl.displayMap();
-        } catch (Scene2NumberException ex) {
-            System.out.println(ex.getMessage());        }
+        return;
 
     }
 
@@ -318,11 +315,7 @@ public class SceneBrodyEncounterView {
         Scanner keyboard = new Scanner(System.in);
         keyboard.nextLine();
         
-        try {
-            MenuControl.displayMap();
-        } catch (Scene2NumberException ex) {
-            System.out.println(ex.getMessage());
-        }
+        return;
 
     }
 

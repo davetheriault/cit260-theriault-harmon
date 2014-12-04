@@ -6,10 +6,14 @@
 
 package citdavidjordan.view;
 
+import citdavidjordan.CitDavidJordan;
 import citdavidjordan.control.MenuControl;
+import citdavidjordan.exceptions.MarbleControlException;
 import citdavidjordan.exceptions.Scene2NumberException;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Random;
-import java.util.Scanner;
 
 /**
  *
@@ -17,38 +21,42 @@ import java.util.Scanner;
  */
 public class Scene2NumberView {
     
+    protected final BufferedReader keyboard = CitDavidJordan.getInFile();
+    protected final PrintWriter console = CitDavidJordan.getOutFile();
+    
     public static Scene2NumberView NumberGameView;
-    public void start() {
+    public void start() throws MarbleControlException {
         // display game description
         String YorN2 = null;
         do {  
             try {
                 this.displayDescription();
             } catch (Scene2NumberException ex) {
-                System.out.println(ex.getMessage());
+                ErrorView.display(this.getClass().getName(), ex.getMessage());
                 continue;
             }
         } while(!"N".equals(YorN2));
     }
 
-    private void displayDescription() throws Scene2NumberException {
+    private void displayDescription() throws Scene2NumberException, MarbleControlException {
         boolean valid = false; //indicates if name has been received
         String YorN2 = null;
-        Scanner keyboard = new Scanner(System.in); //keyboard input stream
 
-        System.out.println("\n\n\n************************************************************");
+        this.console.println("\n\n\n************************************************************");
         
-        System.out.println(
+        this.console.println(
                              "* Sally's favorite game is see if you can pick             *"
                              + "\n* the number she is thinking about. She gives              *"
                              + "\n* you the option to pick between 1-10.                     *"
                              + "\n* Do you want to play?                                     *");
         
-        while(!valid) { //while a valid name has not been received
+        while(!valid) { 
+            try {
+            //while a valid name has not been received
             
-            System.out.println("(Y/N)?");
+            this.console.println("(Y/N)?");
         
-            YorN2 = keyboard.nextLine();
+            YorN2 = this.keyboard.readLine();
             YorN2 = YorN2.trim();
             YorN2 = YorN2.toUpperCase();
             
@@ -57,7 +65,7 @@ public class Scene2NumberView {
             if (YorN2.length() < 1) {
                 throw new Scene2NumberException("Invalid Selection - Please enter 'Y' for yes or 'N' for no.");
             } if (!"Y".equals(YorN2) & !"N".equals(YorN2)
-                & !"YES".equals(YorN2) & !"NO".equals(YorN2)) {
+                    & !"YES".equals(YorN2) & !"NO".equals(YorN2)) {
                 throw new Scene2NumberException("Invalid Selection - Please enter 'Y' for yes or 'N' for no.");
             } if ("Y".equals(YorN2)) {
                 this.askQuestion();
@@ -66,27 +74,34 @@ public class Scene2NumberView {
             else {
                 this.quitMessage();
             }
+            } catch (IOException ex) {
+                ErrorView.display(this.getClass().getName(), "Error Reading Input: " + ex.getMessage());
+            }
         }
     }
 
-    private void quitMessage() throws Scene2NumberException {
-        System.out.println(    "\n                                                 "
-                             + "\nSally: \"I did not think you could handle it.    "
-                             + "\n Go back to where you came from.                 ");
-        System.out.println("\nPress <Enter> to continue:");
-        
-        Scanner keyboard = new Scanner(System.in);
-        keyboard.nextLine();
-        
-        MenuControl.displayMap();
+    private void quitMessage() throws Scene2NumberException, MarbleControlException {
+        try {
+            this.console.println(    "\n                                                 "
+                    + "\nSally: \"I did not think you could handle it.    "
+                    + "\n Go back to where you came from.                 ");
+            this.console.println("\nPress <Enter> to continue:");
+            
+            this.keyboard.readLine();
+            
+            return;
+            
+        } catch (IOException ex) {
+            ErrorView.display(this.getClass().getName(), "Error Reading Input: " + ex.getMessage());
+        }
     }
 
     @SuppressWarnings("UnusedAssignment")
-    private void askQuestion() throws Scene2NumberException {
+    private void askQuestion() throws Scene2NumberException, MarbleControlException {
         
-        System.out.println("\n\n\n************************************************************");
+        this.console.println("\n\n\n************************************************************");
         
-        System.out.println(    "*                                                             *" 
+        this.console.println(    "*                                                             *" 
                              + "\n* Pick a number between 1 - 10, and you only have three     *" 
                              + "\n* chances to get it right. May the odds ever be in your     *"
                              + "\n* favor.                                                    *");
@@ -98,79 +113,93 @@ public class Scene2NumberView {
         
     }
         
-        private void anotherChance(int correctNo) throws Scene2NumberException {
+        private void anotherChance(int correctNo) throws Scene2NumberException, MarbleControlException {
             
         
-        /* Steps for game
-        run for loop for three chances
-        guess parameters
-        if guess != correctNo then display no and enter to try again.*/
-        
-        for(int i = 2; i > -1; i--) {
-            String playerAnswer = null;
-            boolean valid = false;
-            Scanner keyboard = new Scanner(System.in);
-            int guess = 0;
-        
-        
-            while(!valid) {
-                System.out.println("\n* Enter number below.");
-                playerAnswer = keyboard.nextLine();
-                playerAnswer = playerAnswer.trim();
+        try {
+            /* Steps for game
+            run for loop for three chances
+            guess parameters
+            if guess != correctNo then display no and enter to try again.*/
+            
+            for(int i = 2; i > -1; i--) {
+                String playerAnswer = null;
+                boolean valid = false;
                 
-        
-                if (playerAnswer.length() < 1) {
-                    System.out.println("***You must enter a number between 1 and 10.***");
-                    continue;
+                int guess = 0;
+                
+                while(!valid) {
+                    try {
+                        this.console.println("\n* Enter number below.");
+                        playerAnswer = this.keyboard.readLine();
+                        playerAnswer = playerAnswer.trim();
+                        
+                        
+                        if (playerAnswer.length() < 1) {
+                            this.console.println("***You must enter a number between 1 and 10.***");
+                            continue;
+                        }
+                        
+                        guess = Integer.parseInt(playerAnswer);
+                        
+                        if ( guess < 1 ) {
+                            this.console.println("The number guessed is too low.");
+                            continue;
+                        }
+                        
+                        if ( guess > 10 ) {
+                            this.console.println("The number guessed is too high.");
+                            continue;
+                        }
+                        else {
+                            break;
+                        }
+                    } catch (IOException ex) {
+                        ErrorView.display(this.getClass().getName(), "Error Reading Input: " + ex.getMessage());
+                    }
+                    
                 }
-            
-                guess = Integer.parseInt(playerAnswer);
-            
-                if ( guess < 1 ) {
-                    System.out.println("The number guessed is too low.");
-                    continue;
+                
+                if ( guess == correctNo ) {
+                    try {
+                        this.console.println("\n You Win!");
+                        this.console.println("\nPress <Enter> to continue:");
+                        
+                        this.keyboard.readLine();
+                        
+                    return;
+                    
+                    } catch (IOException ex) {
+                        ErrorView.display(this.getClass().getName(), "Error Reading Input: " + ex.getMessage());
+                    }
                 }
-            
-                if ( guess > 10 ) {
-                    System.out.println("The number guessed is too high.");
-                    continue;
-                } 
+                
                 else {
-                    break;
+                    try {
+                        this.console.println("That is the incorrect answer, you have " + i + " guesses left.");
+                        
+                        this.console.println("\nPress <Enter> to continue:");
+                        
+                        this.keyboard.readLine();
+                    } catch (IOException ex) {
+                        ErrorView.display(this.getClass().getName(), "Error Reading Input: " + ex.getMessage());
+                    }
                 }
             
-            }
-        
-            if ( guess == correctNo ) {
-                System.out.println("\n You Win!");
-                System.out.println("\nPress <Enter> to continue:");
-        
-                keyboard = new Scanner(System.in);
-                keyboard.nextLine();
                 
-                MenuControl.displayMap();
-            }
-	
-            else {
-                System.out.println("That is the incorrect answer, you have " + i + " guesses left.");
-            
-                System.out.println("\nPress <Enter> to continue:");
-        
-                keyboard = new Scanner(System.in);
-                keyboard.nextLine();
             }
             
+            this.console.println("That is the incorrect answer. \nThe correct number was " + correctNo + ".");
             
+            this.console.println("\nPress <Enter> to continue:");
+            
+            this.keyboard.readLine();
+            
+            return;
+            
+        } catch (IOException ex) {
+            ErrorView.display(this.getClass().getName(), "Error Reading Input: " + ex.getMessage());
         }
-        
-        System.out.println("That is the incorrect answer. \nThe correct number was " + correctNo + ".");
-            
-        System.out.println("\nPress <Enter> to continue:");
-        
-        Scanner keyboard = new Scanner(System.in);
-        keyboard.nextLine();
-        
-        MenuControl.displayMap();
     
     }
 }

@@ -8,7 +8,6 @@ package citdavidjordan.view;
 import citdavidjordan.CitDavidJordan;
 import citdavidjordan.control.MarbleControl;
 import citdavidjordan.control.MenuControl;
-import citdavidjordan.control.ProgramControl;
 import citdavidjordan.control.Scene4RPSControl;
 import citdavidjordan.exceptions.MarbleControlException;
 import citdavidjordan.exceptions.Scene2NumberException;
@@ -16,9 +15,9 @@ import citdavidjordan.exceptions.Scene4RPSException;
 import citdavidjordan.model.InventoryItem;
 import citdavidjordan.model.Item;
 import citdavidjordan.model.Player;
-import java.util.Scanner;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.PrintWriter;
 
 /**
  *
@@ -29,6 +28,9 @@ public class Scene4RPSView {
     public static Scene4RPSView rpsGameView;
     
     Player player = CitDavidJordan.getCurrentGame().getPlayer();
+    
+    protected final BufferedReader keyboard = CitDavidJordan.getInFile();
+    protected final PrintWriter console = CitDavidJordan.getOutFile();
     
     public void start() throws MarbleControlException{
                
@@ -41,7 +43,7 @@ public class Scene4RPSView {
                 String YorN = this.RPSgetYorN();
             
                 } catch (Scene4RPSException ex) {
-                System.out.println(ex.getMessage());
+                ErrorView.display(this.getClass().getName(), ex.getMessage());
                 continue;
             }
         }
@@ -50,9 +52,9 @@ public class Scene4RPSView {
 
     private void displayIntro() {
         
-        System.out.println("\n\n\n************************************************************");
+        this.console.println("\n\n\n************************************************************");
         
-        System.out.println(    "\n You approach the dodgeball court to find Rocky. Everyone "
+        this.console.println(    "\n You approach the dodgeball court to find Rocky. Everyone "
                              + "\n at Oak Elementary knows about Rocky and his obsession    "
                              + "\n with the game 'Rock Paper Scissors'. He spends his lunch "
                              + "\n hours challenging other kids to play against him for     "
@@ -69,21 +71,21 @@ public class Scene4RPSView {
         
         boolean valid = false; //indicates if name has been received
         String YorN = null;
-        Scanner keyboard = new Scanner(System.in); //keyboard input stream
         
-        while(!valid) { //while a valid name has not been retrieved
+        while(!valid) { try {
+            //while a valid name has not been retrieved
             
             //prompt for player's name
-            System.out.println("(Y/N)?");
+            this.console.println("(Y/N)?");
             
             //get name from keyboard and trim off blanks
-            YorN = keyboard.nextLine();
+            YorN = this.keyboard.readLine();
             YorN = YorN.trim();
             YorN = YorN.toUpperCase();
             
             InventoryItem[] marbles = CitDavidJordan.getCurrentGame().getInventory();
             if (marbles[Item.swirly.ordinal()].getAmount() < 5) {
-                System.out.println("Rocky: \"Oh, wait. Only " + marbles[Item.swirly.ordinal()].getAmount() + " Swirlys? \n"
+                this.console.println("Rocky: \"Oh, wait. Only " + marbles[Item.swirly.ordinal()].getAmount() + " Swirlys? \n"
                         + "It looks like you don't have enough marbles little-miss-" + player.getName() + ".\n"
                         + "Come back when you have enough");
             }
@@ -100,47 +102,48 @@ public class Scene4RPSView {
             } else {
                 this.displayRPSGame();
             }
+            } catch (IOException ex) {
+                ErrorView.display(this.getClass().getName(), ex.getMessage());
+            }
         }
         
         return YorN;
     }
 
-    private void displayQuitMessage() {
-        System.out.println(    "\n                                                 "
-                             + "\nRocky: \"Oh. I see how it is. Too chicken to take"
-                             + "\n\t take a risk, eh?\""
-                             + "\n\t\"Well, come back when you're not so chicken.\"");
-        System.out.println("\nPress <Enter> to continue:");
-        
-        Scanner keyboard = new Scanner(System.in);
-        keyboard.nextLine();
-        
-        while (true) {
-            try {
-                MenuControl.displayMap();
-            } catch (Scene2NumberException ex) {
-                System.out.println(ex.getMessage());
-                continue;
+    private void displayQuitMessage() throws MarbleControlException {
+        try {
+            this.console.println(    "\n                                                 "
+                    + "\nRocky: \"Oh. I see how it is. Too chicken to take"
+                    + "\n\t take a risk, eh?\""
+                    + "\n\t\"Well, come back when you're not so chicken.\"");
+            this.console.println("\nPress <Enter> to continue:");
+            
+            this.keyboard.readLine();
+            
+            while (true) {
+                return;
             }
+        } catch (IOException ex) {
+                            ErrorView.display(this.getClass().getName(), "Error Reading Input: " + ex.getMessage());
         }
     }
 
     private void displayRPSGame() throws Scene4RPSException, MarbleControlException {
-        System.out.println(    "\n                                                 "
+        this.console.println(    "\n                                                 "
                              + "\nRocky: \"Alright then. Let's do this.\""
                              + "\n\t\"So, do you know how to play?\"");
         
         boolean valid = false; //indicates if name has been received
         String YorN2 = null;
-        Scanner keyboard = new Scanner(System.in); //keyboard input stream
         
-        while(!valid) { //while a valid name has not been retrieved
+        while(!valid) { try {
+            //while a valid name has not been retrieved
             
             //prompt for player's name
-            System.out.println("(Y/N)?");
+            this.console.println("(Y/N)?");
             
             //get name from keyboard and trim off blanks
-            YorN2 = keyboard.nextLine();
+            YorN2 = this.keyboard.readLine();
             YorN2 = YorN2.trim();
             YorN2 = YorN2.toUpperCase();
             
@@ -157,37 +160,43 @@ public class Scene4RPSView {
             } else {
                 this.displayRPSGame2();
             }
-        }
-    }
-
-    private void displayRPSRules() throws MarbleControlException {
-        System.out.println("\n                                                 "
-                             + "\nRocky: \"You don't know how to play 'Rock Paper Scissors'?\""
-                             + "\n\t\"And I thought you were supposed to be one of the smart kids.\""
-                             + "\n"
-                             + "\n\t\"It's simple. We each choose either 'rock', 'paper', or 'scissors'.\""
-                             + "\n\t\"If we both pick the same thing it's a tie. Otherwise,\""
-                             + "\n\t\"Rock Smashes Scissors\""
-                             + "\n\t\"Scissors Cut Paper\""
-                             + "\n\t\"& Paper Covers Rock.\"");   
-        
-        System.out.println("\nPress <Enter> to continue:");
-        
-        Scanner keyboard = new Scanner(System.in);
-        keyboard.nextLine();
-        
-        while (true){
-            try {
-                this.displayRPSGame2();
-            } catch (Scene4RPSException ex) {
-                System.out.println(ex.getMessage());
-                continue;
+            } catch (IOException ex) {
+                  ErrorView.display(this.getClass().getName(), "Error Reading Input: " + ex.getMessage());
             }
         }
     }
 
+    private void displayRPSRules() throws MarbleControlException {
+        try {
+            this.console.println("\n                                                 "
+                    + "\nRocky: \"You don't know how to play 'Rock Paper Scissors'?\""
+                    + "\n\t\"And I thought you were supposed to be one of the smart kids.\""
+                    + "\n"
+                    + "\n\t\"It's simple. We each choose either 'rock', 'paper', or 'scissors'.\""
+                    + "\n\t\"If we both pick the same thing it's a tie. Otherwise,\""
+                    + "\n\t\"Rock Smashes Scissors\""
+                    + "\n\t\"Scissors Cut Paper\""
+                    + "\n\t\"& Paper Covers Rock.\"");
+            
+            this.console.println("\nPress <Enter> to continue:");
+            
+            this.keyboard.readLine();
+            
+            while (true){
+                try {
+                    this.displayRPSGame2();
+                } catch (Scene4RPSException ex) {
+                    ErrorView.display(this.getClass().getName(), ex.getMessage());
+                    continue;
+                }
+            }
+        } catch (IOException ex) {
+               ErrorView.display(this.getClass().getName(), "Error Reading Input: " + ex.getMessage());
+        }
+    }
+
     private void displayRPSGame2() throws Scene4RPSException, MarbleControlException {
-        System.out.println("   \n*****************************************"
+        this.console.println("   \n*****************************************"
                             + "\n         ROCK - PAPER - SCISSORS!        "
                             + "\n*****************************************"
                             + "\n"
@@ -199,7 +208,6 @@ public class Scene4RPSView {
         
         boolean valid = false; //indicates if name has been received
         String rpsInput = null;
-        Scanner keyboard = new Scanner(System.in); //keyboard input stream
         int choice = 0;
         String rpsResult = null;
         
@@ -211,13 +219,15 @@ public class Scene4RPSView {
          * will perform the correct action based on their answer.
          */
         
-        while(!valid) { //while a valid name has not been retrieved
+        while(!valid) { 
+            try {
+            //while a valid name has not been retrieved
             
             //prompt for player's name
-            System.out.println("\n(R/P/S)?");
+            this.console.println("\n(R/P/S)?");
             
             //get name from keyboard and trim off blanks
-            rpsInput = keyboard.nextLine();
+            rpsInput = this.keyboard.readLine();
             rpsInput = rpsInput.trim();
             rpsInput = rpsInput.toUpperCase();
             
@@ -228,7 +238,7 @@ public class Scene4RPSView {
             } if (!"R".equals(rpsInput) & !"ROCK".equals(rpsInput)
                     & !"P".equals(rpsInput) & !"PAPER".equals(rpsInput)
                     & !"S".equals(rpsInput) & !"SCISSORS".equals(rpsInput)) {
-                System.out.println("Invalid Selection - Please enter 'R', 'P' or 'S'.");
+                this.console.println("Invalid Selection - Please enter 'R', 'P' or 'S'.");
                 continue;
             } if ("R".equals(rpsInput) | "ROCK".equals(rpsInput)) {
                 choice = 1;
@@ -244,22 +254,26 @@ public class Scene4RPSView {
                 rpsResult = rpsGame.rpsGame(choice);
             }
             
-            System.out.println(rpsResult);
+            this.console.println(rpsResult);
             
             if (rpsResult.toLowerCase().contains("win")) {
-                System.out.println("\nRocky: \"Dang! Alright, here's your marbles.\"");
+                this.console.println("\nRocky: \"Dang! Alright, here's your marbles.\"");
                 MarbleControl.adjustMarbles(5, "swirly");//todo insert function to add marbles to player
             }
             if (rpsResult.toLowerCase().contains("lose")) {
-                System.out.println("\nRocky: \"Ha! Alright " + player.getName() + ", pay up.\"");//todo get playerName
+                this.console.println("\nRocky: \"Ha! Alright " + player.getName() + ", pay up.\"");//todo get playerName
                 MarbleControl.adjustMarbles(-5, "swirly");//todo insert function to subtract marbles to player
             }
             if (rpsResult.toLowerCase().contains("tie")) {
-                System.out.println("\nRocky: \"Again!\"");
+                this.console.println("\nRocky: \"Again!\"");
                 continue;
             }
-            System.out.println("\n\t\"Wanna play again?\"");
+            this.console.println("\n\t\"Wanna play again?\"");
             this.displayRPSGame3();
+            } 
+            catch (IOException ex) {
+                ErrorView.display(this.getClass().getName(), "Error Reading Input: " + ex.getMessage());
+            }
         }
         
         
@@ -269,15 +283,15 @@ public class Scene4RPSView {
         
         boolean valid = false; //indicates if name has been received
         String YorN = null;
-        Scanner keyboard = new Scanner(System.in); //keyboard input stream
         
-        while(!valid) { //while a valid name has not been retrieved
+        while(!valid) { try {
+            //while a valid name has not been retrieved
             
             //prompt for player's name
-            System.out.println("(Y/N)?");
+            this.console.println("(Y/N)?");
             
             //get name from keyboard and trim off blanks
-            YorN = keyboard.nextLine();
+            YorN = this.keyboard.readLine();
             YorN = YorN.trim();
             YorN = YorN.toUpperCase();
             
@@ -294,23 +308,25 @@ public class Scene4RPSView {
             } else {
                 this.displayRPSGame2();
             }
+            } catch (IOException ex) {
+                 ErrorView.display(this.getClass().getName(), "Error Reading Input: " + ex.getMessage());
+            }
         }
     }
     
-    private void displayQuitMessage2() {
-        System.out.println(    "\n                                                 "
-                             + "\nRocky: \"Alright. If you want a rematch, you know where to find me.\"");
-        System.out.println("\nPress <Enter> to continue:");
-        
-        Scanner keyboard = new Scanner(System.in);
-        keyboard.nextLine();
-        
-        while (true){
-            try {
-                MenuControl.displayMap();
-            } catch (Scene2NumberException ex) {
-                System.out.println(ex.getMessage());
+    private void displayQuitMessage2() throws MarbleControlException {
+        try {
+            this.console.println(    "\n                                                 "
+                    + "\nRocky: \"Alright. If you want a rematch, you know where to find me.\"");
+            this.console.println("\nPress <Enter> to continue:");
+            
+            this.keyboard.readLine();
+            
+            while (true){
+                return;
             }
+        } catch (IOException ex) {
+             ErrorView.display(this.getClass().getName(), "Error Reading Input: " + ex.getMessage());
         }
     }
 

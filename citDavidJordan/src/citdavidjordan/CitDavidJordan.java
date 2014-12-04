@@ -6,19 +6,15 @@
 
 package citdavidjordan;
 
-import citdavidjordan.model.Actor;
+import citdavidjordan.exceptions.ProgramControlException;
 import citdavidjordan.model.Game;
-import citdavidjordan.model.Location;
-import citdavidjordan.model.Map;
-import citdavidjordan.model.Path;
 import citdavidjordan.model.Player;
-import citdavidjordan.model.Scene;
-import citdavidjordan.view.Scene5HomeworkView;
-import static citdavidjordan.view.Scene5HomeworkView.homeworkHelpView;
+import citdavidjordan.view.ErrorView;
 import citdavidjordan.view.StartProgramView;
-import static citdavidjordan.view.StartProgramView.startProgramView;
-import citdavidjordan.view.Scene1TriviaView;
-import static citdavidjordan.view.Scene1TriviaView.startTriviaView;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
 
 /**
  *
@@ -27,6 +23,13 @@ import static citdavidjordan.view.Scene1TriviaView.startTriviaView;
 public class CitDavidJordan {
     
     private static Game currentGame = null;
+    private static Player player = null;
+    
+    private static PrintWriter outFile = null;
+    private static BufferedReader inFile = null;
+    
+    private static PrintWriter logFile = null;
+            
 
     public static Game getCurrentGame() {
         return currentGame;
@@ -43,97 +46,67 @@ public class CitDavidJordan {
     public static void setPlayer(Player player) {
         CitDavidJordan.player = player;
     }
-    private static Player player = null;
+
+    public static PrintWriter getOutFile() {
+        return outFile;
+    }
+
+    public static void setOutFile(PrintWriter outFile) {
+        CitDavidJordan.outFile = outFile;
+    }
+
+    public static BufferedReader getInFile() {
+        return inFile;
+    }
+
+    public static void setInFile(BufferedReader inFile) {
+        CitDavidJordan.inFile = inFile;
+    }
+
+    public static PrintWriter getLogFile() {
+        return logFile;
+    }
+
+    public static void setLogFile(PrintWriter logFile) {
+        CitDavidJordan.logFile = logFile;
+    }
     
-    public static void main(String[] args) {
-        
-        //***** TEST StartProgram() ********
-        
-        //remove this comment to run StartProgramView
-        StartProgramView.startProgramView = new StartProgramView();
+    
+    public static void main(String[] args) throws ProgramControlException {
         
         try {
-        startProgramView.startProgram();
-        } catch (Throwable te) {
-            System.out.println(te.getMessage());
-            te.printStackTrace();
-            startProgramView.displayBanner();
+            //open char stream files for end user input output
+            CitDavidJordan.inFile =
+                    new BufferedReader(new InputStreamReader(System.in));
+            
+            CitDavidJordan.outFile = new PrintWriter(System.out, true);
+            StartProgramView startProgramView;
+            startProgramView = new StartProgramView();
+            startProgramView.display();
+            //open log file
+            String filePath = "log.txt";
+            CitDavidJordan.logFile = new PrintWriter(filePath);
+        } catch (Exception e) { 
+            System.out.println("Exception: " + e.toString() +
+                             "\nCause: " + e.getCause() +
+                             "\nMessage: " + e.getMessage());
+        }
+        finally {
+            try {
+                CitDavidJordan.inFile.close();
+                CitDavidJordan.outFile.close();
+                CitDavidJordan.logFile.close();
+                
+            } catch (IOException ex) {
+                ErrorView.display(currentGame.getClass().getName(), "Error closing files.");
+                return;
+            }
+            
         }
         
-        // *** test Response Class ***
-        // Response responseOne = new Response();
         
-        // responseOne.setResponse("A");
-        
-        // String responseInfo = responseOne.toString();
-        // System.out.println(responseInfo);
-        
-        //***test Player class***
-        /*Player playerOne = new Player();
-        
-        playerOne.setName("Steven Spielberg");
-        playerOne.setMarbleTotal(10);
-        
-        String playerInfo = playerOne.toString();
-        System.out.println(playerInfo);
-        
-        //***test Game Class*** by David
-        Game gameOne = new Game();
-        
-        gameOne.setPlayer(playerOne);
-        gameOne.setTriviaCompleted("testTrivia");
-        gameOne.setHomeworkCompleted("testHomework");
-        gameOne.setBullyWatchYorN(true);
-        gameOne.setSaveDate("10/10/2014");
-        
-        String gameInfo = gameOne.toString();
-        System.out.println(gameInfo);
-        
-        //***test Path Class*** by David
-        Path pathOne = new Path();
-        
-        pathOne.setPathNo(4);
-        
-        String pathInfo = pathOne.toString();
-        System.out.println(pathInfo);
-        
-         //***test Actor class*** by David
-        Actor actorOne = new Actor();
-        
-        actorOne.setActorNo(1);
-        
-        String actorInfo = actorOne.toString();
-        System.out.println(actorInfo);
-        
-        Map gameMap = new Map();
-        
-        gameMap.setMapDisplay("playerLocation");
-        gameMap.setBrodyLocation("randomLocation");
-        
-        String mapInfo = gameMap.toString();
-        System.out.println(mapInfo);
-        
-        Scene sceneOne = new Scene();
-        
-        sceneOne.setSceneNo(2);
-        sceneOne.setType("testType");
-        
-        String sceneInfo = sceneOne.toString();
-        System.out.println(sceneInfo);
-        
-        Location locationOne = new Location();
-        
-        locationOne.setLocationNo(3);
-        
-        String locationInfo = locationOne.toString();
-        System.out.println(locationInfo); */
-        
-       //StartTriviaView.startTriviaView = new Scene1TriviaView();
-       //startTriviaView.startTrivia();
-        
-        //HomeworkHelpView.homeworkHelpView = new Scene5HomeworkView();
-        //homeworkHelpView.homeworkHelp();
-        
+        }
+                       
     } 
     
-}
+

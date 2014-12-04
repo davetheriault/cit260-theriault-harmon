@@ -6,6 +6,7 @@
 
 package citdavidjordan.model;
 
+import citdavidjordan.view.ErrorView;
 import java.io.Serializable;
 import java.util.Objects;
 
@@ -27,7 +28,7 @@ public class Map implements Serializable{
     public Map(int noOfRows, int noOfColumns){
         
         if (noOfRows < 1 || noOfColumns < 1) {
-            System.out.println("No one will ever see this unless the game is broken.");
+            ErrorView.display(this.getClass().getName(), "No one will ever see this unless the game is broken.");
             return;
         }
         
