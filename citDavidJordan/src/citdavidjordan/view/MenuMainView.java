@@ -9,6 +9,8 @@ import citdavidjordan.CitDavidJordan;
 import citdavidjordan.control.GameControl;
 import citdavidjordan.exceptions.MenuControlException;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
 *
@@ -76,8 +78,14 @@ public class MenuMainView extends MenuView {
 
         switch (choice) {
 
-            case "N": //New Game
+            case "N": {
+            try {
+                //New Game
                 this.startNewGame();
+            } catch (IOException ex) {
+                ErrorView.display(this.getClass().getName(), ex.getMessage());
+            }
+        }
                 break;
 
             case "L": //Load Game
@@ -101,7 +109,7 @@ public class MenuMainView extends MenuView {
 
         }
     }
-        public  void startNewGame(){
+        public  void startNewGame() throws IOException{
 
         GameControl.createNewGame(CitDavidJordan.getPlayer());
 

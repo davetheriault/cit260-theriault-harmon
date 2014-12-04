@@ -38,7 +38,7 @@ public class MenuControl {
     protected final PrintWriter console = CitDavidJordan.getOutFile();
 
 
-    public void startNewGame(){
+    public void startNewGame() throws IOException{
 
         GameControl.createNewGame(CitDavidJordan.getPlayer());
 

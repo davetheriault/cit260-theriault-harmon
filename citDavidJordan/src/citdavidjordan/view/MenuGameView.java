@@ -7,7 +7,6 @@ package citdavidjordan.view;
 
 import citdavidjordan.CitDavidJordan;
 import citdavidjordan.control.GameControl;
-import citdavidjordan.control.MenuControl;
 import citdavidjordan.exceptions.MarbleControlException;
 import citdavidjordan.exceptions.MenuControlException;
 import citdavidjordan.exceptions.Scene2NumberException;
@@ -18,8 +17,6 @@ import citdavidjordan.model.Location;
 import citdavidjordan.model.Map;
 import java.io.IOException;
 import java.util.Random;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -131,7 +128,7 @@ public class MenuGameView extends MenuView {
         }
     }
     
-    public void startNewGame(){
+    public void startNewGame() throws IOException{
 
         GameControl.createNewGame(CitDavidJordan.getPlayer());
 

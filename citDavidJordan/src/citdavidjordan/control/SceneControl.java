@@ -18,6 +18,7 @@ import citdavidjordan.view.Scene5HomeworkView;
 import citdavidjordan.view.Scene6BullyWatchView;
 import citdavidjordan.view.Scene7PayBrockView;
 import citdavidjordan.view.SceneBrodyEncounterView;
+import java.io.IOException;
 
 /**
  *
@@ -26,7 +27,7 @@ import citdavidjordan.view.SceneBrodyEncounterView;
 public class SceneControl {
     
     static Scene[] scenes = CitDavidJordan.getCurrentGame().getScenes();
-    public static void startSceneView(Scene scene) throws Scene2NumberException, MarbleControlException {
+    public static void startSceneView(Scene scene) throws Scene2NumberException, MarbleControlException, IOException {
         
         if (scene == scenes[SceneType.playground.ordinal()]) {
             Scene1TriviaView triviaView = new Scene1TriviaView();
