@@ -63,12 +63,14 @@ import java.util.logging.Logger;
                         throw new Exception("Invalid name - the name must not be blank.");
                     } catch (Exception ex) {
                         ErrorView.display(this.getClass().getName(), ex.getMessage());
+                        continue;
                     }
                 }
                 break;
                 
                 } catch (IOException ex) {
                     ErrorView.display(this.getClass().getName(), ex.getMessage());
+                    continue;
                 }
             }
             return playerName;

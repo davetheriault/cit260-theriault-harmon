@@ -6,6 +6,7 @@
 package citdavidjordan.control;
 
 import citdavidjordan.CitDavidJordan;
+import citdavidjordan.exceptions.GameControlException;
 import citdavidjordan.model.Actor;
 import citdavidjordan.model.Game;
 import citdavidjordan.model.Map;
@@ -15,6 +16,12 @@ import citdavidjordan.model.Location;
 import citdavidjordan.model.Player;
 import citdavidjordan.model.Scene;
 import citdavidjordan.model.SceneType;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 
 /**
  *
@@ -155,6 +162,37 @@ public class GameControl {
         naotoInventory[Item.steely.ordinal()].setAmount(15);
         naotoInventory[Item.alley.ordinal()].setAmount(20);
         
+    }
+
+    public static void saveGame(Game currentGame, String filePath) throws GameControlException {
+        try(FileOutputStream fops = new FileOutputStream(filePath)) {
+            ObjectOutputStream output = new ObjectOutputStream(fops);
+            
+            output.writeObject(currentGame);
+            //todo may need to write other objects if they aren't connected directly to the game
+        } 
+        catch(IOException e) {
+            throw new GameControlException(e.getMessage());
+        }
+    }
+
+    public static void loadGame(String filePath) throws GameControlException {
+        
+        Game game = null;
+        
+        try(FileInputStream fips = new FileInputStream(filePath)) {
+            ObjectInputStream output = new ObjectInputStream(fips);
+            
+            game = (Game) output.readObject(); //read game object from file.
+        }
+        catch(FileNotFoundException fnfe) {
+            throw new GameControlException(fnfe.getMessage());
+        }
+        catch(Exception e) {
+            throw new GameControlException(e.getMessage());
+        }
+        //close the output file
+        CitDavidJordan.setCurrentGame(game);
     }
 
     

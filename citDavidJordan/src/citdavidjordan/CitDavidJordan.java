@@ -84,7 +84,7 @@ public class CitDavidJordan {
             startProgramView = new StartProgramView();
             startProgramView.display();
             //open log file
-            String filePath = "log.txt";
+            String filePath = "logfile.txt";
             CitDavidJordan.logFile = new PrintWriter(filePath);
         } catch (Exception e) { 
             System.out.println("Exception: " + e.toString() +

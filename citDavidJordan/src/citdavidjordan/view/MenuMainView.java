@@ -72,7 +72,7 @@ public class MenuMainView extends MenuView {
     }
 
     @Override
-    public void doAction(String choice) {
+    public void doAction(String choice) throws MenuControlException {
 
         switch (choice) {
 
@@ -112,10 +112,23 @@ public class MenuMainView extends MenuView {
 
     }
 
-    public void loadGame() {
+    public void loadGame() throws MenuControlException {
 
-        this.console.println("**** loadGame()called ***");
-
+        // prompt for name of file
+        this.console.println("\nEnter the file path for the file to be loaded:");
+        
+        String filePath = this.getInput();
+        
+        try {
+            //load a saved game
+            GameControl.loadGame(filePath);
+        }
+        catch (Exception ex) {
+            ErrorView.display(this.getClass().getName(), ex.getMessage());
+        }
+        //display loaded game menu
+        MenuGameView gameMenu = new MenuGameView();
+        gameMenu.display();
     }
 
     public void displayHelpMenu() {
@@ -125,9 +138,18 @@ public class MenuMainView extends MenuView {
 
     }
 
-    public void saveGame() {
+    public void saveGame() throws MenuControlException {
 
-        this.console.println("**** saveGame()called ***");
+        this.console.println("\nEnter the file path for the file where the game will be saved:");
+        
+        String filePath = this.getInput();
+        
+        try {
+            //save the game to the specified file
+            GameControl.saveGame(CitDavidJordan.getCurrentGame(), filePath);
+        } catch (Exception ex) {
+            ErrorView.display(this.getClass().getName(), ex.getMessage());
+        }
 
     }
 
