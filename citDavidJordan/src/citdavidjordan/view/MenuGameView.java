@@ -41,6 +41,7 @@ public class MenuGameView extends MenuView {
             + "\nS - Save Game"
             + "\nQ - Quit"
             + "\nW - Write Character List to a File"
+            + "\nI - Write Inventory List to a File"   
             + "\n-----------------------------------------------");
         
         
@@ -52,6 +53,8 @@ public class MenuGameView extends MenuView {
     @Override
     public void doAction(String choice) throws MenuControlException {
         choice = choice.toUpperCase();
+        Player player = CitDavidJordan.getPlayer();
+
 
         switch (choice) {
 
@@ -77,7 +80,7 @@ public class MenuGameView extends MenuView {
                 break;
                 
             case "V": // View marbles
-                this.displayInventory();
+                this.displayInventory(this.console);
                 break;
                 
             case "T": // view trades
@@ -92,13 +95,19 @@ public class MenuGameView extends MenuView {
                 return;
                 
             case "W": //write to file
-                Player player = CitDavidJordan.getPlayer();
                 try (PrintWriter fw = new PrintWriter("PGH_" + player.getName() + "_CharList.txt")) {
                     this.writeActors(fw);
                 } catch (Exception ex) {
                     ErrorView.display(this.getClass().getName(), ex.getMessage());
                 }
-                    break;
+                break;
+                
+            case "I": //write inventory to a file
+                try (PrintWriter pw = new PrintWriter("IventoryList" + player.getName() + ".txt")) {
+                    this.displayInventory(pw);
+                } catch (Exception ex) {
+                    ErrorView.display(this.getClass().getName(), ex.getMessage());
+                }
                 
 
             default:
@@ -183,12 +192,12 @@ public class MenuGameView extends MenuView {
         this.console.println("*** displaySoccerField function called ***");
     }
 
-    public void displayInventory() {
+    public void displayInventory(PrintWriter pw) {
         //get the sorted list of marbles for the current game
         InventoryItem[] inventory = GameControl.getSortedInventoryList();
         
-        this.console.println("\nMarble Inventory \n");
-        this.console.println("Description" + "\t" +
+        pw.println("\nMarble Inventory \n");
+        pw.println("Description" + "\t" +
                            "Value" + "\t" +
                            "Amount" + "\t" +
                            "Total Value");
@@ -196,7 +205,7 @@ public class MenuGameView extends MenuView {
         //for each inventory item
         for (InventoryItem inventoryItem : inventory) {
             //display description amount and value
-            this.console.println(inventoryItem.getDescription() + "\t\t  " +
+            pw.println(inventoryItem.getDescription() + "\t\t  " +
                                inventoryItem.getValue() + "\t   " +
                                inventoryItem.getAmount() + "\t   " + 
                                (inventoryItem.getValue()*inventoryItem.getAmount()));
