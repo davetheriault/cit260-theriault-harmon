@@ -23,8 +23,8 @@ public abstract class View implements ViewInterface {
     protected final BufferedReader keyboard = CitDavidJordan.getInFile();
     protected final PrintWriter console = CitDavidJordan.getOutFile();
     
-    public View() {
-        
+    public View(String message) {
+        this.message = message;
     }
     
     @Override

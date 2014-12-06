@@ -7,10 +7,8 @@ package citdavidjordan.view;
 
 import citdavidjordan.CitDavidJordan;
 import citdavidjordan.control.MarbleControl;
-import citdavidjordan.control.MenuControl;
 import citdavidjordan.control.Scene4RPSControl;
 import citdavidjordan.exceptions.MarbleControlException;
-import citdavidjordan.exceptions.Scene2NumberException;
 import citdavidjordan.exceptions.Scene4RPSException;
 import citdavidjordan.model.InventoryItem;
 import citdavidjordan.model.Item;
@@ -40,7 +38,7 @@ public class Scene4RPSView {
         while(true){
             try {
                     //Get the players answer
-                String YorN = this.RPSgetYorN();
+                this.RPSgetYorN();
             
                 } catch (Scene4RPSException ex) {
                 ErrorView.display(this.getClass().getName(), ex.getMessage());
@@ -52,9 +50,9 @@ public class Scene4RPSView {
 
     private void displayIntro() {
         
-        this.console.println("\n\n\n************************************************************");
+        this.console.println(  "\n************************************************************");
         
-        this.console.println(    "\n You approach the dodgeball court to find Rocky. Everyone "
+        this.console.println(  "\n You approach the dodgeball court to find Rocky. Everyone "
                              + "\n at Oak Elementary knows about Rocky and his obsession    "
                              + "\n with the game 'Rock Paper Scissors'. He spends his lunch "
                              + "\n hours challenging other kids to play against him for     "

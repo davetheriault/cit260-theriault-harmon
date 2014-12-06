@@ -59,7 +59,7 @@ public class SceneControl {
         }
         if (scene == scenes[SceneType.brodyencounter.ordinal()]) {
             SceneBrodyEncounterView brodyE = new SceneBrodyEncounterView();
-            brodyE.start();
+            brodyE.display();
         }
     }
     

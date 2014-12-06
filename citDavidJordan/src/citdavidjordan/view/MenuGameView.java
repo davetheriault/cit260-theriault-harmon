@@ -88,15 +88,18 @@ public class MenuGameView extends MenuView {
                 break;
             
             case "C": // Characters list
-                this.writeActors(this.console);
+                this.displayActors(this.console);
                 break;
 
             case "Q": // Quit Program
                 return;
                 
             case "W": //write to file
-                try (PrintWriter fw = new PrintWriter("PGH_" + player.getName() + "_CharList.txt")) {
-                    this.writeActors(fw);
+                this.console.println("\nEnter the file path where the character list will be saved:");
+                String filePath = this.getInput();
+                try (PrintWriter fw = new PrintWriter(filePath)) {
+                    this.displayActors(fw);
+                    this.console.println(filePath + " has been saved.");
                 } catch (Exception ex) {
                     ErrorView.display(this.getClass().getName(), ex.getMessage());
                 }
@@ -242,19 +245,6 @@ public class MenuGameView extends MenuView {
         
     }
 
-    public void displayActors() {
-        Actor[] characters = CitDavidJordan.getCurrentGame().getActors();
-        
-        
-        for (Actor actor : characters) {
-            
-            this.console.println("Name:         " + actor + 
-                             "\nLocation:     " + actor.getLocation() + 
-                             "\nEvent Name:   " + actor.getGameName() + 
-                             "\nDescription:  \n" + actor.getDescription() + "\n\n"); 
-        }
-    }
-
     public void displayMap() throws Scene2NumberException, MarbleControlException, IOException {
         
         Game game = CitDavidJordan.getCurrentGame();
@@ -303,18 +293,17 @@ public class MenuGameView extends MenuView {
         mapView.displayMenu();
     }
 
-    private void writeActors(PrintWriter fw) {
-        
-        
+    private void displayActors(PrintWriter fw) {
+               
         Actor[] characters = CitDavidJordan.getCurrentGame().getActors();
 
-        
         for (Actor actor : characters) {
             
-            fw.println("Name:         " + actor +
-                     "\nLocation:     " + actor.getLocation() +
-                     "\nEvent Name:   " + actor.getGameName() +
-                     "\nDescription:  \n" + actor.getDescription() + "\n\n");
+            fw.println("Name:         " + actor);
+            fw.println("Location:     " + actor.getLocation());
+            fw.println("Event Name:   " + actor.getGameName());
+            fw.println("Description:  \n" + actor.getDescription() + "\n");
+            fw.println("");
         }
         
     }
