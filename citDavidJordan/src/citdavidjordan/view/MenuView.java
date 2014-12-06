@@ -31,12 +31,9 @@ public abstract class MenuView implements ViewInterface {
         
         do {
             this.console.println(promptMessage); //display Menu
-            try {
-                selection = this.getInput(); // get the user selection
-                //selection = input.charAt(0); //get first character of a string
-            } catch (MenuControlException ex) {
-                ErrorView.display(this.getClass().getName(), ex.getMessage());
-                continue;
+            selection = this.getInput();
+            if (selection.toUpperCase().equals("Q")){
+                return;
             }
 
             try {
@@ -49,8 +46,30 @@ public abstract class MenuView implements ViewInterface {
 
         } while (!"Q".equals(selection)); //not Quit
     }
+    @Override
+    public String getInput() {
+        boolean valid = false;
+        String selection = null;
+        try {
+            while (!valid) {
+                
+                //get input from keyboard
+                selection = this.keyboard.readLine();
+                selection = selection.trim();
+                
+                
+                if (selection.length() < 1) {
+                    ErrorView.display(this.getClass().getName(), "Invalid Entry.");
+                    continue;
+                }
+                break;
+            }
+        } catch (Exception e) {
+            ErrorView.display(this.getClass().getName(), "Error Reading Input: " + e.getMessage());
+        }
+        return selection;
     
-    
+    }
 }   
     
     

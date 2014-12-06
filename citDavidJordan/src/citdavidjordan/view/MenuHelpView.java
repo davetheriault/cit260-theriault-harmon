@@ -28,45 +28,12 @@ public class MenuHelpView extends MenuView {
             + "\n-----------------------------------------------"); 
     }
     
-    @Override
-    public String getInput() throws MenuControlException {
-        boolean valid = false; //indicates if name has been received
-        String userSelection = null;
-
-        while(!valid) { 
-            try {
-            //while a valid name has not been retrieved
-            
-            //prompt for player's name
-            this.console.println("Enter your selection below:");
-            
-            //get name from keyboard and trim off blanks
-            userSelection = this.keyboard.readLine();
-            userSelection = userSelection.trim();
-            userSelection = userSelection.toUpperCase();
-            
-            //if invalid
-            if (userSelection.length() < 1) {
-                throw new MenuControlException("Invalid Selection.");
-                // extends MenuView to receive continue;
-            } if (!"G".equals(userSelection)
-                    & !"A".equals(userSelection) & !"Q".equals(userSelection)
-                    & !"I".equals(userSelection)){
-                throw new MenuControlException("Invalid Selection.");
-                // extends MenuView to receive continue;
-            }
-
-            break;
-             } catch (IOException ex) {
-                ErrorView.display(this.getClass().getName(), "Error Reading Input: " + ex.getMessage());
-             }
-        }
-
-        return userSelection;
-    }
+    
+    
 
     @Override
     public void doAction(String choice) throws MenuControlException {
+        choice = choice.toUpperCase();
 
         switch (choice) {
                 

@@ -80,12 +80,15 @@ public class CitDavidJordan {
                     new BufferedReader(new InputStreamReader(System.in));
             
             CitDavidJordan.outFile = new PrintWriter(System.out, true);
-            StartProgramView startProgramView;
-            startProgramView = new StartProgramView();
-            startProgramView.display();
+            
             //open log file
             String filePath = "logfile.txt";
             CitDavidJordan.logFile = new PrintWriter(filePath);
+            
+            StartProgramView startProgramView;
+            startProgramView = new StartProgramView();
+            startProgramView.display();
+            
         } catch (Exception e) { 
             System.out.println("Exception: " + e.toString() +
                              "\nCause: " + e.getCause() +

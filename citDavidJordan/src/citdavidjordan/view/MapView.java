@@ -20,6 +20,8 @@ import citdavidjordan.model.SceneType;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -102,7 +104,8 @@ public class MapView {
         /*Map map = CitDavidJordan.getCurrentGame().getMap();
         Location[][] location = map.getLocations();
         Player player = CitDavidJordan.getCurrentGame().getPlayer();*/
-        
+        choice = choice.toUpperCase();
+
         if ("Q".equals(choice)) {
             MenuGameView gameMenu = new MenuGameView();
             gameMenu.display();
@@ -118,23 +121,30 @@ public class MapView {
             //check for a Brody Encounter
             Actor brody = Actor.Brody;
             if (newPlayerLocation == brody.getLocation()){
-                Scene[] scene = null;
-                SceneControl.startSceneView(scene[SceneType.brodyencounter.ordinal()]);
+                try {
+                    Scene[] scene = null;
+                    SceneControl.startSceneView(scene[SceneType.brodyencounter.ordinal()]);
+                } catch (IOException ex) {
+                ErrorView.display(this.getClass().getName(), ex.getMessage());}
             }
             else {
             
-            newPlayerLocation.setVisited(true);
-            player.setLocation(newPlayerLocation);
-            
-            //get scene to start view
-            Scene scene = newPlayerLocation.getScene();
-            SceneControl.startSceneView(scene);
+                try {
+                    newPlayerLocation.setVisited(true);
+                    player.setLocation(newPlayerLocation);
+                    
+                    //get scene to start view
+                    Scene scene = newPlayerLocation.getScene();
+                    SceneControl.startSceneView(scene);
+                } catch (IOException ex) {
+                    ErrorView.display(this.getClass().getName(), ex.getMessage());}
+                }
             }
         }
     }
 
     
-}
+
     
 
     

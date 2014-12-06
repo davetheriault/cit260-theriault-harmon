@@ -15,7 +15,10 @@ import citdavidjordan.model.Game;
 import citdavidjordan.model.InventoryItem;
 import citdavidjordan.model.Location;
 import citdavidjordan.model.Map;
+import citdavidjordan.model.Player;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Random;
 
 /**
@@ -37,52 +40,18 @@ public class MenuGameView extends MenuView {
             + "\nH - Help Menu"
             + "\nS - Save Game"
             + "\nQ - Quit"
+            + "\nW - Write Character List to a File"
             + "\n-----------------------------------------------");
         
         
     
     }
     
-    @Override
-    public String getInput() throws MenuControlException {
-        boolean valid = false; //indicates if name has been received
-        String userSelection = null;
-
-        while(!valid) { try {
-            //while a valid name has not been retrieved
-            
-            //prompt for player's name
-            this.console.println("Enter your selection below:");
-            
-            //get name from keyboard and trim off blanks
-            userSelection = this.keyboard.readLine();
-            userSelection = userSelection.trim();
-            userSelection = userSelection.toUpperCase();
-            
-            //if invalid
-            if (userSelection.length() < 1) {
-                throw new MenuControlException("Invalid Selection, you must enter an option from the Menu.");
-                // continue;
-                
-            } if (!"M".equals(userSelection) & !"V".equals(userSelection)
-                    & !"T".equals(userSelection) & !"C".equals(userSelection) 
-                    & !"S".equals(userSelection) & !"H".equals(userSelection)
-                    & !"Q".equals(userSelection)){
-                throw new MenuControlException("Invalid Selection, you must enter an option from the Menu.");
-                // continue;
-            }
-
-            break;
-            } catch (IOException ex) {
-                ErrorView.display(this.getClass().getName(), "Error Reading Input: " + ex.getMessage());
-            }
-        }
-
-        return userSelection;
-    }
+   
     
     @Override
     public void doAction(String choice) throws MenuControlException {
+        choice = choice.toUpperCase();
 
         switch (choice) {
 
@@ -116,11 +85,21 @@ public class MenuGameView extends MenuView {
                 break;
             
             case "C": // Characters list
-                this.displayActors();
+                this.writeActors(this.console);
                 break;
 
             case "Q": // Quit Program
                 return;
+                
+            case "W": //write to file
+                Player player = CitDavidJordan.getPlayer();
+                try (PrintWriter fw = new PrintWriter("PGH_" + player.getName() + "_CharList.txt")) {
+                    this.writeActors(fw);
+                } catch (Exception ex) {
+                    ErrorView.display(this.getClass().getName(), ex.getMessage());
+                }
+                    break;
+                
 
             default:
                 throw new MenuControlException("\nInvalid Selection.");
@@ -260,7 +239,6 @@ public class MenuGameView extends MenuView {
         
         for (Actor actor : characters) {
             
-            
             this.console.println("Name:         " + actor + 
                              "\nLocation:     " + actor.getLocation() + 
                              "\nEvent Name:   " + actor.getGameName() + 
@@ -314,6 +292,22 @@ public class MenuGameView extends MenuView {
 
         MapView mapView = new MapView();
         mapView.displayMenu();
+    }
+
+    private void writeActors(PrintWriter fw) {
+        
+        
+        Actor[] characters = CitDavidJordan.getCurrentGame().getActors();
+
+        
+        for (Actor actor : characters) {
+            
+            fw.println("Name:         " + actor +
+                     "\nLocation:     " + actor.getLocation() +
+                     "\nEvent Name:   " + actor.getGameName() +
+                     "\nDescription:  \n" + actor.getDescription() + "\n\n");
+        }
+        
     }
 }
 
