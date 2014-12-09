@@ -1,0 +1,4 @@
+citdavidjordan.view.MenuGameView - 
+Invalid Selection.
+citdavidjordan.view.MenuMainView - sdidus (No such file or directory)
+citdavidjordan.view.StartProgramView - Invalid name - the name must not be blank.
