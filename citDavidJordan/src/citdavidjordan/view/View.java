@@ -18,7 +18,7 @@ import java.util.logging.Logger;
  */
 public abstract class View implements ViewInterface {
     
-    private String message;
+    String message;
     
     protected final BufferedReader keyboard = CitDavidJordan.getInFile();
     protected final PrintWriter console = CitDavidJordan.getOutFile();

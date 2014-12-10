@@ -8,12 +8,16 @@ package citdavidjordan.view;
 import citdavidjordan.CitDavidJordan;
 import citdavidjordan.control.MarbleControl;
 import citdavidjordan.exceptions.MarbleControlException;
+import citdavidjordan.exceptions.MenuControlException;
 import citdavidjordan.exceptions.Scene2NumberException;
 import citdavidjordan.exceptions.SceneBrodyEncounterException;
 import citdavidjordan.model.InventoryItem;
 import citdavidjordan.model.Item;
 import citdavidjordan.model.Player;
 import java.io.IOException;
+import java.util.Random;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -23,6 +27,7 @@ public class SceneBrodyEncounterView extends View{
     
     Player player = CitDavidJordan.getCurrentGame().getPlayer();
     InventoryItem[] inventory = CitDavidJordan.getCurrentGame().getInventory();
+    String r;
     
     public SceneBrodyEncounterView() {
 /*
@@ -76,8 +81,22 @@ public class SceneBrodyEncounterView extends View{
                     + "P - Pay Up \n"
                     + "R - Run \n");
         
+        
     }
-
+    
+    @Override
+    public void display(){
+        String value;
+        boolean done = false;
+        r = SceneBrodyEncounterView.payUp();
+        
+        do{
+            this.console.println(this.message);
+            value = this.getInput();
+            this.doAction(value);
+        } while (!done);
+    }
+    
     private String payOrRun(String r) throws SceneBrodyEncounterException, MarbleControlException, IOException {
         
         boolean valid = false; //indicates if name has been received
@@ -130,29 +149,59 @@ public class SceneBrodyEncounterView extends View{
         
         return PorR;
     }
-
+    
     @Override
     public void doAction(String result) {
         
-        result = result.toUpperCase();
         
-        switch (result) {
+        
+        try {
+            result = result.toUpperCase(); //convert to uppercase
             
-            case "NA":
-                try {
-                    MenuGameView gameMenu = new MenuGameView();
-                    gameMenu.displayMap();
-                } catch (Scene2NumberException | MarbleControlException | IOException ex) {
-                    ErrorView.display(this.getClass().getName(), ex.getMessage());
-                }
-            break;
-        
-            case "P":
+            if (result == null) { result = "NA"; } //if player has no marbles
+            
+            switch (result) {
                 
-            break;
-                
-            default:
-                
+                case "NA":
+                    this.console.println("Rocky: \"Oh, wait. \n"
+                                   + "       It looks like you don't even have any marbles little-miss-" + player.getName() + ".\n"
+                                   + "       You are so worthless! Get outta here!!");
+                    try {
+                        MenuGameView gameMenu = new MenuGameView();
+                        gameMenu.displayMap();
+                    } catch (Scene2NumberException | MarbleControlException | IOException ex) {
+                        ErrorView.display(this.getClass().getName(), ex.getMessage());
+                    }
+                    break;
+                    
+                case "P":
+                    MarbleControl.adjustMarbles(-1, r);
+                    this.console.println("You give Brody 1 " + r + " marble. \n\n"
+                            + "Brody: \"Thanks chump.\" \n\n"
+                            + "Press <Enter> to continue to your destination.");
+                    this.keyboard.readLine();
+                    break;
+                    
+                case "R":
+                    boolean esc = this.escape();
+                    if (esc == false) {
+                        this.console.println("You make a run for it, but Brody chases you down. \n\n"
+                            + "Brody: \"Where do you think you're going fart-face?");
+                        MarbleControl.adjustMarbles(-1, r);
+                        this.console.println("He takes 1 of your " + r + " marbles.");
+                        this.console.println("Brody: \"Remind me to pound your face in after school.\"");
+                    } else {
+                        this.console.println("You make a run for it. From behind you here Brody yell: \n"
+                                + "\"You BETTER run! I'm gonna beat your face in!!!\" \n\n"
+                                + "You make it back to the " + player.getLocation().getLocationName() + ".");
+                        MenuGameView gameMenu = new MenuGameView();
+                        gameMenu.displayMap();
+                    }
+                default:
+                    
+            }
+        } catch (MarbleControlException | IOException | Scene2NumberException ex) {
+            Logger.getLogger(SceneBrodyEncounterView.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -168,6 +217,14 @@ public class SceneBrodyEncounterView extends View{
         } else {
         return null;
         }
+    }
+
+    private boolean escape() {
+        
+        Random rand = new Random();
+        int b = rand.nextInt(2);
+        return b != 0;
+        
     }
 
     
