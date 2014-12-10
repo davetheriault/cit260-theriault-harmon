@@ -51,7 +51,7 @@ public class SceneControl {
         }
         if (scene == scenes[SceneType.hopscotch.ordinal()]) {
             Scene6BullyWatchView bWatch = new Scene6BullyWatchView();
-            bWatch.start();
+            bWatch.display();
         }
         if (scene == scenes[SceneType.soccerfield.ordinal()]) {
             Scene7PayBrockView pBrock = new Scene7PayBrockView();

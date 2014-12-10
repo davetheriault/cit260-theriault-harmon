@@ -89,7 +89,8 @@ public class Scene2NumberView {
             
             this.keyboard.readLine();
             
-            return;
+            MenuGameView gameMenu = new MenuGameView();
+            gameMenu.displayMap();
             
         } catch (IOException ex) {
             ErrorView.display(this.getClass().getName(), "Error Reading Input: " + ex.getMessage());
@@ -167,7 +168,8 @@ public class Scene2NumberView {
                         
                         this.keyboard.readLine();
                         
-                    return;
+                    MenuGameView gameMenu = new MenuGameView();
+                    gameMenu.displayMap();
                     
                     } catch (IOException ex) {
                         ErrorView.display(this.getClass().getName(), "Error Reading Input: " + ex.getMessage());
@@ -195,7 +197,8 @@ public class Scene2NumberView {
             
             this.keyboard.readLine();
             
-            return;
+            MenuGameView gameMenu = new MenuGameView();
+            gameMenu.displayMap();
             
         } catch (IOException ex) {
             ErrorView.display(this.getClass().getName(), "Error Reading Input: " + ex.getMessage());

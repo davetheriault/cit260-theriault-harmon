@@ -9,6 +9,7 @@ import citdavidjordan.CitDavidJordan;
 import citdavidjordan.control.MarbleControl;
 import citdavidjordan.control.Scene4RPSControl;
 import citdavidjordan.exceptions.MarbleControlException;
+import citdavidjordan.exceptions.Scene2NumberException;
 import citdavidjordan.exceptions.Scene4RPSException;
 import citdavidjordan.model.InventoryItem;
 import citdavidjordan.model.Item;
@@ -16,6 +17,8 @@ import citdavidjordan.model.Player;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -119,11 +122,13 @@ public class Scene4RPSView {
             this.keyboard.readLine();
             
             while (true) {
-                return;
+                MenuGameView gameMenu = new MenuGameView();
+                gameMenu.displayMap();
             }
-        } catch (IOException ex) {
-                            ErrorView.display(this.getClass().getName(), "Error Reading Input: " + ex.getMessage());
+        } catch (IOException | Scene2NumberException ex) {
+            ErrorView.display(this.getClass().getName(), "Error Reading Input: " + ex.getMessage());
         }
+        
     }
 
     private void displayRPSGame() throws Scene4RPSException, MarbleControlException {
@@ -321,9 +326,10 @@ public class Scene4RPSView {
             this.keyboard.readLine();
             
             while (true){
-                return;
+                MenuGameView gameMenu = new MenuGameView();
+                gameMenu.displayMap();
             }
-        } catch (IOException ex) {
+        } catch (IOException | Scene2NumberException ex) {
              ErrorView.display(this.getClass().getName(), "Error Reading Input: " + ex.getMessage());
         }
     }

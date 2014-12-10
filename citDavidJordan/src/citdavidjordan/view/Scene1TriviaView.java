@@ -7,7 +7,6 @@
 package citdavidjordan.view;
 
 import citdavidjordan.CitDavidJordan;
-import citdavidjordan.control.MenuControl;
 import citdavidjordan.exceptions.MarbleControlException;
 import citdavidjordan.exceptions.Scene1TriviaException;
 import citdavidjordan.exceptions.Scene2NumberException;
@@ -138,9 +137,6 @@ public class Scene1TriviaView {
                     
                     this.keyboard.readLine();
                     
-                    return;
-                    
-                    // TO DO - Function to give them marbles.
                 } catch (IOException ex) {
                     ErrorView.display(this.getClass().getName(), "Error Reading Input: " + ex.getMessage());
                 }
@@ -155,7 +151,6 @@ public class Scene1TriviaView {
                     
                     this.keyboard.readLine();
                     
-                    return;
                     
                 } catch (IOException e) {
                     ErrorView.display(this.getClass().getName(), "Error Reading Input: " + e.getMessage());
@@ -176,10 +171,10 @@ public class Scene1TriviaView {
                     + "\n\t\"If you ever change your mind, then swing by. ");
             this.console.println("\nPress <Enter> to continue:");
             
-            
             this.keyboard.readLine();
             
-            return;
+            MenuGameView gameMenu = new MenuGameView();
+            gameMenu.displayMap();
             
         } catch (IOException ex) {
                 ErrorView.display(this.getClass().getName(), "Error Reading Input: " + ex.getMessage());
