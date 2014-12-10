@@ -1,5 +1,5 @@
 Name:         Jerry
-Location:     citdavidjordan.model.Location@15db9742
+Location:     null
 Event Name:   Jerry's Trivia Challenge
 Description:  
 Jerry is what you might call a "super nerd". 
@@ -9,7 +9,7 @@ He will wager marbles that you can't answer his simple trivia questions correctl
 
 
 Name:         Sally
-Location:     citdavidjordan.model.Location@6d06d69c
+Location:     null
 Event Name:   Sally's Guess-A-Number Challenge
 Description:  
 Sally is kind of different from other kids. Maybe it's from always 
@@ -17,14 +17,14 @@ hanging upside down from the monkeybars at school.
 
 
 Name:         Sheldon
-Location:     citdavidjordan.model.Location@7852e922
+Location:     null
 Event Name:   Sheldon's Shell Game
 Description:  
 ...
 
 
 Name:         Rocky
-Location:     citdavidjordan.model.Location@4e25154f
+Location:     null
 Event Name:   Rocky's Rock-Paper-Scissors
 Description:  
 Rocky is a 4th grader who is obssessed 
@@ -33,14 +33,14 @@ He spends his lunch hours challenging other kids to play against him for marbles
 
 
 Name:         Johnny
-Location:     citdavidjordan.model.Location@70dea4e
+Location:     null
 Event Name:   Help Johnny with Homework
 Description:  
 ... Steps
 
 
 Name:         Lucy
-Location:     citdavidjordan.model.Location@5c647e05
+Location:     null
 Event Name:   Lucy's Bully-Watch
 Description:  
 ... hopscotch
@@ -56,7 +56,7 @@ You are the main target of his bullying.
 
 
 Name:         Brock
-Location:     citdavidjordan.model.Location@33909752
+Location:     null
 Event Name:   Buy Protection from Brock
 Description:  
 Brock is a big dumb brute in the 6th grade. 
@@ -66,7 +66,7 @@ In return, he requires a payment of X marbles.
 
 
 Name:         Naoto
-Location:     citdavidjordan.model.Location@55f96302
+Location:     null
 Event Name:   Trade Marbles with Naoto
 Description:  
 Naoto is a Japanese kid...

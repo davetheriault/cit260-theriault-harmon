@@ -96,6 +96,11 @@ public class CitDavidJordan {
         }
         finally {
             try {
+                /* Instructor: 
+                 *  You need to check to make sure that each file is not null
+                 *  because they may have never been opened in the first place
+                 * if an error occurred prior to opening the file.
+                 */
                 CitDavidJordan.inFile.close();
                 CitDavidJordan.outFile.close();
                 CitDavidJordan.logFile.close();
