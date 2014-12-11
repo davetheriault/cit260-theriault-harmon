@@ -81,7 +81,7 @@ public class GameControl {
         
         InventoryItem steely = new InventoryItem();
         steely.setDescription("Steely");
-        steely.setAmount(0);
+        steely.setAmount(10);
         steely.setValue(2);
         inventory[Item.steely.ordinal()] = steely;
         

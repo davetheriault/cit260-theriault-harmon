@@ -39,7 +39,7 @@ public class SceneControl {
         }
         if (scene == scenes[SceneType.treestump.ordinal()]) {
             Scene3ShellView shellGame = new Scene3ShellView();
-            shellGame.start();
+            shellGame.display();
         }
         if (scene == scenes[SceneType.dodgeballcourt.ordinal()]) {
             Scene4RPSView rpsGame = new Scene4RPSView();

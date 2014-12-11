@@ -128,7 +128,6 @@ public class MapView {
             else {
             
                 try {
-                    newPlayerLocation.setVisited(true);
                     player.setLocation(newPlayerLocation);
                     
                     //get scene to start view

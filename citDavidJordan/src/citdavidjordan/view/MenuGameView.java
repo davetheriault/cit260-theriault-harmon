@@ -145,7 +145,17 @@ public class MenuGameView extends MenuView {
 
     public void saveGame() {
 
-        this.console.println("**** saveGame()called ***");
+        this.console.println("\nEnter the file path for the file where the game will be saved:");
+        
+        String filePath = this.getInput();
+        
+        try {
+            //save the game to the specified file
+            GameControl.saveGame(CitDavidJordan.getCurrentGame(), filePath);
+            this.console.println(filePath + " has been saved.");
+        } catch (Exception ex) {
+            ErrorView.display(this.getClass().getName(), ex.getMessage());
+        }
 
     }
 
@@ -281,6 +291,11 @@ public class MenuGameView extends MenuView {
                     for (int i = 0; i < backSpace; i++) {
                         this.console.print(" ");
                     }
+                } 
+                else if (((game.isBullyWatchYorN()) == true) && 
+                        (location) == (Actor.Brody.getLocation())) {
+                    this.console.print("  **BRODY!**  ");
+                    
                 } else {
                     this.console.print("      ??      ");
                 } 
