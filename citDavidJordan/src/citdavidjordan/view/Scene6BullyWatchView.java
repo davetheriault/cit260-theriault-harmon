@@ -66,12 +66,14 @@ public class Scene6BullyWatchView extends View{
                 }
                 if(Actor.Lucy.getLocation().isVisited() && game.isBullyWatchYorN()) { //
                     this.console.println(this.msg3);
-                    
+                    this.keyboard.readLine();
+                    this.leave();
+                    break;
                 }
                 
                 value = this.getInput();
                 this.doAction(value);
-            } catch (MenuControlException ex) {
+            } catch (MenuControlException | IOException ex) {
                 ErrorView.display(this.getClass().getName(), ex.getMessage());
             }
         } while (!done);

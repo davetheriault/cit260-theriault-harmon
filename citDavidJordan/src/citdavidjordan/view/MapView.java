@@ -118,15 +118,12 @@ public class MapView {
             
             //check for a Brody Encounter
             Actor brody = Actor.Brody;
-            if (newPlayerLocation == brody.getLocation()){
-                try {
-                    Scene[] scene = null;
-                    SceneControl.startSceneView(scene[SceneType.brodyencounter.ordinal()]);
-                } catch (IOException ex) {
-                ErrorView.display(this.getClass().getName(), ex.getMessage());}
+            if (brody.getLocation() == newPlayerLocation){
+                SceneBrodyEncounterView brodyE = new SceneBrodyEncounterView();
+                brodyE.display();
             }
             else {
-            
+                
                 try {
                     player.setLocation(newPlayerLocation);
                     
@@ -135,7 +132,7 @@ public class MapView {
                     SceneControl.startSceneView(scene);
                 } catch (IOException ex) {
                     ErrorView.display(this.getClass().getName(), ex.getMessage());}
-                }
+            }
             }
         }
     }

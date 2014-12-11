@@ -9,6 +9,8 @@ import citdavidjordan.CitDavidJordan;
 import citdavidjordan.exceptions.MenuControlException;
 import java.io.BufferedReader;
 import java.io.PrintWriter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -30,11 +32,8 @@ public abstract class MenuView implements ViewInterface {
         String selection = null;
         
         do {
-            this.console.println(promptMessage); //display Menu
-            selection = this.getInput();
-            if (selection.toUpperCase().equals("Q")){
-                return;
-            }
+            this.console.println(promptMessage);
+            selection = this.getInput();           
 
             try {
                 this.doAction(selection); //do action based on selection

@@ -6,12 +6,9 @@
 package citdavidjordan.view;
 
 import citdavidjordan.CitDavidJordan;
-import citdavidjordan.view.MenuGameView;
-import citdavidjordan.model.Player;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Scanner;
 
 /**
  *

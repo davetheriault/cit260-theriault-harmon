@@ -42,6 +42,24 @@ public class MarbleControl {
         }
     }
     
+    public static void adjustNaotoMarbles( int add, String type) throws MarbleControlException{
+        
+        if ("swirly".equals(type)) {
+            amount = naotoInventory[Item.swirly.ordinal()].getAmount();
+            adjusted = amount + add;
+            naotoInventory[Item.swirly.ordinal()].setAmount(adjusted);
+        }
+        if ("steely".equals(type)) {
+            amount = naotoInventory[Item.steely.ordinal()].getAmount();
+            adjusted = amount + add;
+            naotoInventory[Item.steely.ordinal()].setAmount(adjusted);
+        }
+        if ("alley".equals(type)) {
+            amount = naotoInventory[Item.alley.ordinal()].getAmount();
+            adjusted = amount + add;
+            naotoInventory[Item.alley.ordinal()].setAmount(adjusted);
+        }
+    }
     
     
 }

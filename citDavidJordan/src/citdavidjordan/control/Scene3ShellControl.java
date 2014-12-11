@@ -28,30 +28,36 @@ public class Scene3ShellControl {
         int position = 0;
         for (int i = 1; i < nextInt + 6; i++){
                 Random ran = new Random();
+            if (position == 0) {
                 position = position + 1 - (((ran.nextInt(99)) % 2) * 2);
+            
                 if (position == -1) { this.console.println("Left"); }
                 else { this.console.println("Right");
                 }
             }
-            if (position == 1) {
+            else if (position == 1) {
                 position = position - 1;
                 this.console.println("Left");
             }
-            if (position == -1) {
+            else if (position == -1) {
                 position = position + 1;
                 this.console.println("Right");
             }
             try {
-                Thread.sleep(1000);
+                Thread.sleep(2000);
             } catch (InterruptedException ex) {
                 Logger.getLogger(Scene3ShellControl.class.getName()).log(Level.SEVERE, null, ex);
             }
-            return position;
         }
+            
+        return position;
+        
+    }
             
     
     
-    }
+    
+}
     
 
     

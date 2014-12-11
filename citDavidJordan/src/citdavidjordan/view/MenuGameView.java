@@ -92,7 +92,9 @@ public class MenuGameView extends MenuView {
                 break;
 
             case "Q": // Quit Program
-                return;
+                MenuMainView mmv = new MenuMainView();
+                mmv.display();
+                break;
                 
             case "W": //write to file
                 this.console.println("\nEnter the file path where the character list will be saved:");
