@@ -122,6 +122,7 @@ public class Scene4RPSView {
             this.keyboard.readLine();
             
             while (true) {
+                player.getLocation().setVisited(true);
                 MenuGameView gameMenu = new MenuGameView();
                 gameMenu.displayMap();
             }
@@ -326,6 +327,7 @@ public class Scene4RPSView {
             this.keyboard.readLine();
             
             while (true){
+                player.getLocation().setVisited(true);
                 MenuGameView gameMenu = new MenuGameView();
                 gameMenu.displayMap();
             }
