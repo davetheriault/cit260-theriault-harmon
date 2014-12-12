@@ -6,6 +6,7 @@
 package citdavidjordan.control;
 
 import citdavidjordan.CitDavidJordan;
+import citdavidjordan.view.ErrorView;
 import java.io.BufferedReader;
 import java.io.PrintWriter;
 import java.util.Random;
@@ -44,11 +45,19 @@ public class Scene3ShellControl {
                 this.console.println("Right");
             }
             try {
-                Thread.sleep(2000);
+                Thread.sleep(1400);
             } catch (InterruptedException ex) {
                 Logger.getLogger(Scene3ShellControl.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
+            try {
+                Thread.sleep(1600);
+            } catch (InterruptedException ex) {
+                ErrorView.display(this.getClass().getName(), ex.getMessage());
+            }
+        this.console.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+                + "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+                + "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
             
         return position;
         
