@@ -6,8 +6,6 @@
 package citdavidjordan.view;
 
 import citdavidjordan.CitDavidJordan;
-import citdavidjordan.model.InventoryItem;
-import citdavidjordan.model.Item;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -20,8 +18,6 @@ public class Scene7PayBrockView {
     
     protected final BufferedReader keyboard = CitDavidJordan.getInFile();
     protected final PrintWriter console = CitDavidJordan.getOutFile();
-    
-    InventoryItem[] in = CitDavidJordan.getCurrentGame().getInventory();
 
     public void start() throws IOException {
         this.console.println("\n* Brock is a big kid and is willing to defend  *"
@@ -48,10 +44,7 @@ public class Scene7PayBrockView {
         MenuGameView displayInventory = new MenuGameView();
         displayInventory.displayInventory(this.console);
         
-        if ( in[Item.alley.ordinal()].getAmount() * in[Item.alley.ordinal()].getValue() +
-                in[Item.swirly.ordinal()].getAmount() * in[Item.swirly.ordinal()].getValue() +
-                in[Item.steely.ordinal()].getAmount() * in[Item.steely.ordinal()].getValue() >= 100 ) {
-            
+        if ( /* MenuGameView.displayInvetory .getValue() */1 > 100 ) {
             // code to do trade and win game. 
         } else {
             this.console.println("Brock: \"You do not have enough marbles sport. "

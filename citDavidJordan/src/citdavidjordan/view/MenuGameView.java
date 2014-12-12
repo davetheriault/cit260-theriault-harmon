@@ -16,6 +16,7 @@ import citdavidjordan.model.InventoryItem;
 import citdavidjordan.model.Location;
 import citdavidjordan.model.Map;
 import citdavidjordan.model.Player;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Random;
