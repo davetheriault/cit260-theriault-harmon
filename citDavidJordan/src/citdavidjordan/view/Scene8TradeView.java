@@ -13,8 +13,6 @@ import citdavidjordan.model.InventoryItem;
 import citdavidjordan.model.Item;
 import java.io.IOException;
 import static java.lang.Integer.parseInt;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
