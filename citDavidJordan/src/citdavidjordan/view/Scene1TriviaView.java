@@ -7,6 +7,7 @@
 package citdavidjordan.view;
 
 import citdavidjordan.CitDavidJordan;
+import citdavidjordan.control.MarbleControl;
 import citdavidjordan.exceptions.MarbleControlException;
 import citdavidjordan.exceptions.Scene1TriviaException;
 import citdavidjordan.exceptions.Scene2NumberException;
@@ -143,20 +144,28 @@ public class Scene1TriviaView {
             }
         
             else {
-                try {
-                    this.console.println("That is the incorrect answer");
-                    
+                this.console.println("That is the incorrect answer");
+                
+                
+            } if ( playerAnswer.equals("2") ) {
+                    this.console.println("\nJerry: \"I made it easy. Take your marbles \" ");
+                    MarbleControl.adjustMarbles(5, "swirly"); // Total marbles awarded.
                     this.console.println("\nPress <Enter> to continue:");
                     
                     
                     this.keyboard.readLine();
+                    MenuGameView gameMenu = new MenuGameView();
+                    gameMenu.displayMap();
+                    
+            } if ( !playerAnswer.equals("2") ) {
+                    this.console.println("\nJohnny: \"Unlocky try. Give me a marble.\"    ");
+                    MarbleControl.adjustMarbles(-1, "swirly"); // Total marbles deducted if lose
+                    this.console.println("\nPress <Enter> to continue:");
                     
                     
-                } catch (IOException e) {
-                    ErrorView.display(this.getClass().getName(), "Error Reading Input: " + e.getMessage());
-                }
-                
-                
+                    this.keyboard.readLine();
+                    MenuGameView gameMenu = new MenuGameView();
+                    gameMenu.displayMap();
             }
         } catch (IOException ex) {
                 ErrorView.display(this.getClass().getName(), "Error Reading Input: " + ex.getMessage());

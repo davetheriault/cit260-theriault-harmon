@@ -203,8 +203,9 @@ public class MenuGameView extends MenuView {
         this.console.println("*** displayHopscotch function called ***");
     }
 
-    public void displaySoccerField() {
-        this.console.println("*** displaySoccerField function called ***");
+    public void displaySoccerField() throws IOException {
+        Scene7PayBrockView payBrock = new Scene7PayBrockView();
+        payBrock.start();
     }
 
     public void displayInventory(PrintWriter pw) {

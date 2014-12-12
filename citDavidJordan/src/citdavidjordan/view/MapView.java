@@ -16,7 +16,6 @@ import citdavidjordan.model.Location;
 import citdavidjordan.model.Map;
 import citdavidjordan.model.Player;
 import citdavidjordan.model.Scene;
-import citdavidjordan.model.SceneType;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;

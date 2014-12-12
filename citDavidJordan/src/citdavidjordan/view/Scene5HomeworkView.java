@@ -7,13 +7,13 @@
 package citdavidjordan.view;
 
 import citdavidjordan.CitDavidJordan;
+import citdavidjordan.control.MarbleControl;
 import citdavidjordan.exceptions.MarbleControlException;
 import citdavidjordan.exceptions.Scene2NumberException;
 import citdavidjordan.exceptions.Scene5HomeworkException;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Scanner;
 
 /**
  *
@@ -117,6 +117,15 @@ public class Scene5HomeworkView {
         double value = Double.parseDouble(playerAnswer);
         double correctAnswer = 0.05;
         
+        if ( value == correctAnswer ) {
+                    this.console.println("\nJohnny: \"I'm impressed that you got that right.\" ");
+                    this.console.println("\n\"Here are your marbles... Enjoy!\" ");
+                    MarbleControl.adjustMarbles(5, "swirly"); // Total marbles awarded.
+        } if ( value != correctAnswer ) {
+                    this.console.println("\nJohnny: \"I knew you wouldn't get it right. You owe me a Marble.\" ");
+                    MarbleControl.adjustMarbles(-1, "swirly"); // Total marbles deducted if lose
+        }
+        
         if (value == correctAnswer) {
             this.console.println("That is the correct answer");
             
@@ -124,11 +133,11 @@ public class Scene5HomeworkView {
         
             this.keyboard.readLine();
         
-            MapView mapView = new MapView();
-            mapView.displayMenu();
+            MenuGameView gameMenu = new MenuGameView();
+            gameMenu.displayMap();
             
             // TO DO - Function to give them marbles
-        }
+        } 
         else {
             this.console.println("That is the incorrect answer");
             
@@ -136,9 +145,9 @@ public class Scene5HomeworkView {
         
             this.keyboard.readLine(); 
         
-            MapView mapView = new MapView();
-            mapView.displayMenu();
-        }
+            MenuGameView gameMenu = new MenuGameView();
+            gameMenu.displayMap();
+        } 
         
         //A bat and a ball cost a dollar and ten cents in total. The bat costs a dollar more than the
 

@@ -7,6 +7,7 @@
 package citdavidjordan.view;
 
 import citdavidjordan.CitDavidJordan;
+import citdavidjordan.control.MarbleControl;
 import citdavidjordan.control.MenuControl;
 import citdavidjordan.exceptions.MarbleControlException;
 import citdavidjordan.exceptions.Scene2NumberException;
@@ -174,6 +175,12 @@ public class Scene2NumberView {
                     } catch (IOException ex) {
                         ErrorView.display(this.getClass().getName(), "Error Reading Input: " + ex.getMessage());
                     }
+                } if ( guess == correctNo ) {
+                    this.console.println("\nSally: \"Dang! Alrigh, here are your marbles.\" ");
+                    MarbleControl.adjustMarbles(5, "swirly"); // Total marbles awarded.
+                } if ( guess != correctNo ) {
+                    this.console.println("\nSally: \"That is rough, that is one marble for me.\" ");
+                    MarbleControl.adjustMarbles(-1, "swirly"); // Total marbles deducted if lose
                 }
                 
                 else {
