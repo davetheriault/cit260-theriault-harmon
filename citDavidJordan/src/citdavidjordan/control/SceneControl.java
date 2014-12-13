@@ -8,8 +8,10 @@ package citdavidjordan.control;
 import citdavidjordan.CitDavidJordan;
 import citdavidjordan.exceptions.MarbleControlException;
 import citdavidjordan.exceptions.Scene2NumberException;
+import citdavidjordan.model.Location;
 import citdavidjordan.model.Scene;
 import citdavidjordan.model.SceneType;
+import citdavidjordan.view.MenuGameView;
 import citdavidjordan.view.Scene2NumberView;
 import citdavidjordan.view.Scene4RPSView;
 import citdavidjordan.view.Scene1TriviaView;
@@ -20,6 +22,7 @@ import citdavidjordan.view.Scene7PayBrockView;
 import citdavidjordan.view.Scene8TradeView;
 import citdavidjordan.view.SceneBrodyEncounterView;
 import java.io.IOException;
+import javax.tools.DocumentationTool;
 
 /**
  *
@@ -65,6 +68,16 @@ public class SceneControl {
         if (scene == scenes[SceneType.brodyencounter.ordinal()]) {
             SceneBrodyEncounterView brodyE = new SceneBrodyEncounterView();
             brodyE.display();
+        }
+        if (scene == scenes[SceneType.extra.ordinal()]) {
+            System.out.println("_____________________________________________\n"
+                             + "This is NOWHERE. Return from whence you came.\n"
+                             + "^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\n (.eunitnoc ot <retnE> sserP)");
+            Location[][] loc = CitDavidJordan.getCurrentGame().getMap().getLocations();
+            loc[2][2].setVisited(true);
+            System.in.read();
+            MenuGameView mgv = new MenuGameView();
+            mgv.displayMap();
         }
     }
     

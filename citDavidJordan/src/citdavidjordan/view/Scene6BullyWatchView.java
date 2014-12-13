@@ -28,6 +28,7 @@ public class Scene6BullyWatchView extends View{
         super("");
     }
     Game game = CitDavidJordan.getCurrentGame();
+    int price = 6;
         
     //Intro Message
     String msg = "\n\nYou come to the hopscoth of the school playground. You find a bunch of \n"
@@ -37,11 +38,11 @@ public class Scene6BullyWatchView extends View{
             + "\tI noticed you've been having trouble with that bully Brody. \n"
             + "\tHe sometimes steals our marbles too, so were always keeping \n"
             + "\tan eye out for him. If you want, we can help YOU watch out  \n"
-            + "\tfor him too. All you have to do is give us 4 steely marbles.\"\n";
+            + "\tfor him too. All you have to do is give us " +price+ " steely marbles.\"\n";
     
     //BullyWatch offer message
     String msg2 = "Lucy: \"So... do you want us to keep a watch out for Brody \n"
-            + "\tfor 4 steelys?\"\n\n"
+            + "\tfor " +price+ " steelys?\"\n\n"
             + "(Choosing 'YES' will allow you to view Brodies location on the map.)\n"
             + "(Y/N)?";
     
@@ -89,10 +90,10 @@ public class Scene6BullyWatchView extends View{
             switch (value) {
                 
                 case "Y": //yes to bullywatch
-                    if ( items[Item.steely.ordinal()].getAmount() >= 4 ) {      //if you have enough marbles
+                    if ( items[Item.steely.ordinal()].getAmount() >= price ) {      //if you have enough marbles
                         game.setBullyWatchYorN(true);
-                        MarbleControl.adjustMarbles(-4, value);
-                        this.console.println("You give Lucy 4 steely marbles. \n\n"
+                        MarbleControl.adjustMarbles(-price, value);
+                        this.console.println("You give Lucy " +price+ " steely marbles. \n\n"
                                 + "Lucy: \"Thanks! We'll keep an eye on him for you.\" \n\n"
                                 + "(Now, whenever you view the map, Brody's location will be displayed.)");
                         this.console.println("<Press <Enter> to continue.>");

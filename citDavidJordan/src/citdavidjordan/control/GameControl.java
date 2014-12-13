@@ -75,13 +75,13 @@ public class GameControl {
         
         InventoryItem swirly = new InventoryItem();
         swirly.setDescription("Swirly");
-        swirly.setAmount(20);
+        swirly.setAmount(10);
         swirly.setValue(1);
         inventory[Item.swirly.ordinal()] = swirly;
         
         InventoryItem steely = new InventoryItem();
         steely.setDescription("Steely");
-        steely.setAmount(5);
+        steely.setAmount(0);
         steely.setValue(2);
         inventory[Item.steely.ordinal()] = steely;
         
@@ -108,7 +108,7 @@ public class GameControl {
         locations[1][2].setScene(scenes[SceneType.hopscotch.ordinal()]);
         locations[2][0].setScene(scenes[SceneType.soccerfield.ordinal()]);
         locations[2][1].setScene(scenes[SceneType.cafeteria.ordinal()]);
-        locations[2][2].setScene(null);
+        locations[2][2].setScene(scenes[SceneType.extra.ordinal()]);
         
         //set Names
         locations[0][0].setLocationName("PlayGround");
@@ -119,7 +119,7 @@ public class GameControl {
         locations[1][2].setLocationName("Hopscotch");
         locations[2][0].setLocationName("Soccer Field");
         locations[2][1].setLocationName("Cafeteria");
-        locations[2][2].setLocationName(null);
+        locations[2][2].setLocationName("Nowhere");
         //set descriptions
         locations[0][0].setDescription("Jerry's Trivia Challenge");
         locations[0][1].setDescription("Sally's Guess-A-Number Challenge");
@@ -129,7 +129,7 @@ public class GameControl {
         locations[1][2].setDescription("Lucy's Bully-Watch");
         locations[2][0].setDescription("Buy Protection from Brock");
         locations[2][1].setDescription("Trade Marbles with Naoto");
-        locations[2][2].setDescription(null);
+        locations[2][2].setDescription("???");
     }
     
 

@@ -19,7 +19,8 @@ public enum SceneType {
     hopscotch,
     soccerfield,
     cafeteria,
-    brodyencounter;
+    brodyencounter,
+    extra;
 
 }
 

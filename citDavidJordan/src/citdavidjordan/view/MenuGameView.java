@@ -220,16 +220,16 @@ public class MenuGameView extends MenuView {
         
         pw.println("\nMarble Inventory \n");
         pw.println("Description" + "\t" +
-                           "Value" + "\t" +
                            "Amount" + "\t" +
+                           "Value(each)" + "\t" +                           
                            "Total Value");
         
         //for each inventory item
         for (InventoryItem inventoryItem : inventory) {
             //display description amount and value
-            pw.println(inventoryItem.getDescription() + "\t\t  " +
-                               inventoryItem.getValue() + "\t   " +
+            pw.println(inventoryItem.getDescription() + "\t\t  " +                               
                                inventoryItem.getAmount() + "\t   " + 
+                               inventoryItem.getValue() + "\t        " +
                                (inventoryItem.getValue()*inventoryItem.getAmount()));
         }
     }
@@ -244,8 +244,8 @@ public class MenuGameView extends MenuView {
         
             this.console.println("\nNaoto's Awesome Marble Trading Super Fantastic Inventory!!! \n");
             this.console.println("Description" + "\t" +
-                               "Value" + "\t" +
                                "Amount" + "\t" +
+                               "Value(each)" + "\t" +
                                "Total Value");
         
             //for each inventory item
@@ -254,8 +254,8 @@ public class MenuGameView extends MenuView {
                 int total = (inventoryItem.getValue()) * (inventoryItem.getAmount());
                 
                 this.console.println(inventoryItem.getDescription() + "\t\t  " +
-                               inventoryItem.getValue() + "\t   " +
-                               inventoryItem.getAmount() + "\t   " + 
+                               inventoryItem.getAmount() + "\t   " +
+                               inventoryItem.getValue() + "\t        " +                                
                                total);
             }
         } else {
@@ -274,6 +274,9 @@ public class MenuGameView extends MenuView {
         Random rand2 = new Random();
         int brodyRow = rand.nextInt(3);
         int brodyCol = rand2.nextInt(3);
+        if (brodyRow == 2 && brodyCol == 2) {
+            brodyCol = rand2.nextInt(2);
+        }
         Actor brody = Actor.Brody;
         Location brodyLocation = locations[brodyRow][brodyCol];
         

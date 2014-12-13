@@ -7,6 +7,8 @@ package citdavidjordan.view;
 
 import citdavidjordan.CitDavidJordan;
 import citdavidjordan.model.Actor;
+import citdavidjordan.model.InventoryItem;
+import citdavidjordan.model.Item;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -19,16 +21,16 @@ public class Scene7PayBrockView {
     
     protected final BufferedReader keyboard = CitDavidJordan.getInFile();
     protected final PrintWriter console = CitDavidJordan.getOutFile();
+    
+    InventoryItem[] in = CitDavidJordan.getCurrentGame().getInventory();
 
     public void start() throws IOException {
         if (!Actor.Brock.getLocation().isVisited()) { //Long description only displays on first visit ~Dave
-        this.console.println("\n* Brock is a big kid and is willing to defend  *"
-                           + "\n* you for an exchange of marbles. His servcies *"
-                           + "\n* are pricy, but how much is your face worth?  *"
-                           + "\n* For a total value of 100, Swirly = 1 value:  *"
-                           + "\n* Steely = 2 value: and Alley = 5 value:, you  *"
-                           + "\n* can buy his protection.                      *");
-        this.console.println("\n\t* Click <Enter> to continue                  *");
+        this.console.println("\n Brock is a big kid and is willing to defend  "
+                           + "\n you for an exchange of marbles. His servcies "
+                           + "\n are pricy, but how much is your face worth?  "
+                           + "\n For 20 alley marbles, you can buy his protection.");
+        this.console.println("\n\t (Press <Enter> to continue.)                  ");
         
         this.keyboard.readLine();
         }
@@ -38,24 +40,25 @@ public class Scene7PayBrockView {
     }
 
     private void payBrock() throws IOException {
-        this.console.println("\n* Brock: \"So you have come to pay me have you.  *"
-                           + "\n* My protection is not cheap. Lets make sure     *"                
-                           + "\n* you have enough marbles for my services.\"     *");
+        this.console.println("\n Brock: \"So, have you come to pay me?  "
+                           + "\n\t My protection is not cheap. You got 20 alleys like we agreed?\"     ");
                            
-        this.console.println("\n\t* Would you like to continue?                  *");
+        this.console.println("\n(Press <Enter> to continue.)");
         
         this.keyboard.readLine();
         
         MenuGameView displayInventory = new MenuGameView();
         displayInventory.displayInventory(this.console);
         
-        if ( /* MenuGameView.displayInvetory .getValue() */1 > 100 ) {
-            // code to do trade and win game. 
+        if ( in[Item.alley.ordinal()].getAmount() >= 20 ) {
+             
         } else {
-            this.console.println("Brock: \"You do not have enough marbles sport. "
-                                + "\n* I wish I could help, but come back when your *"
-                                + "\n* total value is over 100.  *");
-            this.console.println("*\n Click <Enter> to return to menu.              *");
+            this.console.println("\nBrock: \"Hey wuss! You don't have enough marbles here. "
+                                    + "\n\t You're wasting my time here. *sigh*"
+                                    + "\n\t Come back when you got 20 ALLEY marbles. "
+                                    + "\n\t None of these crappy steelys and swirlturds! "
+                    + "\n\t Alleys. Got it?\"");
+            this.console.println("\n (Press <Enter> to return to menu.)              ");
             
             this.keyboard.readLine();
             
