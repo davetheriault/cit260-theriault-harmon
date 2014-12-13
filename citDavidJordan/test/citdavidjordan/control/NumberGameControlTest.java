@@ -3,6 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+/*
 package citdavidjordan.control;
 
 import org.junit.Test;
@@ -11,7 +12,7 @@ import static org.junit.Assert.*;
 /**
  *
  * @author THERIAULT
- */
+ *//*
 public class NumberGameControlTest {
     
     public NumberGameControlTest() {
@@ -19,7 +20,7 @@ public class NumberGameControlTest {
 
     /**
      * Test of numberGame method, of class Scene2NumberControl.
-     */
+     *//*
     @Test
     public void testNumberGame() {
         
@@ -27,7 +28,7 @@ public class NumberGameControlTest {
         
         /********************
          *** Test Case #1 ***
-         *******************/
+         *******************//*
         
         System.out.println("\tTest case #1");
         int guess = 5;
@@ -40,7 +41,7 @@ public class NumberGameControlTest {
         
         /********************
          *** Test Case #2 ***
-         *******************/
+         *******************//*
         
         System.out.println("\tTest case #2");
         guess = 9;
@@ -51,7 +52,7 @@ public class NumberGameControlTest {
         
         /********************
          *** Test Case #3 ***
-         *******************/
+         *******************//*
         
         System.out.println("\tTest case #3");
         guess = 0;
@@ -62,7 +63,7 @@ public class NumberGameControlTest {
         
         /********************
          *** Test Case #4 ***
-         *******************/
+         *******************//*
         
         System.out.println("\tTest case #4");
         guess = 11;
@@ -73,7 +74,7 @@ public class NumberGameControlTest {
         
         /********************
          *** Test Case #5 ***
-         *******************/
+         *******************//*
         
         System.out.println("\tTest case #5");
         guess = 1;
@@ -84,7 +85,7 @@ public class NumberGameControlTest {
         
         /********************
          *** Test Case #6 ***
-         *******************/
+         *******************//*
         
         System.out.println("\tTest case #6");
         guess = 10;
@@ -95,7 +96,7 @@ public class NumberGameControlTest {
         
         /********************
          *** Test Case #7 ***
-         *******************/
+         *******************//*
         
         System.out.println("\tTest case #6");
         guess = 2;
@@ -106,7 +107,7 @@ public class NumberGameControlTest {
         
         /********************
          *** Test Case #8 ***
-         *******************/
+         *******************//*
         
         System.out.println("\tTest case #8");
         guess = 8;
@@ -120,3 +121,4 @@ public class NumberGameControlTest {
     
     
 }
+*/

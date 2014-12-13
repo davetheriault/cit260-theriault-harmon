@@ -29,8 +29,7 @@ public class MenuMainView extends MenuView {
         + "\n| Main Menu |"
         + "\n-----------------------------------------------"
         + "\nN - New Game"
-        + "\nL - Load Game"
-        + "\nH - Help / How to play"
+        + "\nL - Load Game"        
         + "\nS - Save Game"
         + "\nQ - Quit"
         + "\n-----------------------------------------------");
@@ -59,10 +58,10 @@ public class MenuMainView extends MenuView {
                 this.loadGame();
                 break;
 
-            case "H": //help menu
+            /*case "H": //help menu
                 this.displayHelpMenu();
                 break;
-
+                    */
             case "S": //Save current game
                 this.saveGame();
                 break;

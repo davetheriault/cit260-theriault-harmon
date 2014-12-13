@@ -74,7 +74,9 @@ public class MenuHelpView extends MenuView {
                 break;
                 
             case "Q": // Quit Program
-                return;
+                MenuGameView mgv = new MenuGameView();
+                mgv.display();
+                break;
 
             default:
                 throw new MenuControlException("\nInvalid Selection.");

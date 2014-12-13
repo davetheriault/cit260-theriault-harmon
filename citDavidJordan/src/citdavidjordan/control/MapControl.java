@@ -7,6 +7,7 @@ package citdavidjordan.control;
 
 import citdavidjordan.CitDavidJordan;
 import citdavidjordan.model.Game;
+import citdavidjordan.model.Location;
 import citdavidjordan.model.Map;
 import citdavidjordan.model.Scene;
 import citdavidjordan.model.SceneType;
@@ -36,7 +37,8 @@ public class MapControl {
        }
 
     static void moveToStartingLocation(Map map) {
-        System.out.println("*** called a function called moveToStartingLocation ***");
+        //Location[][] local = map.getLocations();
+        //CitDavidJordan.getPlayer().setLocation(local[2][2]);
         
     }
 
