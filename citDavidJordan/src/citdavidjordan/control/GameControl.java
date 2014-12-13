@@ -158,9 +158,9 @@ public class GameControl {
 
     private static void adjustNaotosInventory(InventoryItem[] naotoInventory) {
         
-        naotoInventory[Item.swirly.ordinal()].setAmount(10);
-        naotoInventory[Item.steely.ordinal()].setAmount(15);
-        naotoInventory[Item.alley.ordinal()].setAmount(20);
+        naotoInventory[Item.swirly.ordinal()].setAmount(50);
+        naotoInventory[Item.steely.ordinal()].setAmount(50);
+        naotoInventory[Item.alley.ordinal()].setAmount(50);
         
     }
 

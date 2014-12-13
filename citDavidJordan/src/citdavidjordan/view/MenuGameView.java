@@ -20,6 +20,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Random;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -52,72 +54,76 @@ public class MenuGameView extends MenuView {
     
     @Override
     public void doAction(String choice) throws MenuControlException {
-        choice = choice.toUpperCase();
-        Player player = CitDavidJordan.getPlayer();
-
-
-        switch (choice) {
-
-            case "H": //help menu
-                this.displayHelpMenu();
-                break;
-
-            case "S": //Save current game
-                this.saveGame();
-                break;
-                
-            case "M": 
-            try {
-                //View Map
-                this.displayMap();
-                
-            } catch (Scene2NumberException | MarbleControlException ex) {
-                ErrorView.display(this.getClass().getName(), ex.getMessage());
-            } catch (IOException ex) {
-                ErrorView.display(this.getClass().getName(), ex.getMessage());
-        }
-        
-                break;
-                
-            case "V": // View marbles
-                this.displayInventory(this.console);
-                break;
-                
-            case "T": // view trades
-                this.displayNaotosInventory();
-                break;
+        try {
+            choice = choice.toUpperCase();
+            Player player = CitDavidJordan.getPlayer();
             
-            case "C": // Characters list
-                this.displayActors(this.console);
-                break;
-
-            case "Q": // Quit Program
-                MenuMainView mmv = new MenuMainView();
-                mmv.display();
-                break;
+            
+            switch (choice) {
                 
-            case "W": //write to file
-                this.console.println("\nEnter the file path where the character list will be saved:");
-                String filePath = this.getInput();
-                try (PrintWriter fw = new PrintWriter(filePath)) {
-                    this.displayActors(fw);
-                    this.console.println(filePath + " has been saved.");
-                } catch (Exception ex) {
-                    ErrorView.display(this.getClass().getName(), ex.getMessage());
-                }
-                break;
+                case "H": //help menu
+                    this.displayHelpMenu();
+                    break;
+                    
+                case "S": //Save current game
+                    this.saveGame();
+                    break;
+                    
+                case "M":
+                    try {
+                        //View Map
+                        this.displayMap();
+                        
+                    } catch (Scene2NumberException | MarbleControlException ex) {
+                        ErrorView.display(this.getClass().getName(), ex.getMessage());
+                    } catch (IOException ex) {
+                        ErrorView.display(this.getClass().getName(), ex.getMessage());
+                    }
+                    
+                    break;
+                    
+                case "V": // View marbles
+                    this.displayInventory(this.console);
+                    break;
+                    
+                case "T": // view trades
+                    this.displayNaotosInventory();
+                    break;
+                    
+                case "C": // Characters list
+                    this.displayActors(this.console);
+                    break;
+                    
+                case "Q": // Quit Program
+                    MenuMainView mmv = new MenuMainView();
+                    mmv.display();
+                    break;
+                    
+                case "W": //write to file
+                    this.console.println("\nEnter the file path where the character list will be saved:");
+                    String filePath = this.getInput();
+                    try (PrintWriter fw = new PrintWriter(filePath)) {
+                        this.displayActors(fw);
+                        this.console.println(filePath + " has been saved.");
+                    } catch (Exception ex) {
+                        ErrorView.display(this.getClass().getName(), ex.getMessage());
+                    }
+                    break;
+                    
+                case "I": //write inventory to a file
+                    try (PrintWriter pw = new PrintWriter("IventoryList" + player.getName() + ".txt")) {
+                        this.displayInventory(pw);
+                    } catch (Exception ex) {
+                        ErrorView.display(this.getClass().getName(), ex.getMessage());
+                    }
                 
-            case "I": //write inventory to a file
-                try (PrintWriter pw = new PrintWriter("IventoryList" + player.getName() + ".txt")) {
-                    this.displayInventory(pw);
-                } catch (Exception ex) {
-                    ErrorView.display(this.getClass().getName(), ex.getMessage());
-                }
                 
-
-            default:
-                throw new MenuControlException("\nInvalid Selection.");
-
+                default:
+                    throw new IOException("\nInvalid Selection.");
+                    
+            }
+        } catch (IOException ex) {
+            ErrorView.display(this.getClass().getName(), ex.getMessage());
         }
     }
     

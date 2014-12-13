@@ -17,11 +17,15 @@ import java.io.PrintWriter;
 public class Scene8TradeControl {
     
         
-    public static void trade(int amt, String type) {
+    public static void trade(int amt, String type, int amt2, String type2) {
         InventoryItem[] ni = CitDavidJordan.getCurrentGame().getNaotosInventory();
         InventoryItem[] in = CitDavidJordan.getCurrentGame().getInventory();  
         
         
+    }
+
+    public static void trade(int amt, String type, int amt2, String type2, int amt3, String type3) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }

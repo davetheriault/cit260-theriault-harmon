@@ -17,6 +17,7 @@ import citdavidjordan.view.Scene3ShellView;
 import citdavidjordan.view.Scene5HomeworkView;
 import citdavidjordan.view.Scene6BullyWatchView;
 import citdavidjordan.view.Scene7PayBrockView;
+import citdavidjordan.view.Scene8TradeView;
 import citdavidjordan.view.SceneBrodyEncounterView;
 import java.io.IOException;
 
@@ -56,6 +57,10 @@ public class SceneControl {
         if (scene == scenes[SceneType.soccerfield.ordinal()]) {
             Scene7PayBrockView pBrock = new Scene7PayBrockView();
             pBrock.start();
+        }
+        if (scene == scenes[SceneType.cafeteria.ordinal()]) {
+            Scene8TradeView mTrade = new Scene8TradeView();
+            mTrade.display();
         }
         if (scene == scenes[SceneType.brodyencounter.ordinal()]) {
             SceneBrodyEncounterView brodyE = new SceneBrodyEncounterView();
