@@ -27,7 +27,7 @@ public class Scene3ShellControl {
             int nextInt = rand.nextInt(4);
                 
         int position = 0;
-        for (int i = 1; i < nextInt + 6; i++){
+        for (int i = 1; i < nextInt + 8; i++){
                 Random ran = new Random();
             if (position == 0) {
                 position = position + 1 - (((ran.nextInt(99)) % 2) * 2);
@@ -51,7 +51,7 @@ public class Scene3ShellControl {
             }
         }
             try {
-                Thread.sleep(1600);
+                Thread.sleep(0100);
             } catch (InterruptedException ex) {
                 ErrorView.display(this.getClass().getName(), ex.getMessage());
             }

@@ -6,6 +6,9 @@
 package citdavidjordan.view;
 
 import citdavidjordan.CitDavidJordan;
+import citdavidjordan.control.MarbleControl;
+import citdavidjordan.exceptions.MarbleControlException;
+import citdavidjordan.exceptions.Scene2NumberException;
 import citdavidjordan.model.Actor;
 import citdavidjordan.model.InventoryItem;
 import citdavidjordan.model.Item;
@@ -23,6 +26,7 @@ public class Scene7PayBrockView {
     protected final PrintWriter console = CitDavidJordan.getOutFile();
     
     InventoryItem[] in = CitDavidJordan.getCurrentGame().getInventory();
+    MenuGameView mgv = new MenuGameView();
 
     public void start() throws IOException {
         if (!Actor.Brock.getLocation().isVisited()) { //Long description only displays on first visit ~Dave
@@ -51,7 +55,44 @@ public class Scene7PayBrockView {
         displayInventory.displayInventory(this.console);
         
         if ( in[Item.alley.ordinal()].getAmount() >= 20 ) {
-             
+            try {
+                this.console.println("\nBrock: \"Looks like you got enough. Nice.\n"
+                        + "\t So, do we have a deal?\"\n"
+                        + "(Y/N)?");
+                String win = this.keyboard.readLine();
+                win = win.trim().toUpperCase();
+                switch (win){
+                    case "Y":
+                    case "YES": try { MarbleControl.adjustMarbles(-20, "alley"); }
+                    catch (MarbleControlException ex) { ErrorView.display(this.getClass().getName(), ex.getMessage());}
+                    this.console.println("\n"
+                            + ".........................................................................\n"
+                            + "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n"
+                            + "!!                                                                     !!\n"
+                            + "!!  Y       Y    OOOO    U      U         W         W  IIIII  N     N  !!\n"
+                            + "!!   Y     Y    O    O   U      U         W         W    I    NN    N  !!\n"
+                            + "!!    Y   Y    O      O  U      U         W         W    I    N N   N  !!\n"
+                            + "!!     Y Y     O      O  U      U         W    W    W    I    N  N  N  !!\n"
+                            + "!!      Y      O      O  U      U         W    W    W    I    N   N N  !!\n"
+                            + "!!      Y       O    O    U    U           W  W W  W     I    N    NN  !!\n"
+                            + "!!      Y        OOOO      UUUU             WW   WW    IIIII  N     N  !!\n"
+                            + "!!                                                                     !!\n"
+                            + "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n"
+                            + "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n");
+                    this.keyboard.readLine();
+                    MenuMainView mmw = new MenuMainView();
+                    mmw.display();
+                    break;
+                    case "N":
+                    case "NO":  this.console.println("\n Brock: \"Are you stupid? Quit wasting my time, you wuss.\" \n"
+                            + "(Press <Enter> to return to map.) ");
+                    mgv.displayMap();
+                        
+                    default: throw new IOException("Invalid Selection.");
+                }
+            } catch (Scene2NumberException | MarbleControlException ex) {
+                ErrorView.display(this.getClass().getName(), ex.getMessage());
+            }
         } else {
             this.console.println("\nBrock: \"Hey wuss! You don't have enough marbles here. "
                                     + "\n\t You're wasting my time here. *sigh*"
@@ -62,7 +103,7 @@ public class Scene7PayBrockView {
             
             this.keyboard.readLine();
             
-            MenuGameView mgv = new MenuGameView();
+            
             mgv.display();
         }
     }

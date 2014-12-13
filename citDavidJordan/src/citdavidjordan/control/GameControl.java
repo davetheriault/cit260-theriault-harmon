@@ -169,6 +169,8 @@ public class GameControl {
             ObjectOutputStream output = new ObjectOutputStream(fops);
             
             output.writeObject(currentGame);
+            output.writeObject(CitDavidJordan.getPlayer());
+            output.writeObject(CitDavidJordan.getCurrentGame().getMap().getLocations());
             //todo may need to write other objects if they aren't connected directly to the game
         } 
         catch(IOException e) {
