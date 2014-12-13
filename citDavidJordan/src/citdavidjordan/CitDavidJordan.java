@@ -10,6 +10,7 @@ import citdavidjordan.exceptions.ProgramControlException;
 import citdavidjordan.model.Game;
 import citdavidjordan.model.Player;
 import citdavidjordan.view.ErrorView;
+import citdavidjordan.view.MenuMainView;
 import citdavidjordan.view.StartProgramView;
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -85,9 +86,12 @@ public class CitDavidJordan {
             String filePath = "logfile.txt";
             CitDavidJordan.logFile = new PrintWriter(filePath);
             
-            StartProgramView startProgramView;
+            
+            MenuMainView mmv = new MenuMainView();
+            mmv.display();
+            /*StartProgramView startProgramView;
             startProgramView = new StartProgramView();
-            startProgramView.display();
+            startProgramView.display(); */
             
         } catch (Exception e) { 
             System.out.println("Exception: " + e.toString() +

@@ -8,7 +8,6 @@ package citdavidjordan.view;
 
 import citdavidjordan.CitDavidJordan;
 import citdavidjordan.control.MarbleControl;
-import citdavidjordan.control.MenuControl;
 import citdavidjordan.exceptions.MarbleControlException;
 import citdavidjordan.exceptions.Scene2NumberException;
 import java.io.BufferedReader;
@@ -50,6 +49,9 @@ public class Scene2NumberView {
                              + "\n* the number she is thinking about. She gives              *"
                              + "\n* you the option to pick between 1-10.                     *"
                              + "\n* Do you want to play?                                     *");
+        
+        //set location to visited
+        CitDavidJordan.getPlayer().getLocation().setVisited(true);
         
         while(!valid) { 
             try {

@@ -79,8 +79,8 @@ public class MenuMainView extends MenuView {
 
         //display game menu
 
-        StartGameIntroView gameMenu = new StartGameIntroView();
-        gameMenu.displayMenu();
+        StartProgramView spv = new StartProgramView();
+        spv.display();
 
     }
 

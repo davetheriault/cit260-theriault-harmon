@@ -46,9 +46,12 @@ public class Scene5HomeworkView {
         
         this.console.println(      "*                                                          *"
                              + "\n* Johnny is not the brightest kid on the block,            *"
-                             + "\n* and he always needs help with his homeowrk.              *"
+                             + "\n* and he always needs help with his homework.              *"
                              + "\n* He is willing to give you 5 marbles, if you help him.    *"
                              + "\n* Are you willing to help him?                             *");
+        
+        //set location to visited
+        CitDavidJordan.getPlayer().getLocation().setVisited(true);
         
         while(!valid) { //while a valid name has not been received
             

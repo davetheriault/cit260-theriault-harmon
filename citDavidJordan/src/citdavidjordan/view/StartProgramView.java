@@ -90,9 +90,11 @@ import java.util.logging.Logger;
                 this.console.println("===============================================");
                 
                 //display main menu
-                MenuMainView mainMenu = new MenuMainView();
-                mainMenu.display();
-            } catch (ProgramControlException ex) {
+                //MenuGameView mgv = new MenuGameView();
+                //mgv.display();
+                StartGameIntroView gameMenu = new StartGameIntroView();
+                gameMenu.displayMenu();
+            } catch (ProgramControlException | IOException ex) {
                 ErrorView.display(this.getClass().getName(), ex.getMessage());
 
             }

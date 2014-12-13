@@ -11,6 +11,7 @@ import citdavidjordan.control.MarbleControl;
 import citdavidjordan.exceptions.MarbleControlException;
 import citdavidjordan.exceptions.Scene1TriviaException;
 import citdavidjordan.exceptions.Scene2NumberException;
+import citdavidjordan.model.Actor;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -47,6 +48,7 @@ public class Scene1TriviaView {
     private void displayTriviaChallenge() {
         this.console.println("\n\n\n************************************************************");
         
+        if (!Actor.Jerry.getLocation().isVisited()){  //long description will only display on first visit ~Dave
         this.console.println(      "*                                                          *"
                              + "\n* Jerry is considered the school ground nerd, and he is.    *"
                              + "\n* His number one goal is to see how smart the kids are.    *"
@@ -55,11 +57,14 @@ public class Scene1TriviaView {
         
         this.console.println(      "*                                                          *"
                              + "\n* Are you ready for...                                     *");
-        
+        }
         this.console.println(      "*                                                          *"
                              + "\n* THE TRIVIA GAME                                          *"
                              + "\n*                                                          *"
                              + "\n************************************************************");
+        
+        //Set location to visited
+        CitDavidJordan.getPlayer().getLocation().setVisited(true); 
     }
 
     private String getPlayerResponse() throws Scene1TriviaException, Scene2NumberException, MarbleControlException {

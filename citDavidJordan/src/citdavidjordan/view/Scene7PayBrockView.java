@@ -6,6 +6,7 @@
 package citdavidjordan.view;
 
 import citdavidjordan.CitDavidJordan;
+import citdavidjordan.model.Actor;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -20,6 +21,7 @@ public class Scene7PayBrockView {
     protected final PrintWriter console = CitDavidJordan.getOutFile();
 
     public void start() throws IOException {
+        if (!Actor.Brock.getLocation().isVisited()) { //Long description only displays on first visit ~Dave
         this.console.println("\n* Brock is a big kid and is willing to defend  *"
                            + "\n* you for an exchange of marbles. His servcies *"
                            + "\n* are pricy, but how much is your face worth?  *"
@@ -29,6 +31,9 @@ public class Scene7PayBrockView {
         this.console.println("\n\t* Click <Enter> to continue                  *");
         
         this.keyboard.readLine();
+        }
+        //Set location to visited
+        CitDavidJordan.getPlayer().getLocation().setVisited(true);
         this.payBrock();
     }
 
