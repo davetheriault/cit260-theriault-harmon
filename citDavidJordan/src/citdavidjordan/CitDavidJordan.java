@@ -96,7 +96,8 @@ public class CitDavidJordan {
         } catch (Exception e) { 
             System.out.println("Exception: " + e.toString() +
                              "\nCause: " + e.getCause() +
-                             "\nMessage: " + e.getMessage());
+                             "\nMessage: " + e.getMessage() +
+                             "\n");
         }
         finally {
             try {

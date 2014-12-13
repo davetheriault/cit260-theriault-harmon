@@ -288,7 +288,7 @@ public class MenuGameView extends MenuView {
             for (int column = 0; column < map.getNoOfColumns(); column++){
                 this.console.print(" | ");
                 Location location = locations[row][column];
-                //todo add code for bullywatch 
+                
                 if ((location.isVisited()) == true) {
                     String name = location.getLocationName();
                     int frontSpace = (14 - name.length()) / 2;

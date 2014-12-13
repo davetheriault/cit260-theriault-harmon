@@ -4,6 +4,7 @@
 * and open the template in the editor.
 */
 package citdavidjordan.view;
+import citdavidjordan.CitDavidJordan;
 import citdavidjordan.control.ProgramControl;
 import citdavidjordan.exceptions.MenuControlException;
 import citdavidjordan.exceptions.ProgramControlException;
@@ -80,7 +81,8 @@ import java.util.logging.Logger;
     public void doAction(String playerName) throws MenuControlException {
         
             try {
-                Player player = ProgramControl.createPlayer(playerName);
+                Player player = CitDavidJordan.getCurrentGame().getPlayer();
+                player.setName(playerName);
                 
                 //display welcome message
                 this.console.println("\n\n===============================================");
@@ -94,7 +96,7 @@ import java.util.logging.Logger;
                 //mgv.display();
                 StartGameIntroView gameMenu = new StartGameIntroView();
                 gameMenu.displayMenu();
-            } catch (ProgramControlException | IOException ex) {
+            } catch (IOException ex) {
                 ErrorView.display(this.getClass().getName(), ex.getMessage());
 
             }

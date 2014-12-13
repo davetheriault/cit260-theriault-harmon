@@ -82,8 +82,8 @@ public class SceneBrodyEncounterView extends View{
         boolean done = false;
         r = SceneBrodyEncounterView.payUp();
         String msg = "\n************************************************************"
-                + "\n As you walk over to ...  "
-                + "\n todo insert story text here... "
+                + "\nAs you walk over to the " + Actor.Brody.getLocation().getLocationName() + ", suddenly,"
+                + "\nyour mortal enemy, Brody, cuts you off.\n"               
                 + "\n Brody: \"Hey Little-Miss-" + CitDavidJordan.getCurrentGame().getPlayer().getName() + "-Pants."//todo get player name <-
                 + "\n\t Where do you think you're going?"
                 + "\n\t I never said you could go past me."
@@ -98,59 +98,6 @@ public class SceneBrodyEncounterView extends View{
             value = this.getInput();
             this.doAction(value);
         } while (!done);
-    }
-    
-    private String payOrRun(String r) throws SceneBrodyEncounterException, MarbleControlException, IOException {
-        
-        boolean valid = false; //indicates if name has been received
-        String PorR = null;
-        
-        while(!valid) { //while a valid name has not been retrieved
-            
-            //prompt for player's name
-            this.console.println("You may choose to pay Brody and continue to your destination,\n"
-                    + "or to make a run for it. What would you like to do? \n"
-                    + "P - Pay Up \n"
-                    + "R - Run \n");
-            
-            //get name from keyboard and trim off blanks
-            PorR = this.keyboard.readLine();
-            PorR = PorR.trim();
-            PorR = PorR.toUpperCase();
-            
-            if (r == null) {
-                this.console.println("Rocky: \"Oh, wait. \n"
-                                   + "       It looks like you don't even have any marbles little-miss-" + player.getName() + ".\n"
-                                   + "       You are so worthless! Get outta here!!");
-                PorR = "NA";
-            }
-            
-            //if name invalid
-            if (PorR.length() < 1) {
-                throw new SceneBrodyEncounterException("Invalid Selection - Please enter 'P' or 'R'.");    
-            } 
-            if (!"P".equals(PorR) & !"R".equals(PorR)) {
-                throw new SceneBrodyEncounterException("Invalid Selection - Please enter 'P' or 'R'.");
-            }
-            if ("P".equals(PorR) && r == null) {
-                throw new SceneBrodyEncounterException("You currently have no marbles. You can't choose this option.");
-            } 
-            if ("P".equals(PorR)) {
-                MarbleControl.adjustMarbles(-1, r);
-                this.console.println("You give Brody 1 " + r + " marble. \n\n"
-                        + "Brody: \"Thanks chump.\" \n\n"
-                        + "Press <Enter> to continue.");
-                this.keyboard.readLine();
-                //*****************************************************************************************************
-                //TODO ENTER CODE TO RETURN TO MAPVIEW DOACTION TO MOVE PLAYER TO THERE PREVIOUSLY SELECTED DESTINATION
-                //*****************************************************************************************************
-            }
-            else {
-                //TODO Insert Run Away Function
-            }
-        }
-        
-        return PorR;
     }
     
     @Override

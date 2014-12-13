@@ -7,7 +7,10 @@ package citdavidjordan.view;
 
 import citdavidjordan.CitDavidJordan;
 import citdavidjordan.control.GameControl;
+import citdavidjordan.control.ProgramControl;
 import citdavidjordan.exceptions.MenuControlException;
+import citdavidjordan.exceptions.ProgramControlException;
+import citdavidjordan.model.Player;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -74,13 +77,18 @@ public class MenuMainView extends MenuView {
         }
     }
         public  void startNewGame() throws IOException{
-
-        GameControl.createNewGame(CitDavidJordan.getPlayer());
-
-        //display game menu
-
-        StartProgramView spv = new StartProgramView();
-        spv.display();
+        
+        try {
+            ProgramControl.createPlayer(" ");
+            GameControl.createNewGame(CitDavidJordan.getPlayer());
+            
+            //display game menu
+            
+            StartProgramView spv = new StartProgramView();
+            spv.display();
+        } catch (ProgramControlException ex) {
+            ErrorView.display(this.getClass().getName(), ex.getMessage());
+        }
 
     }
 

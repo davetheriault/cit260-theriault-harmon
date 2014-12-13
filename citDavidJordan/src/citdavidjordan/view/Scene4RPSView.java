@@ -61,7 +61,7 @@ public class Scene4RPSView {
                              + "\n hours challenging other kids to play against him for     "
                              + "\n marbles.                                                 "
                              + "\n                                                          "
-                             + "\n Rocky: \"Hey there " + player.getName() + "."//todo get player name <-
+                             + "\n Rocky: \"Hey there " + player.getName() + "."
                              + "\n\t I heard that you are looking to score some easy marbles."
                              + "\n\t You wanna try me in a game of 'Rock Paper Scissors'?"
                              + "\n\t Loser gives the winner 5 marbles.\"");
@@ -262,11 +262,11 @@ public class Scene4RPSView {
             
             if (rpsResult.toLowerCase().contains("win")) {
                 this.console.println("\nRocky: \"Dang! Alright, here's your marbles.\"");
-                MarbleControl.adjustMarbles(5, "swirly");//todo insert function to add marbles to player
+                MarbleControl.adjustMarbles(5, "swirly");//function to add marbles to player
             }
             if (rpsResult.toLowerCase().contains("lose")) {
-                this.console.println("\nRocky: \"Ha! Alright " + player.getName() + ", pay up.\"");//todo get playerName
-                MarbleControl.adjustMarbles(-5, "swirly");//todo insert function to subtract marbles to player
+                this.console.println("\nRocky: \"Ha! Alright " + player.getName() + ", pay up.\"");// get playerName
+                MarbleControl.adjustMarbles(-5, "swirly");//function to subtract marbles to player
             }
             if (rpsResult.toLowerCase().contains("tie")) {
                 this.console.println("\nRocky: \"Again!\"");

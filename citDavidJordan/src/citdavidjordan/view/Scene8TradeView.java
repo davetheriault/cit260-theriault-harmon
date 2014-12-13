@@ -93,7 +93,7 @@ public class Scene8TradeView extends View{
                         if ( amt < 1 ) {throw new IOException("Invalid Amount. Must be greater than 0.");} 
                         else if ( amt > ni[Item.valueOf(type).ordinal()].getAmount() ) {throw new IOException("Invalid Amount. Naoto does not have that many."); }
                         else { break; }
-                    } catch (IOException ex) { ErrorView.display(this.getClass().getName(), ex.getMessage()); }
+                    } catch (NumberFormatException | IOException ex) { ErrorView.display(this.getClass().getName(), ex.getMessage()); }
                     }
                     this.console.println("\nNaoto: \"Ok. " + Integer.toString(amt) + " " + type + " marble(s). \n"
                             + "\t That has a total value of " +
@@ -105,8 +105,8 @@ public class Scene8TradeView extends View{
                                 + "Select the type of marbles to offer: \n"
                                 + "1. swirly | 2. steely | 3. alley | V - View Inventory:");
                         try { type2 = this.keyboard.readLine().trim().toUpperCase();
-                            if (in[(parseInt(type2) - 1)].getAmount() <= 0) { 
-                                throw new IOException("You do not have any " + in[(parseInt(type2) - 1)].getDescription() + " marbles.");}
+                            if ("1".equals(type2) || "2".equals(type2) || "3".equals(type2)) { if (in[(parseInt(type2) - 1)].getAmount() <= 0) { 
+                                throw new IOException("You do not have any " + in[(parseInt(type2) - 1)].getDescription() + " marbles.");}}
                             if (!"1".equals(type2) && !"2".equals(type2) && !"3".equals(type2) && !"V".equals(type2)) {
                                 throw new IOException("Invalid Entry.");}
                             if ("V".equals(type2)) { mgv.displayInventory(this.console); continue;}
@@ -114,7 +114,7 @@ public class Scene8TradeView extends View{
                             if ("2".equals(type2)) { type2 = "steely"; break;}
                             if ("3".equals(type2)) { type2 = "alley"; break;}
                             
-                        } catch (IOException ex) { ErrorView.display(this.getClass().getName(), ex.getMessage() ); }
+                        } catch (NumberFormatException | IOException ex) { ErrorView.display(this.getClass().getName(), ex.getMessage() ); }
                     }
                     while(true) {
                         this.console.println("\nEnter an amount of " + type2 + " marbles to offer:");
@@ -123,7 +123,7 @@ public class Scene8TradeView extends View{
                             if (amt2 > in[Item.valueOf(type2).ordinal()].getAmount()) {
                                 throw new IOException("Invalid Amount.");
                             } else {break;}
-                        } catch (IOException ex) { ErrorView.display(this.getClass().getName(), ex.getMessage()); }
+                        } catch (NumberFormatException | IOException ex) { ErrorView.display(this.getClass().getName(), ex.getMessage()); }
                     }
                     int vN = (ni[Item.valueOf(type).ordinal()].getValue() * amt);
                     int vI = (in[Item.valueOf(type2).ordinal()].getValue() * amt2);
@@ -131,6 +131,7 @@ public class Scene8TradeView extends View{
                         this.console.println("\nThe value of your offer is not enough. \n"
                                 + "Requested: " + amt + " " + type + "   Value = " + vN + "\n"
                                 + "Offered:   " + amt2+ " " + type2+ "   Value = " + vI + "\n");
+                        try {
                         this.console.println("Would you like to:    1.Restart your trade\n"
                                            + "              -or-    2.Add to your offer");
                         String ans = this.keyboard.readLine().trim();
@@ -139,9 +140,11 @@ public class Scene8TradeView extends View{
                             case "2":  this.addOffer(amt, type, amt2, type2);   break;
                             default:   throw new IOException("Invalid Entry.");
                         }
+                        } catch (IOException ex) {ErrorView.display(this.getClass().getName(), ex.getMessage());}
                     } else { this.console.println("\nTrade Details: \n"
                                 + "Requested: " + amt + " " + type + "   Value = " + vN + "\n"
                                 + "Offered:   " + amt2+ " " + type2+ "   Value = " + vI + "\n");
+                        try {
                         this.console.println("T - Make the Trade \n"
                                            + "C - Cancel Trade & Restart \n"
                                            + "Q - Cancel Trade & Quit");
@@ -152,14 +155,18 @@ public class Scene8TradeView extends View{
                             case "Q":  this.doAction("QUIT");                             break;
                             default:   throw new IOException("Invalid Entry.");
                         }
+                        } catch (IOException ex) {ErrorView.display(this.getClass().getName(), ex.getMessage());}
                         this.console.println("\nNaoto: \"Nice doing business with you.\"");
+                        try{
                         this.console.println("\n1 - Make another trade."
                                            + "\n2 - Return to Map.");
                         String end = this.keyboard.readLine().trim();
                         switch (end) {
                             case "1":   this.doAction("Y");    break;
                             case "2":   this.doAction("QUIT"); break;
+                            default:    throw new IOException("Please Enter 1 to trade or 2 to quit.");
                         }
+                        } catch (IOException ex) {ErrorView.display(this.getClass().getName(), ex.getMessage());}
                     }
                     break;
                 case "QUIT":
@@ -183,8 +190,9 @@ public class Scene8TradeView extends View{
                                + "Select the type of marbles to add to your offer:\n "
                                + "1. swirly | 2. steely | 3. alley | V - View Inventory:");
             try { type3 = this.keyboard.readLine().trim().toUpperCase();
-                if (in[parseInt(type3) - 1].getAmount() <= 0) { 
-                      throw new IOException("You do not have any" + type2 + " marbles.");}
+                if ("1".equals(type3) || "2".equals(type3) || "3".equals(type3)) { if (in[(parseInt(type3) - 1)].getAmount() <= 0) { 
+                                throw new IOException("You do not have any " + in[(parseInt(type3) - 1)].getDescription() + " marbles.");}}
+
                 if (!"1".equals(type3) && !"2".equals(type3) && !"3".equals(type3) && !"V".equals(type3)) {
                     throw new IOException("Invalid Entry.");}
                 if ("V".equals(type3)) { mgv.displayInventory(this.console); continue;}
@@ -192,7 +200,7 @@ public class Scene8TradeView extends View{
                 if ("2".equals(type3)) { type3 = "steely"; break;}
                 if ("3".equals(type3)) { type3 = "alley"; break;}
                 
-            } catch (IOException ex) { ErrorView.display(this.getClass().getName(), ex.getMessage() ); }
+            } catch (NumberFormatException | IOException ex) { ErrorView.display(this.getClass().getName(), ex.getMessage() ); }
         }
         while(true) {
             this.console.println("\nEnter an amount of " + type3 + " marbles to add to offer:");
@@ -200,7 +208,7 @@ public class Scene8TradeView extends View{
                 if (amt3 < 1 || amt3 > in[Item.valueOf(type3).ordinal()].getAmount()) {
                     throw new IOException("Invalid Amount.");
                 } else {break;}
-            } catch (IOException ex) { ErrorView.display(this.getClass().getName(), ex.getMessage()); }
+            } catch (NumberFormatException | IOException ex) { ErrorView.display(this.getClass().getName(), ex.getMessage()); }
         }
         int vN = (ni[Item.valueOf(type).ordinal()].getValue() * amt);
         int vI = (in[Item.valueOf(type2).ordinal()].getValue() * amt2) +
@@ -209,7 +217,7 @@ public class Scene8TradeView extends View{
             try {
                 this.console.println("\nThe value of your offer is not enough. \n"
                         + "Requested: " + amt + " " + type + "   Value = " + vN + "\n"
-                        + "Offered:   " + amt2+ " " + type2 //+ "   Value = " + vI + "\n"
+                        + "Offered:   " + amt2+ " " + type2 + "\n"
                         + "           " + amt3+ " " + type3+ "   Value = " + vI + "\n");
                 this.console.println("Would you like to:    1.Restart your trade\n"
                                    + "              -or-    2.Cancel trade & return to Map");
@@ -238,6 +246,8 @@ public class Scene8TradeView extends View{
                     case "Q":  this.doAction("QUIT");                             break;
                     default:   throw new IOException("Invalid Entry.");
                 }
+            } catch (IOException | MenuControlException ex) {ErrorView.display(this.getClass().getName(), ex.getMessage());}
+            try{
                 this.console.println("\nNaoto: \"Nice doing business with you.\"");
                 this.console.println("\n1 - Make another trade."
                                    + "\n2 - Return to Map.");
@@ -245,6 +255,7 @@ public class Scene8TradeView extends View{
                 switch (end) {
                     case "1":   this.doAction("Y");    break;
                     case "2":   this.doAction("QUIT"); break;
+                    default: throw new IOException("Please Enter 1 to trade or 2 to quit.");
                 }
             } catch (IOException | MenuControlException ex) {
                 ErrorView.display(this.getClass().getName(), ex.getMessage());

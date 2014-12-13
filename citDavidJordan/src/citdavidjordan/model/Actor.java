@@ -20,7 +20,7 @@ public enum Actor implements Serializable {
     Johnny("... Steps", "Help Johnny with Homework"),
     Lucy("... hopscotch", "Lucy's Bully-Watch"),
     Brody("Brody is a bully. \nHe was held back from last year and now he's in your class. \nYou are the main target of his bullying.", ""),
-    Brock("Brock is a big dumb brute in the 6th grade. \nHe is undoubtedly the oldest kid in school... by far. \nBrock has noticed your problem with Brody, and he has offered to take care of Brody for you. \nIn return, he requires a payment of X marbles.", "Buy Protection from Brock"), //todo specify number of marbles <--
+    Brock("Brock is a big dumb brute in the 6th grade. \nHe is undoubtedly the oldest kid in school... by far. \nBrock has noticed your problem with Brody, and he has offered to take care of Brody for you. \nIn return, he requires a payment of 20 alley marbles.", "Buy Protection from Brock"), //todo specify number of marbles <--
     Naoto("Naoto is a Japanese kid...", "Trade Marbles with Naoto")
     ;
     
