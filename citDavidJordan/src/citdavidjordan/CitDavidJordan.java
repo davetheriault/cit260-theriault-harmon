@@ -11,7 +11,6 @@ import citdavidjordan.model.Game;
 import citdavidjordan.model.Player;
 import citdavidjordan.view.ErrorView;
 import citdavidjordan.view.MenuMainView;
-import citdavidjordan.view.StartProgramView;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;

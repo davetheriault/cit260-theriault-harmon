@@ -10,10 +10,7 @@ import citdavidjordan.control.GameControl;
 import citdavidjordan.control.ProgramControl;
 import citdavidjordan.exceptions.MenuControlException;
 import citdavidjordan.exceptions.ProgramControlException;
-import citdavidjordan.model.Player;
 import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
 *

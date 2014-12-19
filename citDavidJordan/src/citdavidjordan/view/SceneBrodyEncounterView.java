@@ -96,26 +96,23 @@ public class SceneBrodyEncounterView extends View{
         do{
             this.console.println(msg);
             value = this.getInput();
-            this.doAction(value);
+            this.doAction(value); 
         } while (!done);
     }
     
     @Override
     public void doAction(String result) {
-        
-        
-        
+                 
         try {
-            result = result.toUpperCase(); //convert to uppercase
-            
             if (result == null) { result = "NA"; } //if player has no marbles
+            result = result.toUpperCase(); //convert to uppercase
             
             switch (result) {
                 
                 case "NA":
                     this.console.println("Rocky: \"Oh, wait. \n"
-                                   + "       It looks like you don't even have any marbles little-miss-" + player.getName() + ".\n"
-                                   + "       You are so worthless! Get outta here!!");
+                            + "       It looks like you don't even have any marbles little-miss-" + player.getName() + ".\n"
+                            + "       You are so worthless! Get outta here!!");
                     try {
                         MenuGameView gameMenu = new MenuGameView();
                         gameMenu.displayMap();
@@ -142,7 +139,7 @@ public class SceneBrodyEncounterView extends View{
                     boolean esc = this.escape();
                     if (esc == false) {
                         this.console.println("You make a run for it, but Brody chases you down. \n\n"
-                            + "Brody: \"Where do you think you're going fart-face?");
+                                + "Brody: \"Where do you think you're going fart-face?");
                         MarbleControl.adjustMarbles(-1, r);
                         this.console.println("He takes 1 of your " + r + " marbles.");
                         this.console.println("Brody: \"Remind me to pound your face in after school.\"");
@@ -154,14 +151,17 @@ public class SceneBrodyEncounterView extends View{
                     this.keyboard.readLine();
                     MenuGameView gameMenu = new MenuGameView();
                     gameMenu.displayMap();
+                    break;
                 
                 default:
-                    throw new IOException("Invalid Entry");
+                    ErrorView.display(SceneBrodyEncounterView.class.getName(), "Invalid Entry");
+                    this.display();
                     
             }
-        } catch (MarbleControlException | IOException | Scene2NumberException ex) {
-            Logger.getLogger(SceneBrodyEncounterView.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException | Scene2NumberException | MarbleControlException ex) {
+            ErrorView.display(SceneBrodyEncounterView.class.getName(), ex.getMessage());
         }
+        
     }
 
     public static String payUp() {
